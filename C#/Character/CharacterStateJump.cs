@@ -16,7 +16,7 @@ public class CharacterStateJump : CharacterState
 		moveDirection.z = PlayerInput.move.z;
 
 		// use camera space
-		moveDirection = moveDirection.Rotated(Vector3.Up, blackboard.springArm.Rotation.y).Normalized();
+		moveDirection = moveDirection.Rotated(Vector3.Up, blackboard.cameraSpringArm.Rotation.y).Normalized();
 
 
 		// apply gravity
@@ -32,7 +32,7 @@ public class CharacterStateJump : CharacterState
 
 
 		// get camera look vector
-		var cameraForward = -blackboard.springArm.Transform.basis.z;
+		var cameraForward = -blackboard.cameraSpringArm.Transform.basis.z;
 		cameraForward.y = 0;
 		
 		// get camera look position
@@ -43,7 +43,7 @@ public class CharacterStateJump : CharacterState
 
 
 		// camera follow
-        blackboard.springArm.Translation = blackboard.Translation;
+		blackboard.cameraSpringArm.MoveToFollowCharacter(blackboard.Translation);
 	}
 
 

@@ -25,7 +25,7 @@ public class CharacterBlackboard : KinematicBody
 		y;
 	public Vector3 velocity,
 		snap = Vector3.Down;
-	public SpringArm springArm;
+	public CameraSpringArm cameraSpringArm;
 	public Disconnector jumpDisconnector = new Disconnector();
 
 
@@ -37,7 +37,7 @@ public class CharacterBlackboard : KinematicBody
 		maxSlideAngleRad = Mathf.Pi / 180f * maxSlideAngle;
 
 		// get nodes
-		springArm = GetNode<SpringArm>("SpringArm");
+		cameraSpringArm = GetNode<CameraSpringArm>("SpringArm");
 
 		// initialize states
 		stateIdle = new CharacterStateIdle(){blackboard = this};
