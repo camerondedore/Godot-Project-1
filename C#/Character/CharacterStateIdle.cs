@@ -10,6 +10,9 @@ public class CharacterStateIdle : CharacterState
 
     public override void RunState(float delta)
 	{
+		// apply gravity
+		blackboard.velocity.y += blackboard.gravity * delta;
+		
         // set velocity using input
 		blackboard.velocity.x = Mathf.Lerp(blackboard.velocity.x, 0, delta * blackboard.acceleration);
 		blackboard.velocity.z = Mathf.Lerp(blackboard.velocity.z, 0, delta * blackboard.acceleration);
@@ -22,8 +25,10 @@ public class CharacterStateIdle : CharacterState
 		{		
 			var lookDirection = new Vector2(blackboard.velocity.z, blackboard.velocity.x);
 			var newRotation = blackboard.mesh.Rotation;
+			
 			// get angle in radians
 			newRotation.y = lookDirection.Angle();
+			
 			// apply look
 			blackboard.mesh.Rotation = newRotation;
 		}
@@ -37,7 +42,7 @@ public class CharacterStateIdle : CharacterState
 
 	public override void StartState()
 	{
-
+		blackboard.snap = Vector3.Down;
 	}
 
 
@@ -51,17 +56,18 @@ public class CharacterStateIdle : CharacterState
 
 	public override State Transition()
 	{
-        if(!blackboard.IsOnWall() && !blackboard.IsOnFloor())
-        {
-            // fall
-            return blackboard.stateFall;
-        }
-
         if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
-        {
-            // slide
-            return blackboard.stateSlide;
-        }
+		{
+			var canSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) < blackboard.maxSlideAngle;
+			if(canSlide)
+			{
+				// slide
+				return blackboard.stateSlide;
+			}
+
+			// fall
+			return blackboard.stateFall;
+		}
 
         if(blackboard.jumpDisconnector.Trip(PlayerInput.jump) && blackboard.IsOnFloor())
         {

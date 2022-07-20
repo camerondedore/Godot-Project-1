@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
+[ext_resource path="res://Prefabs/tmp-platform-1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/tmp-platform-2.tscn" type="PackedScene" id=4]
 
 [node name="Map" type="Spatial"]
 
@@ -11,17 +13,50 @@ use_collision = true
 width = 60.0
 depth = 60.0
 
-[node name="CSGBox2" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 10 )
+[node name="CSGBox3" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 10 )
 use_collision = true
 width = 4.0
 depth = 4.0
 material = ExtResource( 2 )
 
-[node name="CSGBox3" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 10 )
+[node name="CSGBox11" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.1, 14 )
 use_collision = true
 width = 4.0
+height = 0.2
+depth = 4.0
+material = ExtResource( 2 )
+
+[node name="CSGBox12" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.294, 0.3, 14 )
+use_collision = true
+width = 4.0
+height = 0.2
+depth = 4.0
+material = ExtResource( 2 )
+
+[node name="CSGBox13" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6334, 0.5, 14 )
+use_collision = true
+width = 4.0
+height = 0.2
+depth = 4.0
+material = ExtResource( 2 )
+
+[node name="CSGBox14" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.012, 0.7, 14 )
+use_collision = true
+width = 4.0
+height = 0.2
+depth = 4.0
+material = ExtResource( 2 )
+
+[node name="CSGBox15" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.415, 0.9, 14 )
+use_collision = true
+width = 4.0
+height = 0.2
 depth = 4.0
 material = ExtResource( 2 )
 
@@ -60,6 +95,13 @@ width = 12.0
 depth = 10.0
 material = ExtResource( 2 )
 
+[node name="CSGBox10" type="CSGBox" parent="."]
+transform = Transform( 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, 0, 0, 1, 13.2163, 3.3956, -15 )
+use_collision = true
+width = 12.0
+depth = 10.0
+material = ExtResource( 2 )
+
 [node name="CSGBox9" type="CSGBox" parent="."]
 transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -46.827, -18.6044, -9.45264 )
 use_collision = true
@@ -73,3 +115,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.258819, 0.965926, 0, -0.683013, 0.183013, 0.707107, 0.683013, -0.183013, 0.707107, 0, 5.89199, 0 )
 shadow_enabled = true
+
+[node name="tmp-platform-1" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -14 )
+
+[node name="tmp-platform-2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -13 )
+
+[node name="tmp-platform-3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4, -3 )

@@ -28,15 +28,17 @@ public class CharacterStateJump : CharacterState
 		blackboard.velocity.z = Mathf.Lerp(blackboard.velocity.z, moveDirection.z * blackboard.speed, delta * blackboard.acceleration * 0.5f);
 
 		// apply velocity
-		blackboard.velocity = blackboard.MoveAndSlideWithSnap(blackboard.velocity, blackboard.snap, Vector3.Up, true, 4, blackboard.maxSlopeAngleRad);
+		blackboard.velocity = blackboard.MoveAndSlide(blackboard.velocity, Vector3.Up, true, 4, blackboard.maxSlopeAngleRad);
 
 
 		if(blackboard.velocity.LengthSquared() > 0.2f)
 		{		
 			var lookDirection = new Vector2(blackboard.velocity.z, blackboard.velocity.x);
 			var newRotation = blackboard.mesh.Rotation;
+			
 			// get angle in radians
 			newRotation.y = lookDirection.Angle();
+			
 			// apply look
 			blackboard.mesh.Rotation = newRotation;
 		}
@@ -52,6 +54,7 @@ public class CharacterStateJump : CharacterState
 	{
 		// set vertical speed; v = (-2hg)>(1/2)
 		blackboard.velocity.y = Mathf.Sqrt((-2 * blackboard.jumpHeight * blackboard.gravity));
+		
 		// set snap to zero to release from floor
 		blackboard.snap = Vector3.Zero;
 	}
@@ -67,11 +70,24 @@ public class CharacterStateJump : CharacterState
 
 	public override State Transition()
 	{
-		 if(blackboard.velocity.y < 0 || blackboard.IsOnWall() || blackboard.IsOnFloor())
+		if(blackboard.velocity.y < 0)
         {
             // fall
             return blackboard.stateFall;
         }
+
+		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
+		{
+			var canSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) < blackboard.maxSlideAngleRad;
+			if(canSlide)
+			{
+				// slide
+				return blackboard.stateSlide;
+			}
+
+			// fall
+            return blackboard.stateFall;
+		}
 
 		return this;
 	}

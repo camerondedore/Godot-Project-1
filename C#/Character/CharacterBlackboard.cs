@@ -13,12 +13,16 @@ public class CharacterBlackboard : KinematicBody
 
 	[Export]
 	public float speed = 6,
-		slopeSteeringSpeed = 6,
+		slopeSpeed = 3,
 		acceleration = 15, 
-		jumpHeight = 2,
+		jumpHeight = 2.25f,
 		gravity = -9.81f,
-		maxSlopeAngle = 40;
-	public float maxSlopeAngleRad;
+		maxSlopeAngle = 40,
+		maxSlideAngle = 70,
+		maxFallSpeed = 20;
+	public float maxSlopeAngleRad,
+		maxSlideAngleRad,
+		y;
 	public Vector3 velocity,
 		snap = Vector3.Down;
 	public SpringArm springArm;
@@ -29,8 +33,9 @@ public class CharacterBlackboard : KinematicBody
 
 	public override void _Ready()
 	{
-		// calculate slope in radians
+		// calculate angles in radians
 		maxSlopeAngleRad = Mathf.Pi / 180f * maxSlopeAngle;
+		maxSlideAngleRad = Mathf.Pi / 180f * maxSlideAngle;
 
 		// get nodes
 		springArm = GetNode<SpringArm>("SpringArm");

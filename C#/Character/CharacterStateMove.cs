@@ -22,18 +22,12 @@ public class CharacterStateMove : CharacterState
 		// use camera space
 		moveDirection = moveDirection.Rotated(Vector3.Up, blackboard.springArm.Rotation.y).Normalized();
 
-		// project moveDirection on floor
-		// var projectedMoveDirection = moveDirection;
-		// var cross1 = blackboard.GetFloorNormal().Cross(moveDirection);
-		// var cross2 = cross1.Cross(blackboard.GetFloorNormal());
-		// projectedMoveDirection = cross2.Normalized();
-
 
 		// apply gravity
 		blackboard.velocity.y += blackboard.gravity * delta;
 
 
-		// set velocity using input
+		// set up velocity using input
 		blackboard.velocity.x = Mathf.Lerp(blackboard.velocity.x, moveDirection.x * blackboard.speed, delta * blackboard.acceleration);
 		blackboard.velocity.z = Mathf.Lerp(blackboard.velocity.z, moveDirection.z * blackboard.speed, delta * blackboard.acceleration);
 
@@ -45,8 +39,10 @@ public class CharacterStateMove : CharacterState
 		{		
 			var lookDirection = new Vector2(blackboard.velocity.z, blackboard.velocity.x);
 			var newRotation = blackboard.mesh.Rotation;
+			
 			// get angle in radians
 			newRotation.y = lookDirection.Angle();
+			
 			// apply look
 			blackboard.mesh.Rotation = newRotation;
 		}
@@ -74,19 +70,20 @@ public class CharacterStateMove : CharacterState
 
 	public override State Transition()
 	{
-		if(!blackboard.IsOnWall() && !blackboard.IsOnFloor())
+		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
 		{
+			var canSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) < blackboard.maxSlideAngleRad;
+			if(canSlide)
+			{
+				// slide
+				return blackboard.stateSlide;
+			}
+
 			// fall
 			return blackboard.stateFall;
 		}
 
-		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
-		{
-			// slide
-			return blackboard.stateSlide;
-		}
-
-		if(blackboard.jumpDisconnector.Trip(PlayerInput.jump) && blackboard.IsOnFloor())
+		if(blackboard.IsOnFloor() && blackboard.jumpDisconnector.Trip(PlayerInput.jump))
 		{
 			// jump
 			return blackboard.stateJump;
