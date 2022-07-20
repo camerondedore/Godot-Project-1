@@ -33,17 +33,15 @@ public class CharacterStateSlide : CharacterState
 		blackboard.velocity = blackboard.MoveAndSlideWithSnap(blackboard.velocity, blackboard.snap, Vector3.Up, true, 4, blackboard.maxSlopeAngleRad);
 
 
-		if(blackboard.velocity.LengthSquared() > 0.2f)
-		{		
-			var lookDirection = new Vector2(blackboard.velocity.z, blackboard.velocity.x);
-			var newRotation = blackboard.mesh.Rotation;
-			
-			// get angle in radians
-			newRotation.y = lookDirection.Angle();
-			
-			// apply look
-			blackboard.mesh.Rotation = newRotation;
-		}
+		// get camera look vector
+		var cameraForward = -blackboard.springArm.Transform.basis.z;
+		cameraForward.y = 0;
+		
+		// get camera look position
+		var lookPosition = cameraForward + blackboard.Translation;
+		
+		// apply look
+		blackboard.LookAt(lookPosition, Vector3.Up);
 
 
 		// camera follow

@@ -26,7 +26,6 @@ public class CharacterBlackboard : KinematicBody
 	public Vector3 velocity,
 		snap = Vector3.Down;
 	public SpringArm springArm;
-	public Spatial mesh;
 	public Disconnector jumpDisconnector = new Disconnector();
 
 
@@ -39,7 +38,6 @@ public class CharacterBlackboard : KinematicBody
 
 		// get nodes
 		springArm = GetNode<SpringArm>("SpringArm");
-		mesh = GetNode<Spatial>("mesh");
 
 		// initialize states
 		stateIdle = new CharacterStateIdle(){blackboard = this};
