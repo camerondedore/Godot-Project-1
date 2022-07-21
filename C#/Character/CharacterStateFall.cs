@@ -19,13 +19,13 @@ public class CharacterStateFall : CharacterState
 		moveDirection = moveDirection.Rotated(Vector3.Up, blackboard.cameraSpringArm.Rotation.y).Normalized();
 
 
-		// apply gravity using persistent y
-		blackboard.y += blackboard.gravity * delta;
-				
-
 		// set up velocity using persistent y
 		blackboard.velocity.x = Mathf.Lerp(blackboard.velocity.x, moveDirection.x * blackboard.speed, delta * blackboard.acceleration * 0.5f);
 		blackboard.velocity.z = Mathf.Lerp(blackboard.velocity.z, moveDirection.z * blackboard.speed, delta * blackboard.acceleration * 0.5f);
+		
+
+		// apply gravity using persistent y
+		blackboard.y += blackboard.gravity * delta;
 		blackboard.velocity.y = blackboard.y;
 
 

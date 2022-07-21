@@ -16,16 +16,16 @@ public class CharacterStateSlide : CharacterState
 		moveDirection.z = PlayerInput.move.z;
 
 		// use camera space
-		moveDirection = moveDirection.Rotated(Vector3.Up, blackboard.cameraSpringArm.Rotation.y).Normalized();
-
-
-		// apply gravity using persistent y
-		blackboard.y += blackboard.gravity * delta;
+		moveDirection = moveDirection.Rotated(Vector3.Up, blackboard.cameraSpringArm.Rotation.y).Normalized();		
 
 
 		// set up velocity using persistent y
 		blackboard.velocity.x = Mathf.Lerp(blackboard.velocity.x, moveDirection.x * blackboard.slopeSpeed, delta * blackboard.acceleration * 0.5f);
 		blackboard.velocity.z = Mathf.Lerp(blackboard.velocity.z, moveDirection.z * blackboard.slopeSpeed, delta * blackboard.acceleration * 0.5f);
+		
+		
+		// apply gravity using persistent y
+		blackboard.y += blackboard.gravity * delta;
 		blackboard.velocity.y = blackboard.y;
 
 

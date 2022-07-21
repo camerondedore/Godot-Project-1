@@ -23,13 +23,13 @@ public class CharacterStateMove : CharacterState
 		moveDirection = moveDirection.Rotated(Vector3.Up, blackboard.cameraSpringArm.Rotation.y).Normalized();
 
 
-		// apply gravity
-		blackboard.velocity.y += blackboard.gravity * delta;
-
-
 		// set up velocity using input
 		blackboard.velocity.x = Mathf.Lerp(blackboard.velocity.x, moveDirection.x * blackboard.speed, delta * blackboard.acceleration);
 		blackboard.velocity.z = Mathf.Lerp(blackboard.velocity.z, moveDirection.z * blackboard.speed, delta * blackboard.acceleration);
+
+
+		// apply gravity
+		blackboard.velocity.y += blackboard.gravity * delta;
 
 
 		// apply velocity

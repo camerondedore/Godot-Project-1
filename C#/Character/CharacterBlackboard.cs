@@ -9,21 +9,24 @@ public class CharacterBlackboard : KinematicBody
 		stateMove,
 		stateJump,
 		stateFall,
-		stateSlide;
+		stateSlide,
+		stateJumpPad;
 
 	[Export]
 	public float speed = 6,
 		slopeSpeed = 3,
-		acceleration = 15, 
+		acceleration = 15,
+		jumpPadAcceleration = 1f, 
 		jumpHeight = 2.25f,
-		gravity = -9.81f,
 		maxSlopeAngle = 40,
 		maxSlideAngle = 70,
 		maxFallSpeed = 20;
-	public float maxSlopeAngleRad,
+	public float gravity,
+		maxSlopeAngleRad,
 		maxSlideAngleRad,
 		y;
 	public Vector3 velocity,
+		jumpPadVelocity,
 		snap = Vector3.Down;
 	public CameraSpringArm cameraSpringArm;
 	public Disconnector jumpDisconnector = new Disconnector();
@@ -32,6 +35,11 @@ public class CharacterBlackboard : KinematicBody
 
 	public override void _Ready()
 	{
+		// get gravity
+		var gravityVector = (Vector3) ProjectSettings.GetSetting("physics/3d/default_gravity_vector");
+		var gravityMagnitude = (float) ProjectSettings.GetSetting("physics/3d/default_gravity");
+		gravity = gravityVector.y * gravityMagnitude;
+
 		// calculate angles in radians
 		maxSlopeAngleRad = Mathf.Pi / 180f * maxSlopeAngle;
 		maxSlideAngleRad = Mathf.Pi / 180f * maxSlideAngle;
@@ -45,6 +53,7 @@ public class CharacterBlackboard : KinematicBody
 		stateJump = new CharacterStateJump(){blackboard = this};
 		stateFall = new CharacterStateFall(){blackboard = this};
 		stateSlide = new CharacterStateSlide(){blackboard = this};
+		stateJumpPad = new CharacterStateJumpPad(){blackboard = this};
 
 		// set first state in machine
 		machine.SetState(stateIdle);

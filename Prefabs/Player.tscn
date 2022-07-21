@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://C#/Character/CharacterBlackboard.cs" type="Script" id=1]
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
 [ext_resource path="res://C#/PlayerInput.cs" type="Script" id=3]
 [ext_resource path="res://Textures/ui-crosshair.png" type="Texture" id=4]
+[ext_resource path="res://C#/Character/JumpPadDetector.cs" type="Script" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.3
 height = 1.2
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.5
 
 [node name="PlayerKinematicBody" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -53,3 +57,17 @@ stretch_mode = 1
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="JumpPadDetector" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 2
+input_ray_pickable = false
+monitorable = false
+script = ExtResource( 5 )
+characterPath = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="JumpPadDetector"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="JumpPadDetector" to="JumpPadDetector" method="_on_JumpPadDetector_area_entered"]
