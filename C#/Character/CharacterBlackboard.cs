@@ -61,7 +61,7 @@ public class CharacterBlackboard : KinematicBody
 
 
 
-	public override void _Process(float delta)
+	public override void _PhysicsProcess(float delta)
 	{
 		// run machine
 		machine.CurrentState.RunState(delta);

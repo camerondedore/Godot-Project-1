@@ -15,9 +15,9 @@ public class TimedDisconnector
 	/// </summary>
 	public void Trip()
 	{
-		if (OS.GetTicksMsec() * 1000 > hookTime + releaseTime)
+		if (OS.GetTicksMsec() * 0.001f > hookTime + releaseTime)
 		{
-			hookTime = OS.GetTicksMsec() * 1000;
+			hookTime = OS.GetTicksMsec() * 0.001f;
 		}
 	}
 
