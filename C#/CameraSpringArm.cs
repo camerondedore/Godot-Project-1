@@ -5,7 +5,7 @@ public class CameraSpringArm : SpringArm
 {
 
 	[Export]
-	float sensitivity = 1,
+	float sensitivity = 0.15f,
 		minAngle = -50,
 		maxAngle = 40;
 	Vector3 offset;

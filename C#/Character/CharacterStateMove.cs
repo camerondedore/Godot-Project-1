@@ -35,6 +35,7 @@ public class CharacterStateMove : CharacterState
 		// apply velocity
 		blackboard.velocity = blackboard.MoveAndSlideWithSnap(blackboard.velocity, blackboard.snap, Vector3.Up, true, 4, blackboard.maxSlopeAngleRad);
 
+
 		// get camera look vector
 		var cameraForward = -blackboard.cameraSpringArm.Transform.basis.z;
 		cameraForward.y = 0;
