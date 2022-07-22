@@ -4,11 +4,15 @@ using System;
 public class CameraSpringArm : SpringArm
 {
 
+	public bool freezeY = false;
 	[Export]
 	float sensitivity = 0.15f,
 		minAngle = -50,
-		maxAngle = 40;
-	Vector3 offset;
+		maxAngle = 40,
+		smoothSpeed = 8;
+	Vector3 offset,
+		targetPosition;
+	float y;
 
 
 
@@ -16,6 +20,7 @@ public class CameraSpringArm : SpringArm
 	public override void _Ready()
 	{
 		offset = Translation;
+		targetPosition = Translation;
 
 		SetAsToplevel(true);
 
@@ -43,12 +48,29 @@ public class CameraSpringArm : SpringArm
 
 	public void MoveToFollowCharacter(Vector3 characterPosition)
 	{
-		Translation = characterPosition + offset;
+		// get position for spring arm
+		var newPositon = characterPosition + offset;
+
+		if(!freezeY)
+		{
+			// set y to match character
+			y = newPositon.y;
+		}
+
+		// apply y to new position
+		var newPositonWithY = newPositon;
+		newPositonWithY.y = y;
+
+		// move to follow
+		targetPosition = newPositonWithY;
 	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+
+
+	public override void _Process(float delta)
+	{
+		var smoothPosition = targetPosition;
+		smoothPosition.y = Mathf.Lerp(Translation.y, targetPosition.y, smoothSpeed * delta);
+		Translation = smoothPosition;
+	}
 }

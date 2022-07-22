@@ -61,6 +61,9 @@ public class CharacterStateJumpPad : CharacterState
 		
 		// set snap to zero to release from floor
 		blackboard.snap = Vector3.Zero;
+
+		// resume camera y
+		blackboard.cameraSpringArm.freezeY = false;
 	}
 
 

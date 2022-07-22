@@ -55,6 +55,10 @@ public class CharacterStateJump : CharacterState
 		
 		// set snap to zero to release from floor
 		blackboard.snap = Vector3.Zero;
+
+		// freeze camera y
+		blackboard.cameraSpringArm.freezeY = true;
+		blackboard.jumpStartY = blackboard.Translation.y;
 	}
 
 
@@ -85,6 +89,12 @@ public class CharacterStateJump : CharacterState
 
 			// fall
             return blackboard.stateFall;
+		}
+
+		if(blackboard.IsOnFloor())
+		{
+			// move
+			return blackboard.stateMove;
 		}
 
 		return this;

@@ -25,8 +25,8 @@ public class CharacterStateSlide : CharacterState
 		
 		
 		// apply gravity using persistent y
-		blackboard.y += blackboard.gravity * delta;
-		blackboard.velocity.y = blackboard.y;
+		blackboard.ySpeed += blackboard.gravity * delta;
+		blackboard.velocity.y = blackboard.ySpeed;
 
 
 		// apply velocity
@@ -46,6 +46,14 @@ public class CharacterStateSlide : CharacterState
 
 		// camera follow
 		blackboard.cameraSpringArm.MoveToFollowCharacter(blackboard.Translation);
+
+
+		// resume camera y
+		if(blackboard.cameraSpringArm.freezeY && (blackboard.Translation.y < blackboard.jumpStartY 
+			|| blackboard.Translation.y > blackboard.jumpStartY + blackboard.jumpHeight))
+		{
+			blackboard.cameraSpringArm.freezeY = false;
+		}
 	}
 
 
@@ -53,17 +61,21 @@ public class CharacterStateSlide : CharacterState
 	public override void StartState()
 	{
 		// set y to match previous velocity.y
-		blackboard.y = blackboard.velocity.y;
+		blackboard.ySpeed = blackboard.velocity.y;
 
 		// set snap to look for wall
 		blackboard.snap = Vector3.Down;
+
+		// freeze camera y
+		blackboard.cameraSpringArm.freezeY = true;
 	}
 
 
 
 	public override void EndState()
 	{
-
+		// resume camera y
+		blackboard.cameraSpringArm.freezeY = false;
 	}
 
 

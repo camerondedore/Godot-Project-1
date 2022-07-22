@@ -55,7 +55,8 @@ public class CharacterStateMove : CharacterState
 
 	public override void StartState()
 	{
-		
+		// resume camera y
+		blackboard.cameraSpringArm.freezeY = false;
 	}
 
 

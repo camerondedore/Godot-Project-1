@@ -24,7 +24,8 @@ public class CharacterBlackboard : KinematicBody
 	public float gravity,
 		maxSlopeAngleRad,
 		maxSlideAngleRad,
-		y;
+		ySpeed,
+		jumpStartY;
 	public Vector3 velocity,
 		jumpPadVelocity,
 		snap = Vector3.Down;
