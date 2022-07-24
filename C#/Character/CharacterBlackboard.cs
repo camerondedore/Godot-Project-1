@@ -21,6 +21,8 @@ public class CharacterBlackboard : KinematicBody
 		maxSlopeAngle = 40,
 		maxSlideAngle = 70,
 		maxFallSpeed = 20;
+	[Export]
+	NodePath cameraSpringArmPath;
 	public float gravity,
 		maxSlopeAngleRad,
 		maxSlideAngleRad,
@@ -46,7 +48,8 @@ public class CharacterBlackboard : KinematicBody
 		maxSlideAngleRad = Mathf.Pi / 180f * maxSlideAngle;
 
 		// get nodes
-		cameraSpringArm = GetNode<CameraSpringArm>("SpringArm");
+		//cameraSpringArm = GetNode<CameraSpringArm>("CameraSpringArm");
+		cameraSpringArm = GetNode(cameraSpringArmPath) as CameraSpringArm;
 
 		// initialize states
 		stateIdle = new CharacterStateIdle(){blackboard = this};

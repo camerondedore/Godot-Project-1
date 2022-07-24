@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://C#/Character/CharacterBlackboard.cs" type="Script" id=1]
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
 [ext_resource path="res://C#/PlayerInput.cs" type="Script" id=3]
 [ext_resource path="res://Textures/ui-crosshair.png" type="Texture" id=4]
 [ext_resource path="res://C#/Character/JumpPadDetector.cs" type="Script" id=5]
+[ext_resource path="res://C#/Weapons/Weapon.cs" type="Script" id=6]
+[ext_resource path="res://Prefabs/Bullet.tscn" type="PackedScene" id=7]
+[ext_resource path="res://C#/Weapons/Barrel.cs" type="Script" id=8]
+[ext_resource path="res://C#/Weapons/BarrelAimer.cs" type="Script" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.3
@@ -15,6 +19,7 @@ radius = 0.5
 
 [node name="PlayerKinematicBody" type="KinematicBody"]
 script = ExtResource( 1 )
+cameraSpringArmPath = NodePath("CameraSpringArm")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -30,17 +35,17 @@ radius = 0.3
 height = 1.8
 sides = 10
 
-[node name="SpringArm" type="SpringArm" parent="."]
+[node name="CameraSpringArm" type="SpringArm" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 spring_length = 2.5
 margin = 0.2
 script = ExtResource( 2 )
 
-[node name="Camera" type="Camera" parent="SpringArm"]
+[node name="Camera" type="Camera" parent="CameraSpringArm"]
 current = true
 fov = 90.0
 
-[node name="TextureRect" type="TextureRect" parent="SpringArm/Camera"]
+[node name="TextureRect" type="TextureRect" parent="CameraSpringArm/Camera"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -69,5 +74,19 @@ characterPath = NodePath("..")
 [node name="CollisionShape" type="CollisionShape" parent="JumpPadDetector"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
 shape = SubResource( 2 )
+
+[node name="Weapon" type="Spatial" parent="."]
+script = ExtResource( 6 )
+barrelPath = NodePath("Barrel")
+
+[node name="Barrel" type="Spatial" parent="Weapon"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3261, -0.608827 )
+script = ExtResource( 8 )
+bulletScene = ExtResource( 7 )
+
+[node name="BarrelAimer" type="Spatial" parent="Weapon"]
+script = ExtResource( 9 )
+barrelPath = NodePath("../Barrel")
+cameraSpringArmPath = NodePath("../../CameraSpringArm")
 
 [connection signal="area_entered" from="JumpPadDetector" to="JumpPadDetector" method="_on_JumpPadDetector_area_entered"]

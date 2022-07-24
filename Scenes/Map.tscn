@@ -15,6 +15,7 @@ use_in_baked_light = true
 use_collision = true
 width = 60.0
 depth = 60.0
+material = ExtResource( 2 )
 
 [node name="CSGBox6" type="CSGBox" parent="."]
 transform = Transform( 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 10, 0.537672, 6 )

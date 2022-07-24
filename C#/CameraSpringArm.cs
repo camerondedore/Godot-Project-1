@@ -20,7 +20,7 @@ public class CameraSpringArm : SpringArm
 	public override void _Ready()
 	{
 		offset = Translation;
-		targetPosition = Translation;
+		targetPosition = GlobalTransform.origin;
 
 		SetAsToplevel(true);
 
@@ -67,10 +67,10 @@ public class CameraSpringArm : SpringArm
 
 
 
-	public override void _Process(float delta)
+	public override void _PhysicsProcess(float delta)
 	{
 		var smoothPosition = targetPosition;
-		smoothPosition.y = Mathf.Lerp(Translation.y, targetPosition.y, smoothSpeed * delta);
+		smoothPosition.y = Mathf.Lerp(GlobalTransform.origin.y, targetPosition.y, smoothSpeed * delta);
 		Translation = smoothPosition;
 	}
 }

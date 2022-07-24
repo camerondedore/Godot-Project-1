@@ -9,7 +9,9 @@ public class PlayerInput : Node
 	public static bool isMoving;
 	public static Vector2 look;
 	public static float pause,
-		jump;
+		jump,
+		fire1,
+		fire2;
 	
 
 
@@ -43,6 +45,8 @@ public class PlayerInput : Node
 		// get button inputs
 		pause = Input.GetActionStrength("player-pause");
 		jump = Input.GetActionStrength("player-jump");
+		fire1 = Input.GetActionStrength("player-fire-1");
+		fire2 = Input.GetActionStrength("player-fire-2");
 
 		// temporary quit
 		if(Input.IsActionJustPressed("player-pause"))
