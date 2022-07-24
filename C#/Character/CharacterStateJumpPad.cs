@@ -38,18 +38,18 @@ public class CharacterStateJumpPad : CharacterState
 
 
 		// get camera look vector
-		var cameraForward = -blackboard.cameraSpringArm.Transform.basis.z;
+		var cameraForward = -blackboard.cameraSpringArm.GlobalTransform.basis.z;
 		cameraForward.y = 0;
 		
 		// get camera look position
-		var lookPosition = cameraForward + blackboard.Translation;
+		var lookPosition = cameraForward + blackboard.GlobalTransform.origin;
 		
 		// apply look
 		blackboard.LookAt(lookPosition, Vector3.Up);
 
 
 		// camera follow
-		blackboard.cameraSpringArm.MoveToFollowCharacter(blackboard.Translation);
+		blackboard.cameraSpringArm.MoveToFollowCharacter(blackboard.GlobalTransform.origin);
 	}
 
 
