@@ -83,6 +83,7 @@ barrelPath = NodePath("Barrel")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3261, -0.608827 )
 script = ExtResource( 8 )
 bulletScene = ExtResource( 7 )
+spread = 5.0
 
 [node name="BarrelAimer" type="Spatial" parent="Weapon"]
 script = ExtResource( 9 )

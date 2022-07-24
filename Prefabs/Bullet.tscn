@@ -5,10 +5,10 @@
 
 [node name="Bullet" type="Spatial"]
 script = ExtResource( 1 )
-speed = 50.0
+speed = 75.0
 rangeSqr = 10000.0
-gravityInfluence = 0.1
+gravityInfluence = 0.0
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
-radius = 0.05
+radius = 0.07
 material = ExtResource( 2 )
