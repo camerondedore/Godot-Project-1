@@ -11,6 +11,7 @@ public class Bullet : Spatial
 		gravityInfluence = 1;
 	[Export]
 	uint mask = 1;
+	PhysicsDirectSpaceState spaceState;
 	Vector3 velocity,
 		gravity;
 	float distanceTraveledSqr = 0;
@@ -30,6 +31,10 @@ public class Bullet : Spatial
 		var gravityVector = (Vector3) ProjectSettings.GetSetting("physics/3d/default_gravity_vector");
 		var gravityMagnitude = (float) ProjectSettings.GetSetting("physics/3d/default_gravity");
 		gravity = gravityVector * gravityMagnitude;
+
+		// get physics state
+		// only works in _PhysicsProcess
+		spaceState = GetWorld().DirectSpaceState;
 	}
 
 
@@ -37,12 +42,8 @@ public class Bullet : Spatial
 	public override void _PhysicsProcess(float delta)
 	{
 		// add gravity to velocity
-		velocity += gravity * delta * gravityInfluence;
-		
-		
-		// get physics state
-		// only works in _PhysicsProcess
-		var spaceState = GetWorld().DirectSpaceState;
+		velocity += gravity * delta * gravityInfluence;		
+
 
 		// exclude owner
 		//var exclude = new Godot.Collections.Array { Owner };

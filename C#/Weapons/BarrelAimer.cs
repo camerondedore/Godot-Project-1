@@ -8,9 +8,13 @@ public class BarrelAimer : Spatial
     NodePath barrelPath,
         cameraSpringArmPath;
     [Export]
-    float range = 50;
+    float rangeMax = 50,
+        rangeMin = 5;
+    [Export]
+    uint mask = 1;
     Barrel barrel;
     CameraSpringArm cameraSpringArm;
+    PhysicsDirectSpaceState spaceState;
 
 
 
@@ -22,14 +26,44 @@ public class BarrelAimer : Spatial
         
         // get camera spring arm
         cameraSpringArm = GetNode(cameraSpringArmPath) as CameraSpringArm;
+
+
+        // get physics state
+		// only works in _PhysicsProcess
+		spaceState = GetWorld().DirectSpaceState;
     }
 
 
 
     public override void _Process(float delta)
     {
-        // get target point
-        var targetPoint = cameraSpringArm.GlobalTransform.origin + cameraSpringArm.GlobalTransform.basis.z * -1 * range;
+        // get ray values
+        var rayStartPosition = cameraSpringArm.GlobalTransform.origin;
+        var rayMinPosition = rayStartPosition + cameraSpringArm.GlobalTransform.basis.z * -1 * rangeMin;
+        var rayMaxPosition = rayStartPosition + cameraSpringArm.GlobalTransform.basis.z * -1 * rangeMax;
+
+        // set default value for target position to the range max
+        var targetPoint = rayMaxPosition;
+
+        // cast ray from camera
+        var rayResults = spaceState.IntersectRay(rayStartPosition, rayMaxPosition, new Godot.Collections.Array { this, Owner }, mask);
+
+        if(rayResults.Contains("collider"))
+        {
+            var hitPoint = (Vector3) rayResults["position"];
+            var distanceToHitSqr = rayStartPosition.DistanceSquaredTo(hitPoint);
+            
+            if(distanceToHitSqr < rangeMin * rangeMin)
+            {
+                // too close so use rayMinPosition
+                targetPoint = rayMinPosition;
+            }
+            else
+            {
+                // use ray hit point
+                targetPoint = (Vector3) rayResults["position"];
+            }
+        }
 
         // aim barrel
         barrel.Aim(targetPoint);
