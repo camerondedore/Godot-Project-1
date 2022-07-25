@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://C#/Character/CharacterBlackboard.cs" type="Script" id=1]
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Prefabs/Bullet.tscn" type="PackedScene" id=7]
 [ext_resource path="res://C#/Weapons/Barrel.cs" type="Script" id=8]
 [ext_resource path="res://C#/Weapons/BarrelAimer.cs" type="Script" id=9]
+[ext_resource path="res://Audio/fire-weapon-1.wav" type="AudioStream" id=10]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.3
@@ -78,6 +79,9 @@ shape = SubResource( 2 )
 [node name="Weapon" type="Spatial" parent="."]
 script = ExtResource( 6 )
 barrelPath = NodePath("Barrel")
+weaponAudioPath = NodePath("WeaponAudio")
+rateOfFire = 500.0
+fireSound = ExtResource( 10 )
 
 [node name="Barrel" type="Spatial" parent="Weapon"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3261, -0.608827 )
@@ -89,5 +93,9 @@ spread = 5.0
 script = ExtResource( 9 )
 barrelPath = NodePath("../Barrel")
 cameraSpringArmPath = NodePath("../../CameraSpringArm")
+
+[node name="WeaponAudio" type="AudioStreamPlayer3D" parent="Weapon"]
+unit_size = 4.0
+max_distance = 50.0
 
 [connection signal="area_entered" from="JumpPadDetector" to="JumpPadDetector" method="_on_JumpPadDetector_area_entered"]
