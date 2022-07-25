@@ -36,7 +36,6 @@ public class Weapon : Spatial
 
     public override void _Process(float delta)
     {
-        GD.Print(GetChildCount());
 
         if(autoSear.Trip(PlayerInput.fire1))
         {
@@ -44,15 +43,13 @@ public class Weapon : Spatial
             barrel.Fire();
 
             // audio
-            weaponAudio.Stream = fireSound;
-            weaponAudio.Play();
-            // var newWeaponAudio = new AudioStreamPlayer3D();
-            // AddChild(newWeaponAudio);
-            // newWeaponAudio.Stream = fireSound;
-            // newWeaponAudio.MaxDistance = weaponAudio.MaxDistance;
-            // newWeaponAudio.MaxDb = weaponAudio.MaxDb;
-            // newWeaponAudio.Connect("finished", newWeaponAudio, "QueueFree");
-            // newWeaponAudio.Play();
+            var newWeaponAudio = new AudioStreamPlayer3D();
+            AddChild(newWeaponAudio);
+            newWeaponAudio.Stream = fireSound;
+            newWeaponAudio.MaxDistance = weaponAudio.MaxDistance;
+            newWeaponAudio.UnitSize = weaponAudio.UnitSize;
+            newWeaponAudio.Connect("finished", newWeaponAudio, "queue_free");
+            newWeaponAudio.Play();
         }
     }
 }
