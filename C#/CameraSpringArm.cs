@@ -13,6 +13,7 @@ public class CameraSpringArm : SpringArm
 	Spatial cameraTarget;
 	Vector3 offset,
 		targetPosition;
+	float smoothSpeed;
 
 
 
@@ -50,18 +51,26 @@ public class CameraSpringArm : SpringArm
 
 
 
-	public void MoveToFollowCharacter(Vector3 characterPosition)
+	public void MoveToFollowCharacter(Vector3 characterPosition, Vector3 velocity)
 	{
 		// get position for spring arm
 		targetPosition = characterPosition + offset;
+
+		// set smooth speed using character velocity
+		smoothSpeed = Mathf.Clamp(velocity.Length(), 15, 80);
 	}
 
 
 
 	public override void _PhysicsProcess(float delta)
 	{
+		GD.Print(smoothSpeed);
+
+		// smooth target position
+		var smoothTargetPosition = GlobalTransform.origin.LinearInterpolate(targetPosition, smoothSpeed * delta);
+
 		// apply spring arm move
-		LookAtFromPosition(targetPosition, targetPosition + GlobalTransform.basis.z * -1, Vector3.Up);
+		LookAtFromPosition(smoothTargetPosition, smoothTargetPosition + GlobalTransform.basis.z * -1, Vector3.Up);
 
 		// move camera
 		GlobalCamera.targetPosition = cameraTarget.GlobalTransform.origin;

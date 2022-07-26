@@ -45,7 +45,7 @@ public class CharacterStateSlide : CharacterState
 
 
 		// camera follow
-		blackboard.cameraSpringArm.MoveToFollowCharacter(blackboard.GlobalTransform.origin);
+		blackboard.cameraSpringArm.MoveToFollowCharacter(blackboard.GlobalTransform.origin, blackboard.velocity);
 	}
 
 
