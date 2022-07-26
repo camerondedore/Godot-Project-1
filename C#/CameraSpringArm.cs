@@ -4,18 +4,15 @@ using System;
 public class CameraSpringArm : SpringArm
 {
 
-	public bool freezeY = false;
 	[Export]
 	NodePath cameraTargetPath;
 	[Export]
 	float sensitivity = 0.15f,
 		minAngle = -50,
-		maxAngle = 40,
-		smoothSpeed = 8;
+		maxAngle = 40;
 	Spatial cameraTarget;
 	Vector3 offset,
 		targetPosition;
-	float y;
 
 
 
@@ -56,29 +53,15 @@ public class CameraSpringArm : SpringArm
 	public void MoveToFollowCharacter(Vector3 characterPosition)
 	{
 		// get position for spring arm
-		var newPositon = characterPosition + offset;
-
-		if(!freezeY)
-		{
-			// set y to match character
-			y = newPositon.y;
-		}
-
-		// apply y to new position
-		var newPositonWithY = newPositon;
-		newPositonWithY.y = y;
-
-		// move to follow
-		targetPosition = newPositonWithY;
+		targetPosition = characterPosition + offset;
 	}
 
 
 
 	public override void _PhysicsProcess(float delta)
 	{
-		var smoothPosition = targetPosition;
-		smoothPosition.y = Mathf.Lerp(GlobalTransform.origin.y, targetPosition.y, smoothSpeed * delta);
-		Translation = smoothPosition;
+		// apply spring arm move
+		LookAtFromPosition(targetPosition, targetPosition + GlobalTransform.basis.z * -1, Vector3.Up);
 
 		// move camera
 		GlobalCamera.targetPosition = cameraTarget.GlobalTransform.origin;

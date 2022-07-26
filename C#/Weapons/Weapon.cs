@@ -36,7 +36,7 @@ public class Weapon : Spatial
 
     public override void _Process(float delta)
     {
-
+        // temporary, move to hands and create weapon state machine
         if(autoSear.Trip(PlayerInput.fire1))
         {
             // fire

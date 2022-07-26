@@ -46,13 +46,6 @@ public class CharacterStateFall : CharacterState
 
 		// camera follow
 		blackboard.cameraSpringArm.MoveToFollowCharacter(blackboard.GlobalTransform.origin);
-
-
-		// resume camera y
-		if(blackboard.cameraSpringArm.freezeY && blackboard.GlobalTransform.origin.y < blackboard.jumpStartY)
-		{
-			blackboard.cameraSpringArm.freezeY = false;
-		}
 	}
 
 

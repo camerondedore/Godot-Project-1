@@ -46,14 +46,6 @@ public class CharacterStateSlide : CharacterState
 
 		// camera follow
 		blackboard.cameraSpringArm.MoveToFollowCharacter(blackboard.GlobalTransform.origin);
-
-
-		// resume camera y
-		if(blackboard.cameraSpringArm.freezeY && (blackboard.GlobalTransform.origin.y < blackboard.jumpStartY 
-			|| blackboard.GlobalTransform.origin.y > blackboard.jumpStartY + blackboard.jumpHeight))
-		{
-			blackboard.cameraSpringArm.freezeY = false;
-		}
 	}
 
 
@@ -65,17 +57,13 @@ public class CharacterStateSlide : CharacterState
 
 		// set snap to look for wall
 		blackboard.snap = Vector3.Down;
-
-		// freeze camera y
-		blackboard.cameraSpringArm.freezeY = true;
 	}
 
 
 
 	public override void EndState()
 	{
-		// resume camera y
-		blackboard.cameraSpringArm.freezeY = false;
+
 	}
 
 
