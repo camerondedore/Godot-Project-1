@@ -6,10 +6,13 @@ public class CameraSpringArm : SpringArm
 
 	public bool freezeY = false;
 	[Export]
+	NodePath cameraTargetPath;
+	[Export]
 	float sensitivity = 0.15f,
 		minAngle = -50,
 		maxAngle = 40,
 		smoothSpeed = 8;
+	Spatial cameraTarget;
 	Vector3 offset,
 		targetPosition;
 	float y;
@@ -19,8 +22,12 @@ public class CameraSpringArm : SpringArm
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// get initial values
 		offset = Translation;
 		targetPosition = GlobalTransform.origin;
+
+		// get target for camera
+		cameraTarget = GetNode(cameraTargetPath) as Spatial;
 
 		SetAsToplevel(true);
 
@@ -72,5 +79,9 @@ public class CameraSpringArm : SpringArm
 		var smoothPosition = targetPosition;
 		smoothPosition.y = Mathf.Lerp(GlobalTransform.origin.y, targetPosition.y, smoothSpeed * delta);
 		Translation = smoothPosition;
+
+		// move camera
+		GlobalCamera.targetPosition = cameraTarget.GlobalTransform.origin;
+		GlobalCamera.targetLookPoint = cameraTarget.GlobalTransform.origin + cameraTarget.GlobalTransform.basis.z * -100;
 	}
 }

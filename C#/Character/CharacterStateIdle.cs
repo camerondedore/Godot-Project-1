@@ -13,7 +13,7 @@ public class CharacterStateIdle : CharacterState
 		// apply gravity
 		blackboard.velocity.y += blackboard.gravity * delta;
 		
-        // set velocity using input
+        // set velocity
 		blackboard.velocity.x = Mathf.Lerp(blackboard.velocity.x, 0, delta * blackboard.acceleration);
 		blackboard.velocity.z = Mathf.Lerp(blackboard.velocity.z, 0, delta * blackboard.acceleration);
 

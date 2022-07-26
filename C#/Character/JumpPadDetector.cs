@@ -5,14 +5,14 @@ public class JumpPadDetector : Area
 {
 	[Export]
 	public NodePath characterPath;
-	CharacterBlackboard blackboard;
+	Character blackboard;
 
 
 
 	public override void _Ready()
 	{
 		// get character blackboard
-		blackboard = GetNode(characterPath) as CharacterBlackboard;
+		blackboard = GetNode(characterPath) as Character;
 	}
 
 

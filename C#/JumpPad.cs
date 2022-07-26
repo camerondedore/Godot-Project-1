@@ -20,11 +20,11 @@ public class JumpPad : Area
 		targetNode = GetNode(targetNodePath) as Spatial;
 		
 		// get horizontal vector to target
-		var vectorToTarget = targetNode.Translation - Translation;
-
-		// get time to target
+		var vectorToTarget = targetNode.GlobalTransform.origin - GlobalTransform.origin;
 		horizontalVectorToTarget = vectorToTarget;
 		horizontalVectorToTarget.y = 0;
+
+		// get time to target
 		timeToTarget = horizontalVectorToTarget.Length() / speed;
 	}
 
@@ -37,7 +37,7 @@ public class JumpPad : Area
 		
 		// get vertical velocity
 		// vertical velocity = -0.5 * g * t + (B - A) / t
-		velocity.y = -0.5f * g * timeToTarget + (targetNode.Translation.y - Translation.y) / timeToTarget;
+		velocity.y = -0.5f * g * timeToTarget + (targetNode.GlobalTransform.origin.y - GlobalTransform.origin.y) / timeToTarget;
 
 		return velocity;
 	}

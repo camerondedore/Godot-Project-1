@@ -1,11 +1,12 @@
 using Godot;
 using System;
 
-public class CharacterBlackboard : KinematicBody
+public class Character : KinematicBody
 {
 	
 	public StateMachine machine = new StateMachine(); 
-	public State stateIdle,
+	public State stateStart,
+		stateIdle,
 		stateMove,
 		stateJump,
 		stateFall,
@@ -53,6 +54,7 @@ public class CharacterBlackboard : KinematicBody
 
 		// initialize states
 		stateIdle = new CharacterStateIdle(){blackboard = this};
+		stateStart = new CharacterStateStart(){blackboard = this};
 		stateMove = new CharacterStateMove(){blackboard = this};
 		stateJump = new CharacterStateJump(){blackboard = this};
 		stateFall = new CharacterStateFall(){blackboard = this};
@@ -60,7 +62,7 @@ public class CharacterBlackboard : KinematicBody
 		stateJumpPad = new CharacterStateJumpPad(){blackboard = this};
 
 		// set first state in machine
-		machine.SetState(stateIdle);
+		machine.SetState(stateStart);
 	}
 
 

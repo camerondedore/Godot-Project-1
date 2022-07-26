@@ -4,7 +4,7 @@ using System;
 public class CharacterState : State
 {
 	
-	public CharacterBlackboard blackboard;
+	public Character blackboard;
 
 
 
