@@ -31,7 +31,7 @@ public class SnakePdwStateIdle : SnakePdwState
 
     public override State Transition()
     {
-        if(blackboard.trigger > 0)
+        if(blackboard.trigger > 0 && !(blackboard.character.machine.CurrentState is CharacterStateStart))
         {
             // check if sliding
             if(blackboard.character.machine.CurrentState is CharacterStateSlide && 
