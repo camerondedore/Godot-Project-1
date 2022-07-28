@@ -12,7 +12,7 @@ public class BarrelAimer : Spatial
         rangeMin = 5;
     [Export]
     uint mask = 1;
-    Barrel barrel;
+    Spatial barrel;
     CameraSpringArm cameraSpringArm;
     PhysicsDirectSpaceState spaceState;
 
@@ -22,7 +22,7 @@ public class BarrelAimer : Spatial
     public override void _Ready()
     {
         // get barrel
-        barrel = GetNode(barrelPath) as Barrel;
+        barrel = GetNode(barrelPath) as Spatial;
         
         // get camera spring arm
         cameraSpringArm = GetNode(cameraSpringArmPath) as CameraSpringArm;
@@ -66,6 +66,6 @@ public class BarrelAimer : Spatial
         }
 
         // aim barrel
-        barrel.Aim(targetPoint);
+        barrel.LookAtFromPosition(barrel.GlobalTransform.origin, targetPoint, Vector3.Up);
     }
 }

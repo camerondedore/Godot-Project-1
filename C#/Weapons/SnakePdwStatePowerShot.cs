@@ -20,7 +20,7 @@ public class SnakePdwStatePowerShot : SnakePdwState
         startTime = OS.GetTicksMsec() * 0.001f;
 
          // fire
-        blackboard.barrel.Fire();
+        blackboard.barrelPowerShot.Fire();
 
         // audio
         var newWeaponAudio = new AudioStreamPlayer3D();

@@ -20,7 +20,7 @@ public class SnakePdwStateScatterShot : SnakePdwState
         startTime = OS.GetTicksMsec() * 0.001f;
 
          // fire
-        blackboard.barrel.Fire();
+        blackboard.barrelScatterShot.Fire();
 
         // audio
         var newWeaponAudio = new AudioStreamPlayer3D();
