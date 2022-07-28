@@ -64,7 +64,7 @@ public class CameraSpringArm : SpringArm
 
 	public override void _PhysicsProcess(float delta)
 	{
-		GD.Print(smoothSpeed);
+		//GD.Print(smoothSpeed);
 
 		// smooth target position
 		var smoothTargetPosition = GlobalTransform.origin.LinearInterpolate(targetPosition, smoothSpeed * delta);

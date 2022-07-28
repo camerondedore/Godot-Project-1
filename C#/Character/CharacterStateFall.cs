@@ -63,7 +63,7 @@ public class CharacterStateFall : CharacterState
 
 	public override void EndState()
 	{
-		
+
 	}
 
 
@@ -82,8 +82,16 @@ public class CharacterStateFall : CharacterState
 		
 		if(blackboard.IsOnFloor())
 		{
-			// move
-			return blackboard.stateMove;
+			// fell far enough to land
+			if(blackboard.jumpStartY > blackboard.GlobalTransform.origin.y + blackboard.landHeight ||
+                blackboard.fallStartY > blackboard.GlobalTransform.origin.y + blackboard.landHeight)
+			{
+				// land hard
+				return blackboard.stateLandHard;
+			}
+			
+			// land
+			return blackboard.stateLand;
 		}
 
 		return this;

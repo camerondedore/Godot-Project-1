@@ -1,10 +1,10 @@
 using Godot;
 using System;
 
-public class CharacterStateMove : CharacterState
+public class CharacterStateLand : CharacterState
 {
 
-
+    float startTime;
 
 
 
@@ -55,52 +55,23 @@ public class CharacterStateMove : CharacterState
 
 	public override void StartState()
 	{
-
+        startTime = OS.GetTicksMsec() * 0.001f;
 	}
 
 
 
 	public override void EndState()
 	{
-
+		// set start altitude low to avoid scatter shot
+		blackboard.jumpStartY = -10000;
+		blackboard.fallStartY = -10000;
 	}
 
 
 
 	public override State Transition()
 	{
-		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
-		{
-			var canSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) < blackboard.maxSlideAngleRad;
-			if(canSlide)
-			{
-				// slide
-				return blackboard.stateSlide;
-			}
-			
-			// get start altitude
-			blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
-
-			// fall
-			return blackboard.stateFall;
-		}
-
-		if(!blackboard.IsOnWall() && !blackboard.IsOnFloor())
-		{
-			// get start altitude
-			blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
-
-			// fall
-			return blackboard.stateFall;
-		}
-
-		if(blackboard.IsOnFloor() && blackboard.jumpDisconnector.Trip(PlayerInput.jump))
-		{
-			// jump start
-			return blackboard.stateJumpStart;
-		}
-		
-		if(!PlayerInput.isMoving)
+		if(OS.GetTicksMsec() * 0.001f > startTime + blackboard.landTime)
 		{
 			// move
 			return blackboard.stateIdle;

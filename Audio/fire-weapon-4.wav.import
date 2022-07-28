@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fire-weapon-4.wav-f74b2d3774a3913a4328e953734e1c0b.sample"
+
+[deps]
+
+source_file="res://Audio/fire-weapon-4.wav"
+dest_files=[ "res://.import/fire-weapon-4.wav-f74b2d3774a3913a4328e953734e1c0b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

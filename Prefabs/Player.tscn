@@ -1,15 +1,18 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://C#/Character/Character.cs" type="Script" id=1]
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
 [ext_resource path="res://C#/PlayerInput.cs" type="Script" id=3]
 [ext_resource path="res://Textures/ui-crosshair.png" type="Texture" id=4]
 [ext_resource path="res://C#/Character/JumpPadDetector.cs" type="Script" id=5]
-[ext_resource path="res://C#/Weapons/Weapon.cs" type="Script" id=6]
+[ext_resource path="res://C#/Weapons/SnakePdw.cs" type="Script" id=6]
 [ext_resource path="res://Prefabs/Bullet.tscn" type="PackedScene" id=7]
 [ext_resource path="res://C#/Weapons/Barrel.cs" type="Script" id=8]
 [ext_resource path="res://C#/Weapons/BarrelAimer.cs" type="Script" id=9]
 [ext_resource path="res://Audio/fire-weapon-1.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/fire-weapon-2.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/fire-weapon-4.wav" type="AudioStream" id=12]
+[ext_resource path="res://Audio/fire-weapon-3.wav" type="AudioStream" id=13]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.3
@@ -79,8 +82,14 @@ shape = SubResource( 2 )
 script = ExtResource( 6 )
 barrelPath = NodePath("Barrel")
 weaponAudioPath = NodePath("WeaponAudio")
-rateOfFire = 500.0
+characterNodePath = NodePath("..")
+rateOfFire = 400.0
+rateOfRapidFire = 800.0
+powerShotTime = 0.65
 fireSound = ExtResource( 10 )
+rapidFireSound = ExtResource( 11 )
+powerShotSound = ExtResource( 13 )
+scatterShotSound = ExtResource( 12 )
 
 [node name="Barrel" type="Spatial" parent="Weapon"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3261, -0.608827 )

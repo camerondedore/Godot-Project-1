@@ -8,8 +8,11 @@ public class Character : KinematicBody
 	public State stateStart,
 		stateIdle,
 		stateMove,
+		stateJumpStart,
 		stateJump,
 		stateFall,
+		stateLand,
+		stateLandHard,
 		stateSlide,
 		stateJumpPad;
 
@@ -21,13 +24,19 @@ public class Character : KinematicBody
 		jumpHeight = 2.25f,
 		maxSlopeAngle = 40,
 		maxSlideAngle = 70,
-		maxFallSpeed = 20;
+		landTime = 0.1f,
+		landHardTime = 0.3f,
+		landHeight = 3,
+		jumpStartTime = 0.1f;
 	[Export]
 	NodePath cameraSpringArmPath;
 	public float gravity,
 		maxSlopeAngleRad,
 		maxSlideAngleRad,
-		ySpeed;
+		ySpeed,
+		jumpStartY,
+		fallStartY,
+		slideTime;
 	public Vector3 velocity,
 		jumpPadVelocity,
 		snap = Vector3.Down;
@@ -55,8 +64,11 @@ public class Character : KinematicBody
 		stateIdle = new CharacterStateIdle(){blackboard = this};
 		stateStart = new CharacterStateStart(){blackboard = this};
 		stateMove = new CharacterStateMove(){blackboard = this};
+		stateJumpStart = new CharacterStateJumpStart(){blackboard = this};
 		stateJump = new CharacterStateJump(){blackboard = this};
 		stateFall = new CharacterStateFall(){blackboard = this};
+		stateLand = new CharacterStateLand(){blackboard = this};
+		stateLandHard = new CharacterStateLandHard(){blackboard = this};
 		stateSlide = new CharacterStateSlide(){blackboard = this};
 		stateJumpPad = new CharacterStateJumpPad(){blackboard = this};
 
@@ -73,6 +85,7 @@ public class Character : KinematicBody
 		machine.SetState(machine.CurrentState.Transition());
 
 		// debug   
-		//GD.Print(machine.CurrentState.ToString()); 
+		//GD.Print(machine.CurrentState.ToString());
+		//GD.Print(jumpStartY + " : " + fallStartY); 
 	}
 }

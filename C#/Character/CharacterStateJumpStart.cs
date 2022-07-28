@@ -1,14 +1,14 @@
 using Godot;
 using System;
 
-public class CharacterStateMove : CharacterState
+public class CharacterStateJumpStart : CharacterState
 {
 
+    float startTime;
 
 
 
-
-	public override void RunState(float delta)
+    public override void RunState(float delta)
 	{
 		// set snap to grab floor
 		blackboard.snap = -blackboard.GetFloorNormal();
@@ -55,7 +55,10 @@ public class CharacterStateMove : CharacterState
 
 	public override void StartState()
 	{
+        startTime = OS.GetTicksMsec() * 0.001f;
 
+		// get start altitude
+		blackboard.jumpStartY = blackboard.GlobalTransform.origin.y;
 	}
 
 
@@ -69,41 +72,10 @@ public class CharacterStateMove : CharacterState
 
 	public override State Transition()
 	{
-		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
-		{
-			var canSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) < blackboard.maxSlideAngleRad;
-			if(canSlide)
-			{
-				// slide
-				return blackboard.stateSlide;
-			}
-			
-			// get start altitude
-			blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
-
-			// fall
-			return blackboard.stateFall;
-		}
-
-		if(!blackboard.IsOnWall() && !blackboard.IsOnFloor())
-		{
-			// get start altitude
-			blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
-
-			// fall
-			return blackboard.stateFall;
-		}
-
-		if(blackboard.IsOnFloor() && blackboard.jumpDisconnector.Trip(PlayerInput.jump))
-		{
-			// jump start
-			return blackboard.stateJumpStart;
-		}
-		
-		if(!PlayerInput.isMoving)
-		{
-			// move
-			return blackboard.stateIdle;
+		if(OS.GetTicksMsec() * 0.001f > startTime + blackboard.jumpStartTime)
+        {
+            // jump
+            return blackboard.stateJump;
 		}
 
 		return this;

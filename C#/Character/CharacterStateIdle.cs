@@ -63,14 +63,26 @@ public class CharacterStateIdle : CharacterState
 				return blackboard.stateSlide;
 			}
 
+			// get start altitude
+			blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
+
+			// fall
+			return blackboard.stateFall;
+		}
+
+		if(!blackboard.IsOnWall() && !blackboard.IsOnFloor())
+		{
+			// get start altitude
+			blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
+
 			// fall
 			return blackboard.stateFall;
 		}
 
         if(blackboard.jumpDisconnector.Trip(PlayerInput.jump) && blackboard.IsOnFloor())
         {
-            // jump
-            return blackboard.stateJump;
+            // jump start
+            return blackboard.stateJumpStart;
         }
         
         if(PlayerInput.isMoving)
