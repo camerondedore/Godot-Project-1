@@ -81,7 +81,7 @@ public class CharacterStateSlide : CharacterState
 		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
 		{
 			var cantSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) > blackboard.maxSlideAngleRad;
-			if(cantSlide)
+			if(cantSlide || !blackboard.slopeRayHitCollider)
 			{
 				// get start altitude
 				blackboard.fallStartY = blackboard.GlobalTransform.origin.y;

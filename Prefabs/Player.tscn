@@ -14,7 +14,7 @@
 [ext_resource path="res://Audio/fire-weapon-4.wav" type="AudioStream" id=12]
 [ext_resource path="res://Audio/fire-weapon-3.wav" type="AudioStream" id=13]
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="CapsuleShape" id=3]
 radius = 0.3
 height = 1.2
 
@@ -23,11 +23,13 @@ radius = 0.5
 
 [node name="PlayerKinematicBody" type="KinematicBody"]
 script = ExtResource( 1 )
+landTime = 0.07
+jumpStartTime = 0.07
 cameraSpringArmPath = NodePath("CameraSpringArm")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 1 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 3 )
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00023824, 0.469678, -0.311523 )

@@ -57,7 +57,7 @@ public class CharacterStateIdle : CharacterState
         if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
 		{
 			var canSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) < blackboard.maxSlideAngle;
-			if(canSlide)
+			if(canSlide && blackboard.slopeRayHitCollider)
 			{
 				// slide
 				return blackboard.stateSlide;
