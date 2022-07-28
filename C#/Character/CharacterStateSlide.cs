@@ -16,7 +16,9 @@ public class CharacterStateSlide : CharacterState
 		moveDirection.z = PlayerInput.move.z;
 
 		// use camera space
-		moveDirection = moveDirection.Rotated(Vector3.Up, blackboard.cameraSpringArm.Rotation.y).Normalized();		
+		moveDirection = moveDirection.Rotated(Vector3.Up, blackboard.cameraSpringArm.Rotation.y).Normalized();
+
+		//moveDirection = new Plane(blackboard.GetFloorNormal(), 0).Project(moveDirection);		
 
 
 		// set up velocity using persistent y
@@ -56,7 +58,7 @@ public class CharacterStateSlide : CharacterState
 	public override void StartState()
 	{
 		// set y to match previous velocity.y
-		blackboard.ySpeed = blackboard.velocity.y;
+		blackboard.ySpeed = blackboard.velocity.y - 4;
 
 		// set snap to look for wall
 		blackboard.snap = Vector3.Down;
@@ -81,6 +83,9 @@ public class CharacterStateSlide : CharacterState
 			var cantSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) > blackboard.maxSlideAngleRad;
 			if(cantSlide)
 			{
+				// get start altitude
+				blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
+
 				// fall
 				return blackboard.stateFall;
 			}			
@@ -88,14 +93,17 @@ public class CharacterStateSlide : CharacterState
 
 		if(!blackboard.IsOnWall() && !blackboard.IsOnFloor())
 		{
+			// get start altitude
+			blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
+
 			// fall
 			return blackboard.stateFall;
 		}
 		
 		if(blackboard.IsOnFloor())
 		{
-			// move
-			return blackboard.stateMove;
+			// land
+			return blackboard.stateLand;
 		}
 
 		return this;
