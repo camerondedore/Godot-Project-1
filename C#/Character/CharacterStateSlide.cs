@@ -22,8 +22,8 @@ public class CharacterStateSlide : CharacterState
 
 
 		// set up velocity using persistent y
-		blackboard.velocity.x = Mathf.Lerp(blackboard.velocity.x, moveDirection.x * blackboard.slopeSpeed, delta * blackboard.acceleration * 0.5f);
-		blackboard.velocity.z = Mathf.Lerp(blackboard.velocity.z, moveDirection.z * blackboard.slopeSpeed, delta * blackboard.acceleration * 0.5f);
+		blackboard.velocity.x = Mathf.Lerp(blackboard.velocity.x, moveDirection.x * blackboard.slopeSpeed, delta * blackboard.acceleration * 0.4f);
+		blackboard.velocity.z = Mathf.Lerp(blackboard.velocity.z, moveDirection.z * blackboard.slopeSpeed, delta * blackboard.acceleration * 0.4f);
 		
 		
 		// apply gravity using persistent y
@@ -71,7 +71,7 @@ public class CharacterStateSlide : CharacterState
 
 	public override void EndState()
 	{
-
+	
 	}
 
 

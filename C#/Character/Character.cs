@@ -105,6 +105,7 @@ public class Character : KinematicBody
 			GD.Print(machine.CurrentState.ToString());
 			debugText = machine.CurrentState.ToString();
 		}   
+		//GD.Print(velocity.Length());
 		//GD.Print(jumpStartY + " : " + fallStartY); 
 	}
 }
