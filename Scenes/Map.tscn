@@ -94,10 +94,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -13 )
 [node name="tmp-platform-3" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4, -3 )
 
-[node name="JumpPad" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41468, 0, 8.46806 )
-targetNodePath = NodePath("../JumpPadTarget")
-
 [node name="JumpPadTarget" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2841, 6.37915, -2.91455 )
 
@@ -107,3 +103,7 @@ current = true
 fov = 90.0
 script = ExtResource( 7 )
 smoothSpeed = 0.7
+
+[node name="JumpPad" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.608709, 0.0191116, 9.48614 )
+targetNodePath = NodePath("../JumpPadTarget")
