@@ -29,7 +29,7 @@ public class CharacterStateMove : CharacterState
 
 
 		// apply gravity into floor
-		blackboard.velocity += blackboard.gravity * blackboard.GetFloorNormal();
+		blackboard.velocity += blackboard.gravity * blackboard.GetFloorNormal() * delta;
 
 
 		// apply velocity
@@ -99,7 +99,7 @@ public class CharacterStateMove : CharacterState
 			// jump start
 			return blackboard.stateJumpStart;
 		}
-		
+
 		if(!PlayerInput.isMoving)
 		{
 			// move

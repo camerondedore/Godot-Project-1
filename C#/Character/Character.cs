@@ -28,7 +28,7 @@ public class Character : KinematicBody
 		landHardTime = 0.3f,
 		landHeight = 3,
 		jumpStartTime = 0.1f,
-		slopeRayRange = 1.5f;
+		slopeRayRange = 1.4f;
 	[Export]
 	NodePath cameraSpringArmPath;
 	public float gravity,
@@ -94,6 +94,7 @@ public class Character : KinematicBody
 		var rayEndPosition = GlobalTransform.origin + Vector3.Down * slopeRayRange;
 		var slopeRayResults = spaceState.IntersectRay(rayStartPosition, rayEndPosition, new Godot.Collections.Array { this, Owner }, mask);
 		slopeRayHitCollider = slopeRayResults.Contains("collider");
+		
 
 		// run machine
 		machine.CurrentState.RunState(delta);

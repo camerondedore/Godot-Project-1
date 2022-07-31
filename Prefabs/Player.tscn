@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://C#/Character/Character.cs" type="Script" id=1]
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
@@ -15,11 +15,8 @@
 [ext_resource path="res://Audio/fire-weapon-3.wav" type="AudioStream" id=13]
 
 [sub_resource type="CapsuleShape" id=3]
-radius = 0.3
-height = 1.2
-
-[sub_resource type="SphereShape" id=2]
 radius = 0.5
+height = 0.8
 
 [node name="PlayerKinematicBody" type="KinematicBody"]
 collision/safe_margin = 0.04
@@ -69,17 +66,9 @@ stretch_mode = 1
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="JumpPadDetector" type="Area" parent="."]
-collision_layer = 2
-collision_mask = 2
-input_ray_pickable = false
-monitorable = false
+[node name="JumpPadDetector" type="Node" parent="."]
 script = ExtResource( 5 )
 characterPath = NodePath("..")
-
-[node name="CollisionShape" type="CollisionShape" parent="JumpPadDetector"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
-shape = SubResource( 2 )
 
 [node name="Weapon" type="Spatial" parent="."]
 script = ExtResource( 6 )
@@ -132,5 +121,3 @@ shotCount = 20
 [node name="WeaponAudio" type="AudioStreamPlayer3D" parent="Weapon"]
 unit_size = 4.0
 max_distance = 50.0
-
-[connection signal="area_entered" from="JumpPadDetector" to="JumpPadDetector" method="_on_JumpPadDetector_area_entered"]

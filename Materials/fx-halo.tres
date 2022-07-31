@@ -1,0 +1,15 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Textures/fx-halo.png" type="Texture" id=1]
+
+[resource]
+flags_transparent = true
+flags_unshaded = true
+params_blend_mode = 1
+params_billboard_mode = 1
+params_billboard_keep_scale = true
+albedo_color = Color( 1, 0.892073, 0.282353, 1 )
+albedo_texture = ExtResource( 1 )
+distance_fade_mode = 1
+distance_fade_min_distance = 0.5
+distance_fade_max_distance = 3.0

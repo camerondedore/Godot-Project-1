@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class JumpPad : Area
+public class JumpPad : Spatial
 {
 	
 	[Export]
@@ -18,26 +18,26 @@ public class JumpPad : Area
 	{
 		// get target node
 		targetNode = GetNode(targetNodePath) as Spatial;
-		
+	}
+
+
+
+	public Vector3 GetVelocity(float g, Vector3 start)
+	{
 		// get horizontal vector to target
-		var vectorToTarget = targetNode.GlobalTransform.origin - GlobalTransform.origin;
+		var vectorToTarget = targetNode.GlobalTransform.origin - start;
 		horizontalVectorToTarget = vectorToTarget;
 		horizontalVectorToTarget.y = 0;
 
 		// get time to target
 		timeToTarget = horizontalVectorToTarget.Length() / speed;
-	}
 
-
-
-	public Vector3 GetVelocity(float g)
-	{
 		// get horizontal velocity
 		var velocity = horizontalVectorToTarget.Normalized() * speed;
 		
 		// get vertical velocity
 		// vertical velocity = -0.5 * g * t + (B - A) / t
-		velocity.y = -0.5f * g * timeToTarget + (targetNode.GlobalTransform.origin.y - GlobalTransform.origin.y) / timeToTarget;
+		velocity.y = -0.5f * g * timeToTarget + (targetNode.GlobalTransform.origin.y - start.y) / timeToTarget;
 
 		return velocity;
 	}

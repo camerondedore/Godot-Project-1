@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class JumpPadDetector : Area
+public class JumpPadDetector : Node
 {
 	[Export]
 	public NodePath characterPath;
@@ -17,16 +17,37 @@ public class JumpPadDetector : Area
 
 
 
-	// connected using node signals in editor
-	public void _on_JumpPadDetector_area_entered(Area a)
+	public override void _PhysicsProcess(float delta)
 	{
-		// get jump pad
-		var jumpPad = a as JumpPad;
-		
-		// set character jump pad velocity
-		blackboard.jumpPadVelocity = jumpPad.GetVelocity(blackboard.gravity);
-		
-		// set character state to jump pad
-		blackboard.machine.SetState(blackboard.stateJumpPad);
+		// check for jump pad
+		if(blackboard.GetSlideCount() > 0)
+		{
+			var collisionCount = blackboard.GetSlideCount();
+			Node floorNode = null;
+
+			while(collisionCount > 0)
+			{
+				collisionCount--;
+				var node = (Node) blackboard.GetSlideCollision(0).Collider;
+
+				if(node.Owner is JumpPad)
+				{
+					floorNode = node;
+				}
+			}
+			
+
+			if(floorNode != null && floorNode.GetGroups().Contains("jump pad"))
+			{
+				// get jump pad
+				var jumpPad = floorNode.Owner as JumpPad;
+					
+				// set character jump pad velocity
+				blackboard.jumpPadVelocity = jumpPad.GetVelocity(blackboard.gravity, blackboard.GlobalTransform.origin);
+					
+				// set character state to jump pad
+				blackboard.machine.SetState(blackboard.stateJumpPad);
+			}
+		}
 	}
 }
