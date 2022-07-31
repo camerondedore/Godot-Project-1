@@ -28,8 +28,8 @@ public class CharacterStateMove : CharacterState
 		blackboard.velocity.z = Mathf.Lerp(blackboard.velocity.z, moveDirection.z * blackboard.speed, delta * blackboard.acceleration);
 
 
-		// apply gravity
-		blackboard.velocity.y += blackboard.gravity * delta;
+		// apply gravity into floor
+		blackboard.velocity += blackboard.gravity * blackboard.GetFloorNormal();
 
 
 		// apply velocity
