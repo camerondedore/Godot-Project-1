@@ -113,8 +113,9 @@ targetNodePath = NodePath("../JumpPadTarget")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.261, 7.1, -3.175 )
 
 [node name="JumpPad2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.25, 6.12633, -3.1855 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1339, 6, -2.96484 )
 targetNodePath = NodePath("../JumpPadTarget2")
+speed = 25.0
 
 [node name="JumpPadTarget2" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.724221, 24.4626, 39.0033 )

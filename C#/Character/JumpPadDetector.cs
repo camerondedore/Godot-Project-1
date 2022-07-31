@@ -30,23 +30,27 @@ public class JumpPadDetector : Node
 				collisionCount--;
 				var node = (Node) blackboard.GetSlideCollision(0).Collider;
 
-				if(node.Owner is JumpPad)
+				// check groups
+				if(node.GetGroups().Contains("jump pad"))
 				{
 					floorNode = node;
 				}
 			}
 			
 
-			if(floorNode != null && floorNode.GetGroups().Contains("jump pad"))
+			if(floorNode != null)
 			{
 				// get jump pad
-				var jumpPad = floorNode.Owner as JumpPad;
+				var jumpPad = floorNode as JumpPad;
 					
 				// set character jump pad velocity
 				blackboard.jumpPadVelocity = jumpPad.GetVelocity(blackboard.gravity, blackboard.GlobalTransform.origin);
 					
 				// set character state to jump pad
 				blackboard.machine.SetState(blackboard.stateJumpPad);
+
+				// play animation
+				jumpPad.PlayAnimation();
 			}
 		}
 	}

@@ -5,10 +5,12 @@ public class JumpPad : Spatial
 {
 	
 	[Export]
-	public NodePath targetNodePath;
+	public NodePath targetNodePath,
+		animationPlayerNodePath;
 	[Export]
 	public float speed = 10;
 	Spatial targetNode;
+	AnimationPlayer animPlayer;
 	Vector3 horizontalVectorToTarget;
 	float timeToTarget;
 
@@ -16,8 +18,9 @@ public class JumpPad : Spatial
 
 	public override void _Ready()
 	{
-		// get target node
+		// get nodes
 		targetNode = GetNode(targetNodePath) as Spatial;
+		animPlayer = GetNode(animationPlayerNodePath) as AnimationPlayer;
 	}
 
 
@@ -40,5 +43,12 @@ public class JumpPad : Spatial
 		velocity.y = -0.5f * g * timeToTarget + (targetNode.GlobalTransform.origin.y - start.y) / timeToTarget;
 
 		return velocity;
+	}
+
+
+
+	public void PlayAnimation()
+	{
+		animPlayer.Play("prop-jump-pad-blades-open");
 	}
 }
