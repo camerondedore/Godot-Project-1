@@ -71,26 +71,15 @@ public class CharacterStateSlide : CharacterState
 
 	public override void EndState()
 	{
-	
+		// set y to match previous velocity.y
+		blackboard.ySpeed = blackboard.velocity.y;
 	}
 
 
 
 	public override State Transition()
 	{
-		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
-		{
-			var cantSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) > blackboard.maxSlideAngleRad;
-			if(cantSlide || !blackboard.slopeRayHitCollider)
-			{
-				// get start altitude
-				blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
-
-				// fall
-				return blackboard.stateFall;
-			}			
-		}
-
+		// check if not on slippery slope and floor
 		if(!blackboard.IsOnWall() && !blackboard.IsOnFloor())
 		{
 			// get start altitude

@@ -74,15 +74,8 @@ public class CharacterStateJump : CharacterState
             return blackboard.stateFall;
         }
 
-		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
-		{
-			var canSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) < blackboard.maxSlideAngleRad;
-			if(canSlide && blackboard.slopeRayHitCollider)
-			{
-				// slide
-				return blackboard.stateSlide;
-			}
-
+		if(!blackboard.IsOnFloor())
+		{	
 			// fall
             return blackboard.stateFall;
 		}

@@ -69,23 +69,7 @@ public class CharacterStateMove : CharacterState
 
 	public override State Transition()
 	{
-		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
-		{
-			var canSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) < blackboard.maxSlideAngleRad;
-			if(canSlide && blackboard.slopeRayHitCollider)
-			{
-				// slide
-				return blackboard.stateSlide;
-			}
-			
-			// get start altitude
-			blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
-
-			// fall
-			return blackboard.stateFall;
-		}
-
-		if(!blackboard.IsOnWall() && !blackboard.IsOnFloor())
+		if(!blackboard.IsOnFloor())
 		{
 			// get start altitude
 			blackboard.fallStartY = blackboard.GlobalTransform.origin.y;

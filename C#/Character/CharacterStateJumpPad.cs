@@ -74,17 +74,14 @@ public class CharacterStateJumpPad : CharacterState
 
 	public override State Transition()
 	{
+		// hit something when using jump pad
 		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
 		{
-			var canSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) < blackboard.maxSlideAngleRad;
-			if(canSlide)
-			{
-				// slide
-				return blackboard.stateSlide;
-			}
+			// get start altitude
+			blackboard.fallStartY = blackboard.GlobalTransform.origin.y;
 
 			// fall
-            return blackboard.stateFall;
+			return blackboard.stateFall;
 		}
 
         if(blackboard.IsOnFloor())

@@ -4,7 +4,7 @@
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
 [ext_resource path="res://C#/PlayerInput.cs" type="Script" id=3]
 [ext_resource path="res://Textures/ui-crosshair.png" type="Texture" id=4]
-[ext_resource path="res://C#/Character/JumpPadDetector.cs" type="Script" id=5]
+[ext_resource path="res://C#/Character/FloorDetector.cs" type="Script" id=5]
 [ext_resource path="res://C#/Weapons/SnakePdw.cs" type="Script" id=6]
 [ext_resource path="res://Prefabs/Bullet.tscn" type="PackedScene" id=7]
 [ext_resource path="res://C#/Weapons/Barrel.cs" type="Script" id=8]
@@ -66,7 +66,7 @@ stretch_mode = 1
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="JumpPadDetector" type="Node" parent="."]
+[node name="FloorDetector" type="Node" parent="."]
 script = ExtResource( 5 )
 characterPath = NodePath("..")
 

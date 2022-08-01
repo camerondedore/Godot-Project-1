@@ -63,23 +63,14 @@ public class CharacterStateFall : CharacterState
 
 	public override void EndState()
 	{
-
+		// set y to match previous velocity.y
+		blackboard.ySpeed = blackboard.velocity.y;
 	}
 
 
 
 	public override State Transition()
 	{
-		if(blackboard.IsOnWall() && !blackboard.IsOnFloor())
-		{
-			var canSlide = blackboard.GetSlideCollision(0).GetAngle(Vector3.Up) < blackboard.maxSlideAngleRad;
-			if(canSlide && blackboard.slopeRayHitCollider)
-			{
-				// slide
-				return blackboard.stateSlide;
-			}
-		}
-		
 		if(blackboard.IsOnFloor())
 		{
 			// fell far enough to land
