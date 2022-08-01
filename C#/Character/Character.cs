@@ -36,8 +36,7 @@ public class Character : KinematicBody
 		maxSlideAngleRad,
 		ySpeed,
 		jumpStartY,
-		fallStartY,
-		slideTime;
+		fallStartY;
 	public Vector3 velocity,
 		jumpPadVelocity,
 		snap = Vector3.Down;

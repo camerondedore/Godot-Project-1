@@ -6,11 +6,13 @@ public class JumpPad : Spatial
 	
 	[Export]
 	public NodePath targetNodePath,
-		animationPlayerNodePath;
+		animationPlayerNodePath,
+		particlesNodePath;
 	[Export]
 	public float speed = 10;
 	Spatial targetNode;
 	AnimationPlayer animPlayer;
+	CPUParticles particles;
 	Vector3 horizontalVectorToTarget;
 	float timeToTarget;
 
@@ -21,6 +23,7 @@ public class JumpPad : Spatial
 		// get nodes
 		targetNode = GetNode(targetNodePath) as Spatial;
 		animPlayer = GetNode(animationPlayerNodePath) as AnimationPlayer;
+		particles = GetNode(particlesNodePath) as CPUParticles;
 	}
 
 
@@ -50,5 +53,6 @@ public class JumpPad : Spatial
 	public void PlayAnimation()
 	{
 		animPlayer.Play("prop-jump-pad-blades-open");
+		particles.Emitting = true;
 	}
 }

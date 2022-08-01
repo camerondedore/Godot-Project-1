@@ -34,8 +34,7 @@ public class SnakePdwStateIdle : SnakePdwState
         if(blackboard.trigger > 0 && !(blackboard.character.machine.CurrentState is CharacterStateStart))
         {
             // check if sliding
-            if(blackboard.character.machine.CurrentState is CharacterStateSlide && 
-                blackboard.character.slideTime > blackboard.rapidFireThreshold)
+            if(blackboard.character.machine.CurrentState is CharacterStateSlide)
             {
                 // rapid fire
                 return blackboard.stateRapidFire;

@@ -28,6 +28,7 @@ public class CharacterStateSlide : CharacterState
 		
 		// apply gravity using persistent y
 		blackboard.ySpeed += blackboard.gravity * delta;
+		blackboard.ySpeed = Mathf.Clamp(blackboard.ySpeed, -10, 0);
 		blackboard.velocity.y = blackboard.ySpeed;
 
 
@@ -48,9 +49,6 @@ public class CharacterStateSlide : CharacterState
 
 		// camera follow
 		blackboard.cameraSpringArm.MoveToFollowCharacter(blackboard.GlobalTransform.origin, blackboard.velocity);
-
-		// add to slide time
-		blackboard.slideTime += delta;
 	}
 
 
@@ -62,9 +60,6 @@ public class CharacterStateSlide : CharacterState
 
 		// set snap to look for wall
 		blackboard.snap = Vector3.Down;
-
-		// reset slide time
-		blackboard.slideTime = 0;
 	}
 
 

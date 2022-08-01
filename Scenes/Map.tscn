@@ -61,14 +61,6 @@ width = 12.0
 depth = 10.0
 material = ExtResource( 2 )
 
-[node name="CSGBox13" type="CSGBox" parent="."]
-transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 13.2163, 3.3956, 9.01822 )
-use_in_baked_light = true
-use_collision = true
-width = 12.0
-depth = 10.0
-material = ExtResource( 2 )
-
 [node name="CSGBox11" type="CSGBox" parent="." groups=["slippery"]]
 transform = Transform( -3.09086e-08, 3.09086e-08, -1, 0.707107, 0.707107, 0, 0.707107, -0.707107, -4.37114e-08, -0.772897, 17.5817, 36.0485 )
 use_in_baked_light = true
