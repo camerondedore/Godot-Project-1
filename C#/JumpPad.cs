@@ -36,7 +36,7 @@ public class JumpPad : Spatial
 		horizontalVectorToTarget.y = 0;
 
 		// get time to target
-		timeToTarget = horizontalVectorToTarget.Length() / speed;
+		timeToTarget = Mathf.Clamp(horizontalVectorToTarget.Length() / speed, 1, 100);
 
 		// get horizontal velocity
 		var velocity = horizontalVectorToTarget.Normalized() * speed;
