@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://C#/Character/Character.cs" type="Script" id=1]
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://Audio/fire-weapon-2.wav" type="AudioStream" id=11]
 [ext_resource path="res://Audio/fire-weapon-4.wav" type="AudioStream" id=12]
 [ext_resource path="res://Audio/fire-weapon-3.wav" type="AudioStream" id=13]
+[ext_resource path="res://Textures/ui-health-bar.png" type="Texture" id=14]
+[ext_resource path="res://Textures/ui-health-background.png" type="Texture" id=15]
+[ext_resource path="res://Textures/ui-health-border.png" type="Texture" id=16]
+[ext_resource path="res://C#/Character/CharacterHealth.cs" type="Script" id=17]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.5
@@ -47,21 +51,6 @@ script = ExtResource( 2 )
 cameraTargetPath = NodePath("CameraTarget")
 
 [node name="CameraTarget" type="Spatial" parent="CameraSpringArm"]
-
-[node name="TextureRect" type="TextureRect" parent="CameraSpringArm"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -25.0
-margin_top = -25.0
-margin_right = 25.0
-margin_bottom = 25.0
-rect_pivot_offset = Vector2( 5, 5 )
-mouse_filter = 2
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 1
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -121,3 +110,36 @@ shotCount = 20
 [node name="WeaponAudio" type="AudioStreamPlayer3D" parent="Weapon"]
 unit_size = 4.0
 max_distance = 50.0
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 17 )
+healthBarNodePath = NodePath("../UI/HealthBar")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Crosshair" type="TextureRect" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 25.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 5, 5 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+
+[node name="HealthBar" type="TextureProgress" parent="UI"]
+anchor_left = 0.33
+anchor_top = 0.05
+anchor_right = 0.66
+anchor_bottom = 0.15
+rect_scale = Vector2( 1, 1.01975 )
+value = 50.0
+texture_under = ExtResource( 15 )
+texture_over = ExtResource( 16 )
+texture_progress = ExtResource( 14 )
+nine_patch_stretch = true

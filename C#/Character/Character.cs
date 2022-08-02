@@ -42,10 +42,10 @@ public class Character : KinematicBody
 		snap = Vector3.Down;
 	public CameraSpringArm cameraSpringArm;
 	public Disconnector jumpDisconnector = new Disconnector();
-	public bool slopeRayHitCollider = false;
+	//public bool slopeRayHitCollider = false;
 	[Export]
 	uint mask = 1;
-	PhysicsDirectSpaceState spaceState;
+	//PhysicsDirectSpaceState spaceState;
 	string debugText;
 
 
@@ -58,7 +58,7 @@ public class Character : KinematicBody
 		gravity = gravityVector.y * gravityMagnitude;
 
 		// get physics state
-		spaceState = GetWorld().DirectSpaceState;
+		//spaceState = GetWorld().DirectSpaceState;
 
 		// calculate angles in radians
 		maxSlopeAngleRad = Mathf.Pi / 180f * maxSlopeAngle;
@@ -89,10 +89,10 @@ public class Character : KinematicBody
 	public override void _PhysicsProcess(float delta)
 	{
 		// cast ray for slope detection
-		var rayStartPosition = GlobalTransform.origin;
-		var rayEndPosition = GlobalTransform.origin + Vector3.Down * slopeRayRange;
-		var slopeRayResults = spaceState.IntersectRay(rayStartPosition, rayEndPosition, new Godot.Collections.Array { this, Owner }, mask);
-		slopeRayHitCollider = slopeRayResults.Contains("collider");
+		//var rayStartPosition = GlobalTransform.origin;
+		//var rayEndPosition = GlobalTransform.origin + Vector3.Down * slopeRayRange;
+		//var slopeRayResults = spaceState.IntersectRay(rayStartPosition, rayEndPosition, new Godot.Collections.Array { this, Owner }, mask);
+		//slopeRayHitCollider = slopeRayResults.Contains("collider");
 		
 
 		// run machine
