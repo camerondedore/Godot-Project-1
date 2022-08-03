@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Prefabs/JumpPad.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Prefabs/tmp-moving-platform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://C#/Camera/GlobalCamera.cs" type="Script" id=7]
+[ext_resource path="res://C#/Weapons/TestBarrel.cs" type="Script" id=8]
+[ext_resource path="res://Prefabs/Bullet.tscn" type="PackedScene" id=9]
+[ext_resource path="res://C#/PlayerInput.cs" type="Script" id=10]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -129,3 +132,11 @@ smoothSpeed = 0.7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Camera"]
 environment = SubResource( 2 )
+
+[node name="PlayerInput" type="Node" parent="Camera"]
+script = ExtResource( 10 )
+
+[node name="TestBarrel" type="Spatial" parent="."]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 4.51791, 1.14232, -7.10452 )
+script = ExtResource( 8 )
+bulletScene = ExtResource( 9 )

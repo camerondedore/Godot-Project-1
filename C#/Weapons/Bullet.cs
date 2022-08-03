@@ -61,6 +61,19 @@ public class Bullet : Spatial
 		}
 		else
 		{
+			// get hit collider and check for hitbox
+			// health needs to be the direct child of the owner and named "Health"
+			var hitCollider = (Spatial) rayResult["collider"];
+
+			if(hitCollider is Hitbox)
+			{
+
+				var hitbox = hitCollider as Hitbox;
+				
+				// apply damage
+				hitbox.Owner.GetNode<Health>("Health").Damage(damage * hitbox.damageMultiplier);
+			}
+
 			// destroy on hit
 			QueueFree();
 		}		

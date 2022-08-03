@@ -8,6 +8,7 @@ script = ExtResource( 1 )
 speed = 75.0
 rangeSqr = 10000.0
 gravityInfluence = 0.0
+mask = 5
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
 radius = 0.07
