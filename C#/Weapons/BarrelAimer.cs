@@ -22,10 +22,10 @@ public class BarrelAimer : Spatial
     public override void _Ready()
     {
         // get barrel
-        barrel = GetNode(barrelPath) as Spatial;
+        barrel = GetNode<Spatial>(barrelPath);
         
         // get camera spring arm
-        cameraSpringArm = GetNode(cameraSpringArmPath) as CameraSpringArm;
+        cameraSpringArm = GetNode<CameraSpringArm>(cameraSpringArmPath);
 
 
         // get physics state

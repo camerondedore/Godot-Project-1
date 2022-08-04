@@ -21,9 +21,9 @@ public class JumpPad : Spatial
 	public override void _Ready()
 	{
 		// get nodes
-		targetNode = GetNode(targetNodePath) as Spatial;
-		animPlayer = GetNode(animationPlayerNodePath) as AnimationPlayer;
-		particles = GetNode(particlesNodePath) as CPUParticles;
+		targetNode = GetNode<Spatial>(targetNodePath) as Spatial;
+		animPlayer = GetNode<AnimationPlayer>(animationPlayerNodePath);
+		particles = GetNode<CPUParticles>(particlesNodePath);
 	}
 
 

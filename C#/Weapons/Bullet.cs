@@ -11,6 +11,8 @@ public class Bullet : Spatial
 		gravityInfluence = 1;
 	[Export]
 	uint mask = 1;
+	[Export]
+	PackedScene hitFxScene;
 	PhysicsDirectSpaceState spaceState;
 	Vector3 velocity,
 		gravity;
@@ -73,6 +75,23 @@ public class Bullet : Spatial
 				// apply damage
 				hitbox.Owner.GetNode<Health>("Health").Damage(damage * hitbox.damageMultiplier);
 			}
+
+
+			// load hit fx resource
+			var hitFx = hitFxScene.Instance() as Spatial;
+
+			// get hit position
+			var hitPosition = (Vector3) rayResult["position"];
+			
+			// get hit normal
+			var hitNormal = (Vector3) rayResult["normal"];
+
+			// set hit fx position
+			hitFx.LookAtFromPosition(hitPosition, hitPosition + hitNormal, Vector3.Up + velocity);
+			
+			// set parent as root scene
+			GetTree().Root.AddChild(hitFx);
+
 
 			// destroy on hit
 			QueueFree();

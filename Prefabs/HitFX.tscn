@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Materials/fx-air-particles.tres" type="Material" id=1]
+[ext_resource path="res://C#/Weapons/HitFx.cs" type="Script" id=2]
+
+[sub_resource type="QuadMesh" id=1]
+
+[node name="HitFX" type="Spatial"]
+script = ExtResource( 2 )
+mainFxPath = NodePath("CPUParticles")
+
+[node name="CPUParticles" type="CPUParticles" parent="."]
+material_override = ExtResource( 1 )
+emitting = false
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.8
+randomness = 0.6
+lifetime_randomness = 0.6
+mesh = SubResource( 1 )
+direction = Vector3( 0, 0, -1 )
+spread = 20.0
+gravity = Vector3( 0, -9.81, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 0.5
+scale_amount = 0.1
+scale_amount_random = 0.2

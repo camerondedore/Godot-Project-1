@@ -25,7 +25,7 @@ public class CameraSpringArm : SpringArm
 		targetPosition = GlobalTransform.origin;
 
 		// get target for camera
-		cameraTarget = GetNode(cameraTargetPath) as Spatial;
+		cameraTarget = GetNode<Spatial>(cameraTargetPath);
 
 		SetAsToplevel(true);
 

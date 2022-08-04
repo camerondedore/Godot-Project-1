@@ -42,12 +42,12 @@ public class SnakePdw : Spatial
 	public override void _Ready()
 	{
 		// get nodes
-		barrel = GetNode(barrelPath) as Barrel;
-		barrelRapidFire = GetNode(barrelRapidFirePath) as Barrel;
-		barrelPowerShot = GetNode(barrelPowerShotPath) as Barrel;
-		barrelScatterShot = GetNode(barrelScatterShotPath) as Barrel;
-		weaponAudio = GetNode(weaponAudioPath) as AudioStreamPlayer3D;
-		character = GetNode(characterNodePath) as Character;
+		barrel = GetNode<Barrel>(barrelPath);
+		barrelRapidFire = GetNode<Barrel>(barrelRapidFirePath);
+		barrelPowerShot = GetNode<Barrel>(barrelPowerShotPath);
+		barrelScatterShot = GetNode<Barrel>(barrelScatterShotPath);
+		weaponAudio = GetNode<AudioStreamPlayer3D>(weaponAudioPath);
+		character = GetNode<Character>(characterNodePath);
 
 
 		// initialize states

@@ -12,7 +12,7 @@ public class FloorDetector : Node
 	public override void _Ready()
 	{
 		// get character blackboard
-		blackboard = GetNode(characterPath) as Character;
+		blackboard = GetNode<Character>(characterPath);
 	}
 
 

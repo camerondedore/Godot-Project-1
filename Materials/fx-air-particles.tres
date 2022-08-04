@@ -10,6 +10,3 @@ params_billboard_mode = 1
 params_billboard_keep_scale = true
 albedo_color = Color( 1, 1, 1, 0.388235 )
 albedo_texture = ExtResource( 1 )
-distance_fade_mode = 1
-distance_fade_min_distance = 0.5
-distance_fade_max_distance = 3.0

@@ -13,7 +13,7 @@ public class CharacterHealth : Health
     public override void _Ready()
     {
         // get nodes
-        healthBar = GetNode(healthBarNodePath) as TextureProgress;
+        healthBar = GetNode<TextureProgress>(healthBarNodePath);
 
         // update health bar
         healthBar.Value = hitPoints;

@@ -66,7 +66,7 @@ public class Character : KinematicBody
 
 		// get nodes
 		//cameraSpringArm = GetNode<CameraSpringArm>("CameraSpringArm");
-		cameraSpringArm = GetNode(cameraSpringArmPath) as CameraSpringArm;
+		cameraSpringArm = GetNode<CameraSpringArm>(cameraSpringArmPath);
 
 		// initialize states
 		stateIdle = new CharacterStateIdle(){blackboard = this};
