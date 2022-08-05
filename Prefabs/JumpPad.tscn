@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://C#/JumpPad.cs" type="Script" id=1]
 [ext_resource path="res://Blends/jump-pad.material" type="Material" id=2]
 [ext_resource path="res://Textures/fx-halo.png" type="Texture" id=3]
 [ext_resource path="res://Materials/fx-halo.tres" type="Material" id=4]
 [ext_resource path="res://Materials/fx-air-particles.tres" type="Material" id=5]
+[ext_resource path="res://Audio/jump-pad-open.wav" type="AudioStream" id=6]
 
 [sub_resource type="CylinderShape" id=7]
 height = 0.231626
@@ -149,6 +150,8 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.0181551, 0, 0, Vector2( 1, 0 ), -2.64874, 0.0
 script = ExtResource( 1 )
 animationPlayerNodePath = NodePath("AnimationPlayer")
 particlesNodePath = NodePath("OpenCPUParticles")
+audioNodePath = NodePath("AudioStreamPlayer3D")
+openSound = ExtResource( 6 )
 
 [node name="JumpPadCollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.282692, 0 )
@@ -320,3 +323,6 @@ initial_velocity = 20.0
 scale_amount = 0.1
 scale_amount_random = 0.05
 scale_amount_curve = SubResource( 9 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+unit_size = 5.0

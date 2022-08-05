@@ -26,8 +26,8 @@ public class SnakePdwStateScatterShot : SnakePdwState
         var newWeaponAudio = new AudioStreamPlayer3D();
         blackboard.AddChild(newWeaponAudio);
         newWeaponAudio.Stream = blackboard.scatterShotSound;
-        newWeaponAudio.MaxDistance = blackboard.weaponAudio.MaxDistance;
-        newWeaponAudio.UnitSize = blackboard.weaponAudio.UnitSize;
+        newWeaponAudio.MaxDistance = blackboard.weaponAudioPlayer.MaxDistance;
+        newWeaponAudio.UnitSize = blackboard.weaponAudioPlayer.UnitSize;
         newWeaponAudio.Connect("finished", newWeaponAudio, "queue_free");
         newWeaponAudio.Play();
     }

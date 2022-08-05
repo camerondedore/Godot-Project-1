@@ -33,7 +33,7 @@ public class SnakePdw : Spatial
 		barrelRapidFire,
 		barrelPowerShot,
 		barrelScatterShot;
-	public AudioStreamPlayer3D weaponAudio;
+	public AudioStreamPlayer3D weaponAudioPlayer;
 	public Character character;
 	public float trigger = 0;
 
@@ -46,7 +46,7 @@ public class SnakePdw : Spatial
 		barrelRapidFire = GetNode<Barrel>(barrelRapidFirePath);
 		barrelPowerShot = GetNode<Barrel>(barrelPowerShotPath);
 		barrelScatterShot = GetNode<Barrel>(barrelScatterShotPath);
-		weaponAudio = GetNode<AudioStreamPlayer3D>(weaponAudioPath);
+		weaponAudioPlayer = GetNode<AudioStreamPlayer3D>(weaponAudioPath);
 		character = GetNode<Character>(characterNodePath);
 
 

@@ -7,12 +7,16 @@ public class JumpPad : Spatial
 	[Export]
 	public NodePath targetNodePath,
 		animationPlayerNodePath,
-		particlesNodePath;
+		particlesNodePath,
+		audioNodePath;
+	[Export]
+	AudioStream openSound;
 	[Export]
 	public float speed = 10;
 	Spatial targetNode;
 	AnimationPlayer animPlayer;
 	CPUParticles particles;
+	AudioStreamPlayer3D audioPlayer;
 	Vector3 horizontalVectorToTarget;
 	float timeToTarget;
 
@@ -24,6 +28,7 @@ public class JumpPad : Spatial
 		targetNode = GetNode<Spatial>(targetNodePath) as Spatial;
 		animPlayer = GetNode<AnimationPlayer>(animationPlayerNodePath);
 		particles = GetNode<CPUParticles>(particlesNodePath);
+		audioPlayer = GetNode<AudioStreamPlayer3D>(audioNodePath);
 	}
 
 
@@ -54,5 +59,7 @@ public class JumpPad : Spatial
 	{
 		animPlayer.Play("prop-jump-pad-blades-open");
 		particles.Emitting = true;
+		audioPlayer.Stream = openSound;
+		audioPlayer.Play();
 	}
 }
