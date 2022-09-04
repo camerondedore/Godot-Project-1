@@ -325,4 +325,4 @@ scale_amount_random = 0.05
 scale_amount_curve = SubResource( 9 )
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-unit_size = 5.0
+unit_size = 4.0
