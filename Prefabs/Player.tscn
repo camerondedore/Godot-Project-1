@@ -84,27 +84,24 @@ barrelPath = NodePath("../Barrels")
 cameraSpringArmPath = NodePath("../../CameraSpringArm")
 
 [node name="Barrels" type="Spatial" parent="Weapon"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0541396, -0.499055 )
 
 [node name="Barrel" type="Spatial" parent="Weapon/Barrels"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3261, -0.608827 )
 script = ExtResource( 8 )
 bulletScene = ExtResource( 7 )
 spread = 5.0
 
 [node name="Barrel Rapid Fire" type="Spatial" parent="Weapon/Barrels"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3261, -0.608827 )
 script = ExtResource( 8 )
 bulletScene = ExtResource( 7 )
 spread = 8.0
 
 [node name="Barrel Power Shot" type="Spatial" parent="Weapon/Barrels"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3261, -0.608827 )
 script = ExtResource( 8 )
 bulletScene = ExtResource( 7 )
 spread = 0.0
 
 [node name="Barrel Scatter Shot" type="Spatial" parent="Weapon/Barrels"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3261, -0.608827 )
 script = ExtResource( 8 )
 bulletScene = ExtResource( 7 )
 spread = 30.0
