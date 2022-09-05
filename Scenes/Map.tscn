@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
 [ext_resource path="res://Prefabs/tmp-platform-1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/tmp-platform-2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/JumpPad.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Prefabs/tmp-moving-platform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://C#/Camera/GlobalCamera.cs" type="Script" id=7]
 [ext_resource path="res://C#/Weapons/TestBarrel.cs" type="Script" id=8]
 [ext_resource path="res://Prefabs/Bullet.tscn" type="PackedScene" id=9]
@@ -93,10 +92,6 @@ material = ExtResource( 2 )
 
 [node name="PlayerKinematicBody" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00266838, 0.86153, 0.0237942 )
-
-[node name="MovingPlatform" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 6, 3 )
-targetOffset = Vector3( 0, 0, 10 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -0.0319312, 0.942052, 0.333944, -0.771323, -0.235711, 0.591186, 0.635642, -0.238702, 0.734153, 0, 5.89199, 0 )
