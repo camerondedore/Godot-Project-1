@@ -87,7 +87,7 @@ public class Bullet : Spatial
 			var hitNormal = (Vector3) rayResult["normal"];
 
 			// set hit fx position
-			hitFx.LookAtFromPosition(hitPosition, hitPosition + hitNormal, Vector3.Up + velocity);
+			hitFx.LookAtFromPosition(hitPosition, hitPosition + hitNormal, Vector3.Up + velocity.Normalized());
 			
 			// set parent as root scene
 			GetTree().Root.AddChild(hitFx);
