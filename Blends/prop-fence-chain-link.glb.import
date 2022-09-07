@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/building-guard-tower.glb-fdfaad0a5e338865a79b4a579ada44e8.scn"
+path="res://.import/prop-fence-chain-link.glb-fce4e4dc14f217c84a988685ad4b408d.scn"
 
 [deps]
 
-source_file="res://Blends/building-guard-tower.glb"
-dest_files=[ "res://.import/building-guard-tower.glb-fdfaad0a5e338865a79b4a579ada44e8.scn" ]
+source_file="res://Blends/prop-fence-chain-link.glb"
+dest_files=[ "res://.import/prop-fence-chain-link.glb-fce4e4dc14f217c84a988685ad4b408d.scn" ]
 
 [params]
 
@@ -17,13 +17,13 @@ nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
 nodes/use_legacy_names=true
-materials/location=0
+materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
 meshes/octahedral_compression=true
 meshes/compress=4286
 meshes/ensure_tangents=true
-meshes/storage=0
+meshes/storage=1
 meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
