@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://C#/Weapons/Bullet.cs" type="Script" id=1]
+[ext_resource path="res://Materials/tmp-bullet.tres" type="Material" id=2]
+[ext_resource path="res://Prefabs/FX/HitFX.tscn" type="PackedScene" id=3]
+
+[node name="Bullet" type="Spatial"]
+script = ExtResource( 1 )
+speed = 75.0
+rangeSqr = 10000.0
+gravityInfluence = 0.0
+mask = 5
+hitFxScene = ExtResource( 3 )
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+radius = 0.07
+material = ExtResource( 2 )
