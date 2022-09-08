@@ -4,7 +4,6 @@
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
 [ext_resource path="res://Prefabs/Props/PropFenceChainLinkGate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Props/PropFenceChainLinkSmallPart.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prefabs/JumpPad.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Blends/building-guard-tower.glb" type="PackedScene" id=6]
 [ext_resource path="res://C#/Camera/GlobalCamera.cs" type="Script" id=7]
 [ext_resource path="res://C#/Weapons/TestBarrel.cs" type="Script" id=8]
@@ -15,6 +14,7 @@
 [ext_resource path="res://Prefabs/Props/PropBeerKeg.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Prefabs/Props/PropFenceChainLinkLargePart.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Prefabs/Props/PropExteriorLight.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Prefabs/JumpPad.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -54,8 +54,8 @@ script = ExtResource( 10 )
 [node name="PlayerKinematicBody" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00266838, 0.86153, 0.0237942 )
 
-[node name="JumpPad" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.60871, 0.0191116, 1.48614 )
+[node name="JumpPad" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.70387, -4.76837e-07, 2.01 )
 targetNodePath = NodePath("../JumpPadTarget")
 speed = 5.0
 
@@ -151,5 +151,3 @@ shadow_enabled = true
 
 [node name="building-guard-tower" parent="Buildings" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -11 )
-
-[editable path="JumpPad"]
