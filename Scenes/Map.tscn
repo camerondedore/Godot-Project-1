@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Prefabs/Props/PropExteriorLight.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Prefabs/JumpPad.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Prefabs/Props/PropSpotLight.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Prefabs/Props/PropCamera.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -140,6 +141,12 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 0, 
 [node name="PropChainLinkFenceSmallPart" parent="Props" instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 2, 0, 6 )
 
+[node name="PropCamera" parent="Props" instance=ExtResource( 18 )]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4.5, 4, -9.7 )
+
+[node name="prop-camera" parent="Props/PropCamera/prop-camera-base" index="0"]
+transform = Transform( 0.951304, -0.105457, 0.289653, -0.000691873, 0.938927, 0.344116, -0.308253, -0.327559, 0.893132, 0, 0.0374999, 0 )
+
 [node name="Lighting" type="Spatial" parent="."]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="Lighting"]
@@ -163,4 +170,5 @@ transform = Transform( 1, 0, 0, 0, 0.909787, -0.415074, 0, 0.415074, 0.909787, 0
 [node name="BuildingGuardTower" parent="Buildings" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -11 )
 
+[editable path="Props/PropCamera"]
 [editable path="Lighting/PropSpotLight"]
