@@ -82,7 +82,7 @@ scatterShotSound = ExtResource( 12 )
 script = ExtResource( 9 )
 barrelPath = NodePath("../Barrels")
 cameraSpringArmPath = NodePath("../../CameraSpringArm")
-rangeMin = 4.0
+rangeMin = 2.0
 
 [node name="Barrels" type="Spatial" parent="Weapon"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0541396, -0.499055 )

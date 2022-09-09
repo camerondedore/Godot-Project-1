@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Blends/prop-fence-chain-link_prop-fence-chain-link-large-part.mesh" type="ArrayMesh" id=1]
-[ext_resource path="res://Blends/metal-rusted.material" type="Material" id=2]
-[ext_resource path="res://Blends/fx-chain-link.material" type="Material" id=3]
+[ext_resource path="res://Materials/metal-rusted.material" type="Material" id=2]
+[ext_resource path="res://Materials/fx-chain-link.material" type="Material" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2, 2.375, 0.05 )

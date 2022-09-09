@@ -2,7 +2,7 @@
 
 [ext_resource path="res://C#/JumpPad.cs" type="Script" id=1]
 [ext_resource path="res://Textures/fx-halo.png" type="Texture" id=2]
-[ext_resource path="res://Blends/prop-jump-pad.material" type="Material" id=3]
+[ext_resource path="res://Materials/prop-jump-pad.material" type="Material" id=3]
 [ext_resource path="res://Materials/fx-halo.tres" type="Material" id=4]
 [ext_resource path="res://Materials/fx-air-particles.tres" type="Material" id=5]
 [ext_resource path="res://Audio/jump-pad-open.wav" type="AudioStream" id=6]
@@ -160,7 +160,7 @@ bones/0/name = "base"
 bones/0/parent = -1
 bones/0/rest = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 bones/0/enabled = true
-bones/0/bound_children = [  ]
+bones/0/bound_children = [ NodePath("BoneAttachment") ]
 bones/1/name = "blade"
 bones/1/parent = 0
 bones/1/rest = Transform( 0.748956, 0, 0.66262, 0, 1, 0, -0.66262, 0, 0.748956, 1.39626, 0.13, 7.37607e-07 )
@@ -208,12 +208,12 @@ bone_name = "base"
 [node name="prop-jump-pad-details" type="MeshInstance" parent="prop-jump-pad-armature/Skeleton/BoneAttachment"]
 transform = Transform( 3.57628e-07, 0, 1, 0, 1, 0, -1, 0, 3.57628e-07, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = ExtResource( 3 )
 
 [node name="prop-jump-pad" type="MeshInstance" parent="prop-jump-pad-armature/Skeleton"]
 mesh = SubResource( 2 )
 skin = SubResource( 3 )
-material/0 = null
+material/0 = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/prop-jump-pad-blades-open = SubResource( 4 )
