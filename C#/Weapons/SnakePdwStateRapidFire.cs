@@ -21,6 +21,7 @@ public class SnakePdwStateRapidFire : SnakePdwState
 
          // fire
         blackboard.barrelRapidFire.Fire();
+        blackboard.casingEjector.Fire();
 
         // audio
         var newWeaponAudio = new AudioStreamPlayer3D();
