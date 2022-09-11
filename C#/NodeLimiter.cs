@@ -52,11 +52,9 @@ public class LimitQueue
 			// remove oldest game object
 			var nodeToDestroy = queue.Dequeue();
 			nodeToDestroy.Owner.QueueFree();
-			GD.Print("removing node from list");
 		}
 
 		// add new game object
 		queue.Enqueue(nodeToAdd);
-		GD.Print("adding node to list");
 	}
 }

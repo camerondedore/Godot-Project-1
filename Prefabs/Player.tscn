@@ -85,8 +85,8 @@ scatterShotSound = ExtResource( 12 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192575, 0, -0.424076 )
 script = ExtResource( 3 )
 casingScene = ExtResource( 19 )
-direction = Vector3( 1, 1, 0 )
-spread = 0.2
+direction = Vector3( 5, 3, 1 )
+spread = 0.5
 
 [node name="BarrelAimer" type="Spatial" parent="Weapon"]
 script = ExtResource( 9 )
