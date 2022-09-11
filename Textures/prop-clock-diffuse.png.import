@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/prop-spot-light-diffuse.png-df40366f56e4a1b8aa835158ff093931.s3tc.stex"
-path.etc2="res://.import/prop-spot-light-diffuse.png-df40366f56e4a1b8aa835158ff093931.etc2.stex"
+path.s3tc="res://.import/prop-clock-diffuse.png-09d64af0eb3b4813a98d2f8af4e34495.s3tc.stex"
+path.etc2="res://.import/prop-clock-diffuse.png-09d64af0eb3b4813a98d2f8af4e34495.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/prop-spot-light-diffuse.png"
-dest_files=[ "res://.import/prop-spot-light-diffuse.png-df40366f56e4a1b8aa835158ff093931.s3tc.stex", "res://.import/prop-spot-light-diffuse.png-df40366f56e4a1b8aa835158ff093931.etc2.stex" ]
+source_file="res://Textures/prop-clock-diffuse.png"
+dest_files=[ "res://.import/prop-clock-diffuse.png-09d64af0eb3b4813a98d2f8af4e34495.s3tc.stex", "res://.import/prop-clock-diffuse.png-09d64af0eb3b4813a98d2f8af4e34495.etc2.stex" ]
 
 [params]
 
