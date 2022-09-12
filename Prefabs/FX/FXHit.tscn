@@ -11,7 +11,9 @@ mainFxPath = NodePath("CPUParticlesChunks")
 
 [node name="CPUParticlesChunks" type="CPUParticles" parent="."]
 material_override = ExtResource( 2 )
+emitting = false
 lifetime = 0.3
+one_shot = true
 explosiveness = 0.8
 randomness = 0.6
 lifetime_randomness = 0.6

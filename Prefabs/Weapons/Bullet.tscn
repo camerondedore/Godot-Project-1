@@ -2,7 +2,7 @@
 
 [ext_resource path="res://C#/Weapons/Bullet.cs" type="Script" id=1]
 [ext_resource path="res://Materials/tmp-bullet.tres" type="Material" id=2]
-[ext_resource path="res://Prefabs/FX/HitFX.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/FX/FXHit.tscn" type="PackedScene" id=3]
 
 [node name="Bullet" type="Spatial"]
 script = ExtResource( 1 )
