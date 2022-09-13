@@ -15,8 +15,8 @@ public class NodeLimiter : Node
 
 
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		// check if queue exists
 		if(queues.ContainsKey(queueName))
 		{
@@ -30,8 +30,8 @@ public class NodeLimiter : Node
 			// add game object
 			queues[queueName].AddNode(this as Node);
 		}
-        
-    }
+		
+	}
 }
 
 
