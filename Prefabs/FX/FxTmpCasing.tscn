@@ -4,7 +4,8 @@
 [ext_resource path="res://Blends/fx-tmp-casing.glb" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
-radius = 0.02
+margin = 0.02
+radius = 0.03
 height = 0.04
 
 [node name="FxTmpCasing" type="RigidBody"]

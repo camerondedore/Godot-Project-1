@@ -9,6 +9,9 @@
 [node name="HitFX" type="Spatial"]
 script = ExtResource( 1 )
 mainFxPath = NodePath("CPUParticlesChunks")
+blastFxPath = NodePath("FxBlast")
+blastLife = 0.075
+blastSpeed = 30.0
 
 [node name="CPUParticlesChunks" type="CPUParticles" parent="."]
 material_override = ExtResource( 2 )
@@ -24,7 +27,7 @@ spread = 20.0
 gravity = Vector3( 0, -9.81, 0 )
 initial_velocity = 5.0
 initial_velocity_random = 0.5
-scale_amount = 0.06
-scale_amount_random = 0.12
+scale_amount = 0.08
+scale_amount_random = 0.2
 
 [node name="FxBlast" parent="." instance=ExtResource( 3 )]
