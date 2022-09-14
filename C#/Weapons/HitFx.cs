@@ -5,7 +5,9 @@ public class HitFx : Spatial
 {
 	
 	[Export]
-	NodePath mainFxPath,
+	NodePath chunksFxPath,
+		chunksSmallFxPath,
+		dustFxPath,
 		blastFxPath;
 	[Export]
 	float life = 0.5f,
@@ -13,7 +15,9 @@ public class HitFx : Spatial
 		blastSpread = 0.1f,
 		blastLife = 0.1f,
 		blastSpeed = 5;
-	CPUParticles mainFx;
+	CPUParticles chunksFx,
+		chunksSmallFx,
+		dustFx;
 	Spatial blastFx;
 	float startTime,
 		blastSpeedVariation;
@@ -25,11 +29,15 @@ public class HitFx : Spatial
 		startTime = OS.GetTicksMsec() * 0.001f;
 
 		// get nodes
-		mainFx = GetNode<CPUParticles>(mainFxPath);
+		chunksFx = GetNode<CPUParticles>(chunksFxPath);
+		chunksSmallFx = GetNode<CPUParticles>(chunksSmallFxPath);
+		dustFx = GetNode<CPUParticles>(dustFxPath);
 		blastFx = GetNode<Spatial>(blastFxPath);
 
 		// play particle fx
-		mainFx.Emitting = true;
+		chunksFx.Emitting = true;
+		chunksSmallFx.Emitting = true;
+		dustFx.Emitting = true;
 
 
 		// set up blast fx scale variation
