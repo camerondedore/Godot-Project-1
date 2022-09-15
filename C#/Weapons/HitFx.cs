@@ -8,16 +8,18 @@ public class HitFx : Spatial
 	NodePath chunksFxPath,
 		chunksSmallFxPath,
 		dustFxPath,
-		blastFxPath;
+		blastFxPath,
+		flashFxPath;
 	[Export]
 	float life = 0.5f,
-		blastScaleRange = 0.4f,		
+		blastSpeedRange = 0.4f,		
 		blastSpread = 0.1f,
 		blastLife = 0.1f,
 		blastSpeed = 5;
 	CPUParticles chunksFx,
 		chunksSmallFx,
-		dustFx;
+		dustFx,
+		flashFx;
 	Spatial blastFx;
 	float startTime,
 		blastSpeedVariation;
@@ -32,19 +34,21 @@ public class HitFx : Spatial
 		chunksFx = GetNode<CPUParticles>(chunksFxPath);
 		chunksSmallFx = GetNode<CPUParticles>(chunksSmallFxPath);
 		dustFx = GetNode<CPUParticles>(dustFxPath);
+		flashFx = GetNode<CPUParticles>(flashFxPath);
 		blastFx = GetNode<Spatial>(blastFxPath);
 
 		// play particle fx
 		chunksFx.Emitting = true;
 		chunksSmallFx.Emitting = true;
 		dustFx.Emitting = true;
+		flashFx.Emitting = true;
 
 
 		// set up blast fx scale variation
-		blastSpeedVariation = (GD.Randf() - 0.5f) * 2 * blastScaleRange;
+		blastSpeedVariation = 1 + (GD.Randf() - 0.5f) * 2 * blastSpeedRange;
 
 		// set blast fx scale to zero
-		blastFx.Scale = Vector3.Zero;
+		blastFx.Scale = Vector3.One * 0.05f;
 
 		// get new scale
 		//var scaleForBlast = 1 - (GD.Randf() - 0.5f) * 2 * blastScaleRange;
@@ -83,6 +87,6 @@ public class HitFx : Spatial
 		}
 
 		// scale blast fx
-		blastFx.Scale = (blastFx.Scale + Vector3.One * blastSpeed * delta);
+		blastFx.Scale = (blastFx.Scale + Vector3.One * blastSpeed * blastSpeedVariation * delta);
 	}	
 }

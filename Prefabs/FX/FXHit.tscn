@@ -1,18 +1,22 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://C#/Weapons/HitFx.cs" type="Script" id=1]
 [ext_resource path="res://Materials/fx-chunks.tres" type="Material" id=2]
 [ext_resource path="res://Prefabs/FX/FxBlast.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Materials/fx-dust.tres" type="Material" id=4]
+[ext_resource path="res://Materials/fx-flash.tres" type="Material" id=5]
 
 [sub_resource type="QuadMesh" id=1]
 
 [sub_resource type="Curve" id=2]
-_data = [ Vector2( 0, 0.381818 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.04091, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.405682 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.04091, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0.0145631, 0.092233, 0.674757, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.893204, 1, 1, 1, 0 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.480682 ), 0.0, 0.519318, 0, 1, Vector2( 1, 1 ), 0.519318, 0.0, 1, 0 ]
 
 [node name="HitFX" type="Spatial"]
 script = ExtResource( 1 )
@@ -20,9 +24,11 @@ chunksFxPath = NodePath("CPUParticlesChunks")
 chunksSmallFxPath = NodePath("CPUParticlesChunksSmall")
 dustFxPath = NodePath("CPUParticlesDust")
 blastFxPath = NodePath("FxBlast")
+flashFxPath = NodePath("CPUParticlesFlash")
 life = 3.25
-blastLife = 0.075
-blastSpeed = 30.0
+blastSpeedRange = 0.3
+blastLife = 0.1
+blastSpeed = 25.0
 
 [node name="CPUParticlesChunks" type="CPUParticles" parent="."]
 material_override = ExtResource( 2 )
@@ -63,7 +69,7 @@ scale_amount_random = 0.2
 [node name="CPUParticlesDust" type="CPUParticles" parent="."]
 material_override = ExtResource( 4 )
 emitting = false
-amount = 3
+amount = 2
 lifetime = 3.0
 one_shot = true
 explosiveness = 0.9
@@ -77,8 +83,28 @@ initial_velocity = 0.5
 initial_velocity_random = 0.5
 damping = 1.0
 damping_random = 0.1
-scale_amount_random = 0.2
+scale_amount = 2.0
+scale_amount_random = 0.5
 scale_amount_curve = SubResource( 2 )
 color_ramp = SubResource( 3 )
+
+[node name="CPUParticlesFlash" type="CPUParticles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.021386 )
+material_override = ExtResource( 5 )
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.1
+local_coords = false
+mesh = SubResource( 1 )
+direction = Vector3( 0, 0, -1 )
+spread = 30.0
+gravity = Vector3( 0, -9.81, 0 )
+initial_velocity_random = 0.8
+scale_amount_random = 0.2
+scale_amount_curve = SubResource( 4 )
 
 [node name="FxBlast" parent="." instance=ExtResource( 3 )]
