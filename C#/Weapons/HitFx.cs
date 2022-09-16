@@ -16,7 +16,7 @@ public class HitFx : Spatial
 		blastSpread = 0.1f,
 		blastLife = 0.1f,
 		blastSpeed = 5;
-	CPUParticles chunksFx,
+	Particles chunksFx,
 		chunksSmallFx,
 		dustFx,
 		flashFx;
@@ -31,10 +31,10 @@ public class HitFx : Spatial
 		startTime = OS.GetTicksMsec() * 0.001f;
 
 		// get nodes
-		chunksFx = GetNode<CPUParticles>(chunksFxPath);
-		chunksSmallFx = GetNode<CPUParticles>(chunksSmallFxPath);
-		dustFx = GetNode<CPUParticles>(dustFxPath);
-		flashFx = GetNode<CPUParticles>(flashFxPath);
+		chunksFx = GetNode<Particles>(chunksFxPath);
+		chunksSmallFx = GetNode<Particles>(chunksSmallFxPath);
+		dustFx = GetNode<Particles>(dustFxPath);
+		flashFx = GetNode<Particles>(flashFxPath);
 		blastFx = GetNode<Spatial>(blastFxPath);
 
 		// play particle fx
