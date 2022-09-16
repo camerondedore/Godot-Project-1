@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://C#/Character/Character.cs" type="Script" id=1]
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://C#/Character/CharacterHealth.cs" type="Script" id=17]
 [ext_resource path="res://C#/Hitbox.cs" type="Script" id=18]
 [ext_resource path="res://Prefabs/FX/FxTmpCasing.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Prefabs/FX/FxTmpMuzzleFlash.tscn" type="PackedScene" id=20]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.5
@@ -73,6 +74,7 @@ barrelScatterShotPath = NodePath("Barrels/Barrel Scatter Shot")
 weaponAudioPath = NodePath("WeaponAudio")
 characterNodePath = NodePath("..")
 casingEjectorNodePath = NodePath("CasingEjector")
+muzzleFlashFxPath = NodePath("Barrels/FxTmpMuzzleFlash")
 rateOfFire = 400.0
 rateOfRapidFire = 800.0
 powerShotTime = 0.65
@@ -96,6 +98,9 @@ rangeMin = 2.0
 
 [node name="Barrels" type="Spatial" parent="Weapon"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0541396, -0.499055 )
+
+[node name="FxTmpMuzzleFlash" parent="Weapon/Barrels" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Barrel" type="Spatial" parent="Weapon/Barrels"]
 script = ExtResource( 8 )
