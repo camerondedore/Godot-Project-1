@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Materials/prop-clock.material" type="Material" id=1]
+[ext_resource path="res://Materials/PropClock.material" type="Material" id=1]
 [ext_resource path="res://Blends/prop-clock.glb" type="PackedScene" id=2]
 
 [node name="PropClock" instance=ExtResource( 2 )]

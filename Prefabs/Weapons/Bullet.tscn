@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://C#/Weapons/Bullet.cs" type="Script" id=1]
 [ext_resource path="res://Materials/tmp-bullet.tres" type="Material" id=2]
 [ext_resource path="res://Prefabs/FX/FXHit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/FX/FXHitBlood.tscn" type="PackedScene" id=4]
 
 [node name="Bullet" type="Spatial"]
 script = ExtResource( 1 )
@@ -11,6 +12,7 @@ rangeSqr = 10000.0
 gravityInfluence = 0.0
 mask = 5
 hitFxScene = ExtResource( 3 )
+hitFxBloodScene = ExtResource( 4 )
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
 radius = 0.07

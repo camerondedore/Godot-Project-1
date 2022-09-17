@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://C#/Weapons/HitFx.cs" type="Script" id=1]
-[ext_resource path="res://Materials/fx-chunks.tres" type="Material" id=2]
+[ext_resource path="res://Materials/FxDirtChunks.tres" type="Material" id=2]
 [ext_resource path="res://Prefabs/FX/FxBlast.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Materials/fx-dust.tres" type="Material" id=4]
-[ext_resource path="res://Materials/fx-flash.tres" type="Material" id=5]
+[ext_resource path="res://Materials/FxDust.tres" type="Material" id=4]
+[ext_resource path="res://Materials/FxSparkFlash.tres" type="Material" id=5]
 [ext_resource path="res://Particles/fx-chunks-gpu.tres" type="Material" id=6]
 [ext_resource path="res://Particles/fx-dust-gpu.tres" type="Material" id=7]
 [ext_resource path="res://Particles/fx-chunks-small-gpu.tres" type="Material" id=8]

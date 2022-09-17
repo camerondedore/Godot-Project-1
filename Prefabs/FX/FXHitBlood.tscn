@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://C#/Weapons/HitFx.cs" type="Script" id=1]
+[ext_resource path="res://Materials/FxBloodChunks.tres" type="Material" id=2]
+[ext_resource path="res://Prefabs/FX/FxBloodBlast.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Materials/FxDust.tres" type="Material" id=4]
+[ext_resource path="res://Materials/FxBloodFlash.tres" type="Material" id=5]
+[ext_resource path="res://Particles/fx-chunks-gpu.tres" type="Material" id=6]
+[ext_resource path="res://Particles/fx-dust-gpu.tres" type="Material" id=7]
+[ext_resource path="res://Particles/fx-chunks-small-gpu.tres" type="Material" id=8]
+[ext_resource path="res://Particles/fx-flash-gpu.tres" type="Material" id=9]
+[ext_resource path="res://Audio/bullet-hit.wav" type="AudioStream" id=10]
+
+[sub_resource type="QuadMesh" id=5]
+
+[node name="HitFX" type="Spatial"]
+script = ExtResource( 1 )
+chunksFxPath = NodePath("ParticlesChunks")
+chunksSmallFxPath = NodePath("ParticlesChunksSmall")
+dustFxPath = NodePath("ParticlesDust")
+blastFxPath = NodePath("FxBloodBlast")
+flashFxPath = NodePath("ParticlesFlash")
+hitAudioPath = NodePath("AudioStreamPlayer3D")
+life = 3.25
+blastSpeedRange = 0.3
+blastLife = 0.1
+blastSpeed = 25.0
+hitSound = ExtResource( 10 )
+
+[node name="FxBloodBlast" parent="." instance=ExtResource( 3 )]
+
+[node name="ParticlesChunks" type="Particles" parent="."]
+material_override = ExtResource( 2 )
+emitting = false
+one_shot = true
+explosiveness = 0.95
+local_coords = false
+process_material = ExtResource( 6 )
+draw_pass_1 = SubResource( 5 )
+
+[node name="ParticlesChunksSmall" type="Particles" parent="."]
+material_override = ExtResource( 2 )
+emitting = false
+amount = 6
+lifetime = 0.18
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = false
+process_material = ExtResource( 8 )
+draw_pass_1 = SubResource( 5 )
+
+[node name="ParticlesDust" type="Particles" parent="."]
+material_override = ExtResource( 4 )
+emitting = false
+amount = 2
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+local_coords = false
+process_material = ExtResource( 7 )
+draw_pass_1 = SubResource( 5 )
+
+[node name="ParticlesFlash" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0219538 )
+material_override = ExtResource( 5 )
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = false
+process_material = ExtResource( 9 )
+draw_pass_1 = SubResource( 5 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+unit_size = 3.0
+max_distance = 50.0

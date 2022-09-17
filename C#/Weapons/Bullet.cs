@@ -12,7 +12,8 @@ public class Bullet : Spatial
 	[Export]
 	uint mask = 1;
 	[Export]
-	PackedScene hitFxScene;
+	PackedScene hitFxScene,
+		hitFxBloodScene;
 	PhysicsDirectSpaceState spaceState;
 	Vector3 velocity,
 		gravity;
@@ -63,6 +64,8 @@ public class Bullet : Spatial
 		}
 		else
 		{
+			bool hitHitbox = false;
+
 			// get hit collider and check for hitbox
 			// health needs to be the direct child of the owner and named "Health"
 			var hitCollider = (Spatial) rayResult["collider"];
@@ -74,11 +77,12 @@ public class Bullet : Spatial
 				
 				// apply damage
 				hitbox.Owner.GetNode<Health>("Health").Damage(damage * hitbox.damageMultiplier);
+
+				hitHitbox = true;
 			}
 
-
-			// load hit fx resource
-			var hitFx = hitFxScene.Instance() as Spatial;
+			// load hit fx resource, checks for hitbox hit
+			var hitFx = hitHitbox ? hitFxBloodScene.Instance() as Spatial : hitFxScene.Instance() as Spatial;
 
 			// get hit position
 			var hitPosition = (Vector3) rayResult["position"];

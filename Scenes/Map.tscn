@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Prefabs/Props/PropSpotLight.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Prefabs/Props/PropCamera.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Prefabs/Props/PropClock.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Prefabs/Target.tscn" type="PackedScene" id=20]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -241,6 +242,21 @@ transform = Transform( 1, 0, 0, 0, 0.875465, 0.483282, 0, -0.483282, 0.875465, -
 
 [node name="BuildingGuardTower" parent="Buildings" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -11 )
+
+[node name="Target" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.33924, 1.25902, -4.07846 )
+
+[node name="Target2" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.97121, 1.25902, -1.89968 )
+
+[node name="Target3" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.85254, 1.25902, 4.62932 )
+
+[node name="Target4" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56509, 1.25902, -23.1865 )
+
+[node name="Target5" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3883, 1.25902, -23.8494 )
 
 [editable path="Props/PropCamera"]
 [editable path="Lighting/PropSpotLight"]
