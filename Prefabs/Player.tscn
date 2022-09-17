@@ -100,7 +100,6 @@ rangeMin = 2.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0541396, -0.499055 )
 
 [node name="FxTmpMuzzleFlash" parent="Weapon/Barrels" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Barrel" type="Spatial" parent="Weapon/Barrels"]
 script = ExtResource( 8 )
@@ -124,7 +123,7 @@ spread = 30.0
 shotCount = 15
 
 [node name="WeaponAudio" type="AudioStreamPlayer3D" parent="Weapon"]
-unit_size = 4.0
+unit_size = 5.0
 max_distance = 50.0
 
 [node name="Health" type="Node" parent="."]

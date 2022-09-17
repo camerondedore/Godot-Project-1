@@ -9,18 +9,22 @@ public class HitFx : Spatial
 		chunksSmallFxPath,
 		dustFxPath,
 		blastFxPath,
-		flashFxPath;
+		flashFxPath,
+		hitAudioPath;
 	[Export]
 	float life = 0.5f,
 		blastSpeedRange = 0.4f,		
 		blastSpread = 0.1f,
 		blastLife = 0.1f,
 		blastSpeed = 5;
+	[Export]
+	AudioStream hitSound;
 	Particles chunksFx,
 		chunksSmallFx,
 		dustFx,
 		flashFx;
 	Spatial blastFx;
+	AudioStreamPlayer3D hitAudio;
 	float startTime,
 		blastSpeedVariation;
 
@@ -36,6 +40,7 @@ public class HitFx : Spatial
 		dustFx = GetNode<Particles>(dustFxPath);
 		flashFx = GetNode<Particles>(flashFxPath);
 		blastFx = GetNode<Spatial>(blastFxPath);
+		hitAudio = GetNode<AudioStreamPlayer3D>(hitAudioPath);
 
 		// play particle fx
 		chunksFx.Emitting = true;
@@ -43,6 +48,10 @@ public class HitFx : Spatial
 		dustFx.Emitting = true;
 		flashFx.Emitting = true;
 
+		// play sound
+		hitAudio.Stream = hitSound;
+		hitAudio.PitchScale = (GD.Randf() - 0.5f) * 0.25f + 1;
+		hitAudio.Play();
 
 		// set up blast fx scale variation
 		blastSpeedVariation = 1 + (GD.Randf() - 0.5f) * 2 * blastSpeedRange;
