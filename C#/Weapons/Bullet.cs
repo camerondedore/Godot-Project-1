@@ -90,12 +90,14 @@ public class Bullet : Spatial
 			// get hit normal
 			var hitNormal = (Vector3) rayResult["normal"];
 
+			// set parent as root scene
+			//GetTree().Root.AddChild(hitFx);
+
+			// set parent as hit collider
+			hitCollider.AddChild(hitFx);
+
 			// set hit fx position
 			hitFx.LookAtFromPosition(hitPosition, hitPosition + hitNormal, Vector3.Up + velocity.Normalized());
-			
-			// set parent as root scene
-			GetTree().Root.AddChild(hitFx);
-
 
 			// destroy on hit
 			QueueFree();

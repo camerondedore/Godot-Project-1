@@ -1,7 +1,7 @@
 [gd_resource type="ParticlesMaterial" load_steps=3 format=2]
 
 [sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 0.272727 ), 0.0, 0.727273, 0, 1, Vector2( 1, 1 ), 0.727273, 0.0, 1, 0 ]
+_data = [ Vector2( 0, 0.6 ), 0.0, 0.4, 0, 1, Vector2( 1, 1 ), 0.4, 0.0, 1, 0 ]
 
 [sub_resource type="CurveTexture" id=2]
 width = 128
@@ -12,6 +12,6 @@ lifetime_randomness = 0.1
 direction = Vector3( 0, 0, -1 )
 spread = 30.0
 gravity = Vector3( 0, 0, 0 )
-scale = 0.75
+scale = 0.6
 scale_random = 0.2
 scale_curve = SubResource( 2 )
