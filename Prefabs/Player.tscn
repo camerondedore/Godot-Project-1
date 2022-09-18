@@ -55,7 +55,7 @@ height = 1.8
 sides = 10
 
 [node name="CameraSpringArm" type="SpringArm" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0 )
 spring_length = 2.5
 margin = 0.2
 script = ExtResource( 2 )

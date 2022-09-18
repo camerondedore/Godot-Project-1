@@ -57,7 +57,8 @@ public class CameraSpringArm : SpringArm
 		targetPosition = characterPosition + offset;
 
 		// set smooth speed using character velocity
-		smoothSpeed = Mathf.Clamp(velocity.Length(), 15, 80);
+		smoothSpeed = Mathf.Clamp(velocity.Length() * 4, 15, 80);
+		//GD.Print(smoothSpeed);
 	}
 
 
