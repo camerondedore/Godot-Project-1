@@ -17,7 +17,7 @@ public class SnakePdwStateRapidFire : SnakePdwState
 
     public override void StartState()
     {
-        startTime = OS.GetTicksMsec() * 0.001f;
+        startTime = EngineTime.timePassed;
 
          // fire
         blackboard.barrelRapidFire.Fire();
@@ -45,7 +45,7 @@ public class SnakePdwStateRapidFire : SnakePdwState
 
     public override State Transition()
     {
-        if(OS.GetTicksMsec() * 0.001f > startTime + 60 / blackboard.rateOfRapidFire)
+        if(EngineTime.timePassed > startTime + 60 / blackboard.rateOfRapidFire)
         {
             // idle
             return blackboard.stateIdle;

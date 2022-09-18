@@ -32,7 +32,7 @@ public class HitFx : Spatial
 
 	public override void _Ready()
 	{
-		startTime = OS.GetTicksMsec() * 0.001f;
+		startTime = EngineTime.timePassed;
 
 		// get nodes
 		chunksFx = GetNode<Particles>(chunksFxPath);
@@ -80,7 +80,7 @@ public class HitFx : Spatial
 
 	public override void _Process(float delta)
 	{
-		var currentTime = OS.GetTicksMsec() * 0.001f;
+		var currentTime = EngineTime.timePassed;
 		// check life time
 		if(startTime + life < currentTime)
 		{

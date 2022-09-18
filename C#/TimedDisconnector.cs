@@ -16,12 +16,12 @@ public class TimedDisconnector
 	public bool Trip(float value)
 	{
 		// get if cycle is finished
-		var cycleFinished = OS.GetTicksMsec() * 0.001f > hookTime + releaseTime;
+		var cycleFinished = EngineTime.timePassed > hookTime + releaseTime;
 
 		if(cycleFinished && value > 0)
 		{
 			// auto sear is not engaged and can trip
-			hookTime = OS.GetTicksMsec() * 0.001f;
+			hookTime = EngineTime.timePassed;
 			return true;
 		} 
 

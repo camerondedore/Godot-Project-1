@@ -52,7 +52,7 @@ public class Bullet : Spatial
 		//var exclude = new Godot.Collections.Array { Owner };
 
 		// cast ray
-		var rayResult = spaceState.IntersectRay(GlobalTransform.origin, GlobalTransform.origin + velocity * delta, new Godot.Collections.Array { this }, mask);
+		var rayResult = spaceState.IntersectRay(GlobalTransform.origin, GlobalTransform.origin + velocity * delta * 1.05f, new Godot.Collections.Array { this }, mask);
 
 		if(!rayResult.Contains("collider"))
 		{

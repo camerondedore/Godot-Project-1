@@ -55,7 +55,7 @@ public class CharacterStateJumpStart : CharacterState
 
 	public override void StartState()
 	{
-        startTime = OS.GetTicksMsec() * 0.001f;
+        startTime = EngineTime.timePassed;
 
 		// get start altitude
 		blackboard.jumpStartY = blackboard.GlobalTransform.origin.y;
@@ -72,7 +72,7 @@ public class CharacterStateJumpStart : CharacterState
 
 	public override State Transition()
 	{
-		if(OS.GetTicksMsec() * 0.001f > startTime + blackboard.jumpStartTime)
+		if(EngineTime.timePassed > startTime + blackboard.jumpStartTime)
         {
             // jump
             return blackboard.stateJump;

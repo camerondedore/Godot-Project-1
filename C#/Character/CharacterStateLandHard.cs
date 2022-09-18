@@ -60,7 +60,7 @@ public class CharacterStateLandHard : CharacterState
 
 	public override void StartState()
 	{
-        startTime = OS.GetTicksMsec() * 0.001f;
+        startTime = EngineTime.timePassed;
 	}
 
 
@@ -76,7 +76,7 @@ public class CharacterStateLandHard : CharacterState
 
 	public override State Transition()
 	{
-		if(OS.GetTicksMsec() * 0.001f > startTime + blackboard.landHardTime)
+		if(EngineTime.timePassed > startTime + blackboard.landHardTime)
 		{
 			// move
 			return blackboard.stateIdle;

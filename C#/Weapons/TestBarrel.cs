@@ -24,9 +24,9 @@ public class TestBarrel : Spatial
 
     public override void _Process(float delta)
     {
-        if(lastshottime + 0.5f < OS.GetTicksMsec() * 0.001f)
+        if(lastshottime + 0.5f < EngineTime.timePassed)
         {
-            lastshottime = OS.GetTicksMsec() * 0.001f;
+            lastshottime = EngineTime.timePassed;
             Fire();
         }
     }

@@ -26,7 +26,7 @@ public class MuzzleFlashFx : Spatial
 	{
 		if(Visible)
 		{
-			var currentTime = OS.GetTicksMsec() * 0.001f;
+			var currentTime = EngineTime.timePassed;
 
 			// scale up animation
 			Scale = Vector3.One * Mathf.Lerp(startScale, endScale * randomScale, (currentTime - startTime) / lifeTime);
@@ -44,7 +44,7 @@ public class MuzzleFlashFx : Spatial
 	public void Fire()
 	{
 		Show();
-		startTime = OS.GetTicksMsec() * 0.001f;
+		startTime = EngineTime.timePassed;
 		Scale = Vector3.One * startScale;
 		randomScale = (GD.Randf() - 0.5f) * scaleRange + 1;
 	}

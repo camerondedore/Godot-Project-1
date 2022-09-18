@@ -23,6 +23,7 @@ window/vsync/use_vsync=false
 
 layer=false
 physics=false
+time=false
 
 [input]
 
