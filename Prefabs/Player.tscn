@@ -88,20 +88,20 @@ powerShotSound = ExtResource( 13 )
 scatterShotSound = ExtResource( 12 )
 
 [node name="CasingEjectorPistol" type="Spatial" parent="Weapon"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192575, 0, -0.424076 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30884, 0, -0.424076 )
 script = ExtResource( 3 )
 casingScene = ExtResource( 21 )
 direction = Vector3( 5, 3, -2 )
 spread = 1.5
 
 [node name="CasingEjectorShotshell" type="Spatial" parent="Weapon"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192575, 0, -0.424076 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30884, 0, -0.424076 )
 script = ExtResource( 3 )
 casingScene = ExtResource( 19 )
 direction = Vector3( 5, 3, -1 )
 
 [node name="CasingEjectorRifle" type="Spatial" parent="Weapon"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192575, 0, -0.424076 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30884, 0, -0.424076 )
 script = ExtResource( 3 )
 casingScene = ExtResource( 22 )
 direction = Vector3( 4, 4, -1 )
