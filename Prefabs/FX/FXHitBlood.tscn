@@ -9,7 +9,7 @@
 [ext_resource path="res://Particles/fx-dust-gpu.tres" type="Material" id=7]
 [ext_resource path="res://Particles/fx-blood-chunks-gpu.tres" type="Material" id=8]
 [ext_resource path="res://Particles/fx-blood-flash-gpu.tres" type="Material" id=9]
-[ext_resource path="res://Audio/bullet-hit.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/bullet-hit-blood.wav" type="AudioStream" id=10]
 
 [sub_resource type="QuadMesh" id=5]
 

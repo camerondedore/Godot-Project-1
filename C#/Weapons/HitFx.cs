@@ -50,7 +50,7 @@ public class HitFx : Spatial
 
 		// play sound
 		hitAudio.Stream = hitSound;
-		hitAudio.PitchScale = (GD.Randf() - 0.5f) * 0.25f + 1;
+		hitAudio.PitchScale = (GD.Randf() - 0.5f) * 0.1f + 1;
 		hitAudio.Play();
 
 		// set up blast fx scale variation

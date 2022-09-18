@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bullet-hit-blood.wav-93c1e3879e3b6a37c28caeb40adcd065.sample"
+
+[deps]
+
+source_file="res://Audio/bullet-hit-blood.wav"
+dest_files=[ "res://.import/bullet-hit-blood.wav-93c1e3879e3b6a37c28caeb40adcd065.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

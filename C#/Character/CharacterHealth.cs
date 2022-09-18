@@ -5,8 +5,10 @@ public class CharacterHealth : Health
 {
     
     [Export]
-    NodePath healthBarNodePath;
+    NodePath healthBarNodePath,
+        healthDamageFlashPath;
     TextureProgress healthBar;
+    ColorRect healthDamageFlash;
 
 
 
@@ -14,6 +16,7 @@ public class CharacterHealth : Health
     {
         // get nodes
         healthBar = GetNode<TextureProgress>(healthBarNodePath);
+        healthDamageFlash = GetNode<ColorRect>(healthDamageFlashPath);
 
         // update health bar
         healthBar.Value = hitPoints;
