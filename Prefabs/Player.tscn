@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://C#/Character/Character.cs" type="Script" id=1]
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
@@ -22,6 +22,10 @@
 [ext_resource path="res://Prefabs/FX/FxTmpMuzzleFlash.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Prefabs/FX/FxCasingPistol.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Prefabs/FX/FxCasingRifle.tscn" type="PackedScene" id=22]
+[ext_resource path="res://C#/Weapons/UiCrosshair.cs" type="Script" id=23]
+[ext_resource path="res://Textures/ui-crosshair-rapid.png" type="Texture" id=24]
+[ext_resource path="res://Textures/ui-crosshair-power.png" type="Texture" id=25]
+[ext_resource path="res://Textures/ui-crosshair-scatter.png" type="Texture" id=26]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.5
@@ -134,6 +138,8 @@ rangeMin = 2.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0541396, -0.499055 )
 
 [node name="FxTmpMuzzleFlash" parent="Weapon/Barrels" instance=ExtResource( 20 )]
+startScale = 1.0
+endScale = 2.0
 
 [node name="Barrel" type="Spatial" parent="Weapon/Barrels"]
 script = ExtResource( 8 )
@@ -182,15 +188,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -25.0
-margin_top = -25.0
-margin_right = 25.0
-margin_bottom = 25.0
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
 rect_pivot_offset = Vector2( 5, 5 )
 mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
+script = ExtResource( 23 )
+defaultCrosshair = ExtResource( 4 )
+rapidCrosshair = ExtResource( 24 )
+scatterCrosshair = ExtResource( 26 )
+powerCrosshair = ExtResource( 25 )
+characterNodePath = NodePath("../..")
 
 [node name="HealthBar" type="TextureProgress" parent="UI"]
 anchor_left = 0.33
