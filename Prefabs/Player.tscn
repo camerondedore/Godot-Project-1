@@ -81,6 +81,7 @@ spring_length = 2.5
 margin = 0.2
 script = ExtResource( 2 )
 cameraTargetPath = NodePath("CameraTarget")
+maxAngle = 50.0
 
 [node name="CameraTarget" type="Spatial" parent="CameraSpringArm"]
 

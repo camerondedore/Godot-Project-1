@@ -28,6 +28,14 @@ public class UiCrosshair : TextureRect
 
     public override void _Process(float delta)
     {
+        if(character.machine.CurrentState is CharacterStateStart)
+        {
+            // show no crosshair
+            this.Texture = null;
+
+            return;
+        }
+
         if(character.machine.CurrentState is CharacterStateSlide)
         {
             // show rapid crosshair
