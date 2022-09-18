@@ -37,6 +37,11 @@ public class CameraSpringArm : SpringArm
 
 	public override void _UnhandledInput(InputEvent e)
 	{	
+		if(Engine.TimeScale == 0)
+		{
+			return;
+		}
+
 		if(e is InputEventMouseMotion)
 		{
 			var mouseDirection = RotationDegrees;

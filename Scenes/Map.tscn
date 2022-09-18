@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Prefabs/Props/PropClock.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Prefabs/Target.tscn" type="PackedScene" id=20]
 [ext_resource path="res://C#/EngineTime.cs" type="Script" id=21]
+[ext_resource path="res://C#/Pause.cs" type="Script" id=22]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -88,6 +89,9 @@ script = ExtResource( 10 )
 [node name="EngineTime" type="Node" parent="Camera"]
 process_priority = -1
 script = ExtResource( 21 )
+
+[node name="Pause" type="Node" parent="Camera"]
+script = ExtResource( 22 )
 
 [node name="PlayerKinematicBody" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00266838, 0.86153, 0.0237942 )

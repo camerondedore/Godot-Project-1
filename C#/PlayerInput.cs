@@ -49,10 +49,10 @@ public class PlayerInput : Node
 		fire2 = Input.GetActionStrength("player-fire-2");
 
 		// temporary quit
-		if(Input.IsActionJustPressed("player-pause"))
-		{
-			GetTree().Quit();
-		}
+		// if(Input.IsActionJustPressed("player-pause"))
+		// {
+		// 	GetTree().Quit();
+		// }
 	}
 
 
