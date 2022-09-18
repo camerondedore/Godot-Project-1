@@ -6,9 +6,9 @@ public class CharacterHealth : Health
     
     [Export]
     NodePath healthBarNodePath,
-        healthDamageFlashPath;
+        uiAnimPlayerPath;
     TextureProgress healthBar;
-    ColorRect healthDamageFlash;
+    AnimationPlayer uiAnimPlayer;
 
 
 
@@ -16,7 +16,7 @@ public class CharacterHealth : Health
     {
         // get nodes
         healthBar = GetNode<TextureProgress>(healthBarNodePath);
-        healthDamageFlash = GetNode<ColorRect>(healthDamageFlashPath);
+        uiAnimPlayer = GetNode<AnimationPlayer>(uiAnimPlayerPath);
 
         // update health bar
         healthBar.Value = hitPoints;
@@ -30,6 +30,9 @@ public class CharacterHealth : Health
         
         // update health bar
         healthBar.Value = hitPoints;
+
+        // flash screen
+        uiAnimPlayer.Play("UIHealthDamageFlash");
     }
 
 
