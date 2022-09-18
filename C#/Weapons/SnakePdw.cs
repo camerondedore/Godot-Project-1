@@ -17,7 +17,9 @@ public class SnakePdw : Spatial
 		barrelScatterShotPath,
 		weaponAudioPath,
 		characterNodePath,
-		casingEjectorNodePath,
+		casingEjectorPistolNodePath,
+		casingEjectorShotshellNodePath,
+		casingEjectorRifleNodePath,
 		muzzleFlashFxPath;
 	[Export]
 	public float rateOfFire = 600,
@@ -37,7 +39,9 @@ public class SnakePdw : Spatial
 		barrelScatterShot;
 	public AudioStreamPlayer3D weaponAudioPlayer;
 	public Character character;
-	public CasingEjector casingEjector;
+	public CasingEjector casingEjectorPistol,
+		casingEjectorShotshell,
+		casingEjectorRifle;
 	public MuzzleFlashFx muzzleFlashFx;
 	public float trigger = 0;
 
@@ -52,7 +56,9 @@ public class SnakePdw : Spatial
 		barrelScatterShot = GetNode<Barrel>(barrelScatterShotPath);
 		weaponAudioPlayer = GetNode<AudioStreamPlayer3D>(weaponAudioPath);
 		character = GetNode<Character>(characterNodePath);
-		casingEjector = GetNode<CasingEjector>(casingEjectorNodePath);
+		casingEjectorPistol = GetNode<CasingEjector>(casingEjectorPistolNodePath);
+		casingEjectorShotshell = GetNode<CasingEjector>(casingEjectorShotshellNodePath);
+		casingEjectorRifle = GetNode<CasingEjector>(casingEjectorRifleNodePath);
 		muzzleFlashFx = GetNode<MuzzleFlashFx>(muzzleFlashFxPath);
 
 

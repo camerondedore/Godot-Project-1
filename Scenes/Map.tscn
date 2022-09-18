@@ -124,13 +124,22 @@ transform = Transform( 1, 0, 0, 0, 0.157641, -0.987496, 0, 0.987496, 0.157641, 7
 transform = Transform( 0.719786, 0.000310148, 0.694196, 0.000169189, 1, -0.000622181, -0.694196, 0.000565281, 0.719786, 1.67012, 0.750978, -5.00253 )
 
 [node name="PropFoodBarrel2" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.75, -2 )
+transform = Transform( 0.977772, 0, 0.20967, 0, 1, 0, -0.20967, 0, 0.977772, -8, 0.75, -2 )
+
+[node name="PropFoodBarrel11" parent="Props" instance=ExtResource( 12 )]
+transform = Transform( 0.041614, 0, 0.999134, 0, 1, 0, -0.999134, 0, 0.041614, -8.9108, 0.75, -1.63689 )
+
+[node name="PropFoodBarrel13" parent="Props" instance=ExtResource( 12 )]
+transform = Transform( -0.747995, 0, 0.663704, 0, 1, 0, -0.663704, 0, -0.747995, -8.86879, 0.75, -0.591655 )
 
 [node name="PropFoodBarrel7" parent="Props" instance=ExtResource( 12 )]
 transform = Transform( 0.0222691, 0.000586722, -0.999752, -0.00168761, 0.999999, 0.000549299, 0.99975, 0.00167497, 0.02227, -7.3133, 2.15, -1.05069 )
 
 [node name="PropFoodBarrel9" parent="Props" instance=ExtResource( 12 )]
 transform = Transform( 0.502975, 0.000586721, -0.864301, -0.00174278, 0.999999, -0.000335362, 0.864299, 0.00167496, 0.502975, -7.73915, 2.14884, -0.209202 )
+
+[node name="PropFoodBarrel12" parent="Props" instance=ExtResource( 12 )]
+transform = Transform( 0.993316, 0.000586724, -0.115422, -0.000776129, 0.999999, -0.00159605, 0.115421, 0.00167497, 0.993315, -8.239, 2.15032, -0.916959 )
 
 [node name="PropFoodBarrel10" parent="Props" instance=ExtResource( 12 )]
 transform = Transform( -0.25389, 0.000438219, -0.967233, -0.0018404, 0.999998, 0.000936131, 0.967231, 0.00201778, -0.253889, -7.39757, 3.64923, -0.559892 )

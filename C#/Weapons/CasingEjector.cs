@@ -38,6 +38,7 @@ public class CasingEjector : Spatial
 
         // eject rigid body
         casing.LinearVelocity = ejectionDirection;
+        casing.AngularVelocity = new Vector3(GD.Randf() - 0.5f, GD.Randf() - 0.5f, GD.Randf() - 0.5f) * 3.14f * 5;
 
         // set parent as root scene
         GetTree().Root.AddChild(casing);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://C#/Character/Character.cs" type="Script" id=1]
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
@@ -18,8 +18,10 @@
 [ext_resource path="res://Textures/ui-health-border.png" type="Texture" id=16]
 [ext_resource path="res://C#/Character/CharacterHealth.cs" type="Script" id=17]
 [ext_resource path="res://C#/Hitbox.cs" type="Script" id=18]
-[ext_resource path="res://Prefabs/FX/FxTmpCasing.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Prefabs/FX/FxCasingShotshell.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Prefabs/FX/FxTmpMuzzleFlash.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Prefabs/FX/FxCasingPistol.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Prefabs/FX/FxCasingRifle.tscn" type="PackedScene" id=22]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.5
@@ -73,7 +75,9 @@ barrelPowerShotPath = NodePath("Barrels/Barrel Power Shot")
 barrelScatterShotPath = NodePath("Barrels/Barrel Scatter Shot")
 weaponAudioPath = NodePath("WeaponAudio")
 characterNodePath = NodePath("..")
-casingEjectorNodePath = NodePath("CasingEjector")
+casingEjectorPistolNodePath = NodePath("CasingEjectorPistol")
+casingEjectorShotshellNodePath = NodePath("CasingEjectorShotshell")
+casingEjectorRifleNodePath = NodePath("CasingEjectorRifle")
 muzzleFlashFxPath = NodePath("Barrels/FxTmpMuzzleFlash")
 rateOfFire = 400.0
 rateOfRapidFire = 800.0
@@ -83,11 +87,24 @@ rapidFireSound = ExtResource( 11 )
 powerShotSound = ExtResource( 13 )
 scatterShotSound = ExtResource( 12 )
 
-[node name="CasingEjector" type="Spatial" parent="Weapon"]
+[node name="CasingEjectorPistol" type="Spatial" parent="Weapon"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192575, 0, -0.424076 )
+script = ExtResource( 3 )
+casingScene = ExtResource( 21 )
+direction = Vector3( 5, 3, -2 )
+spread = 1.5
+
+[node name="CasingEjectorShotshell" type="Spatial" parent="Weapon"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192575, 0, -0.424076 )
 script = ExtResource( 3 )
 casingScene = ExtResource( 19 )
-direction = Vector3( 5, 3, 1 )
+direction = Vector3( 5, 3, -1 )
+
+[node name="CasingEjectorRifle" type="Spatial" parent="Weapon"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192575, 0, -0.424076 )
+script = ExtResource( 3 )
+casingScene = ExtResource( 22 )
+direction = Vector3( 4, 4, -1 )
 spread = 0.5
 
 [node name="BarrelAimer" type="Spatial" parent="Weapon"]
