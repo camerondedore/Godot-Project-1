@@ -22,19 +22,32 @@ public class Pause : Node
         {
             if(Engine.TimeScale > 0)
             {
-                Engine.TimeScale = 0;
-                
-                // unlock cursor
-		        Input.SetMouseMode(Input.MouseMode.Visible);
+                PauseGame();
             }
             else
             {
-                Engine.TimeScale = 1;
-                
-                // lock cursor
-		        Input.SetMouseMode(Input.MouseMode.Captured);
+                ResumeGame();
             }
-        }
-        
+        }        
+    }
+
+
+
+    public static void ResumeGame()
+    {
+        Engine.TimeScale = 1;
+                
+        // lock cursor
+        Input.SetMouseMode(Input.MouseMode.Captured);
+    }
+
+
+
+    public static void PauseGame()
+    {
+        Engine.TimeScale = 0;
+                
+        // lock cursor
+        Input.SetMouseMode(Input.MouseMode.Visible);
     }
 }

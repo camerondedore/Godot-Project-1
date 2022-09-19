@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://Prefabs/Target.tscn" type="PackedScene" id=20]
 [ext_resource path="res://C#/EngineTime.cs" type="Script" id=21]
 [ext_resource path="res://C#/Pause.cs" type="Script" id=22]
+[ext_resource path="res://C#/PauseMenu.cs" type="Script" id=23]
+[ext_resource path="res://Textures/ui-pause-background.png" type="Texture" id=24]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -74,7 +76,7 @@ depth = 60.0
 material = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.766734, 0.278441, -0.578437, 0, 0.901042, 0.433732, 0.641965, -0.332557, 0.69086, -9.33544, 8.13544, 7.97475 )
+transform = Transform( 0.766734, 0.278441, -0.578437, 0, 0.901042, 0.433732, 0.641965, -0.332557, 0.690859, -9.33544, 8.13544, 7.97475 )
 current = true
 fov = 80.0
 script = ExtResource( 7 )
@@ -92,6 +94,56 @@ script = ExtResource( 21 )
 
 [node name="Pause" type="Node" parent="Camera"]
 script = ExtResource( 22 )
+
+[node name="UI" type="CanvasLayer" parent="Camera"]
+layer = 128
+script = ExtResource( 23 )
+menuPath = NodePath("Menu")
+resumeButtonPath = NodePath("Menu/GridContainer/ResumeButton")
+quitButtonPath = NodePath("Menu/GridContainer/QuitButton")
+
+[node name="Menu" type="Control" parent="Camera/UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="Camera/UI/Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="Camera/UI/Menu"]
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.4
+margin_left = -50.0
+margin_top = -30.0
+margin_right = 50.0
+margin_bottom = -30.0
+mouse_filter = 2
+custom_constants/vseparation = 10
+
+[node name="ResumeButton" type="Button" parent="Camera/UI/Menu/GridContainer"]
+margin_right = 100.0
+margin_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 20 )
+text = "RESUME"
+
+[node name="QuitButton" type="Button" parent="Camera/UI/Menu/GridContainer"]
+margin_top = 30.0
+margin_right = 100.0
+margin_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 20 )
+text = "Quit"
 
 [node name="PlayerKinematicBody" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00266838, 0.86153, 0.0237942 )
