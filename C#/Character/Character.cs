@@ -30,7 +30,8 @@ public class Character : KinematicBody
 		jumpStartTime = 0.1f,
 		slopeRayRange = 1.4f;
 	[Export]
-	NodePath cameraSpringArmPath;
+	NodePath cameraSpringArmPath,
+		characterUiPath;
 	public float gravity,
 		maxSlopeAngleRad,
 		maxSlideAngleRad,
@@ -41,6 +42,7 @@ public class Character : KinematicBody
 		jumpPadVelocity,
 		snap = Vector3.Down;
 	public CameraSpringArm cameraSpringArm;
+	public CharacterUi characterUi;
 	public Disconnector jumpDisconnector = new Disconnector();
 	//public bool slopeRayHitCollider = false;
 	[Export]
@@ -67,6 +69,7 @@ public class Character : KinematicBody
 		// get nodes
 		//cameraSpringArm = GetNode<CameraSpringArm>("CameraSpringArm");
 		cameraSpringArm = GetNode<CameraSpringArm>(cameraSpringArmPath);
+		characterUi = GetNode<CharacterUi>(characterUiPath);
 
 		// initialize states
 		stateIdle = new CharacterStateIdle(){blackboard = this};

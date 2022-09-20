@@ -22,6 +22,9 @@ public class CharacterStateStart : CharacterState
 	public override void StartState()
 	{
 		blackboard.snap = Vector3.Down;
+		
+		// hide UI
+		blackboard.characterUi.HideUi();
 	}
 
 
@@ -30,6 +33,9 @@ public class CharacterStateStart : CharacterState
 	{
 		// set camera to start following
 		GlobalCamera.camera.machine.SetState(GlobalCamera.camera.stateTransition);
+
+		// show UI
+		blackboard.characterUi.ShowUi();
 	}
 
 

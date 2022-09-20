@@ -61,6 +61,7 @@ script = ExtResource( 1 )
 landTime = 0.07
 jumpStartTime = 0.07
 cameraSpringArmPath = NodePath("CameraSpringArm")
+characterUiPath = NodePath("UI")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )

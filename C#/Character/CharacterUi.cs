@@ -6,6 +6,7 @@ public class CharacterUi : Node
     
     [Export]
     NodePath uiRootPath;
+    bool showUi = true;
     Control uiRoot;
 
 
@@ -24,13 +25,32 @@ public class CharacterUi : Node
          if(uiRoot.Visible == true && Engine.TimeScale == 0)
         {
             // disable ui
-            uiRoot.Visible = false;
+            uiRoot.Visible = false;            
         }
 
         if(uiRoot.Visible == false && Engine.TimeScale != 0)
         {
-            // enable ui
-            uiRoot.Visible = true;
+            if(showUi)
+            {
+                // enable ui
+                uiRoot.Visible = true;
+            }
         }
+    }
+
+
+
+    public void ShowUi()
+    {
+        uiRoot.Visible = true;
+        showUi = true;
+    }
+
+
+
+    public void HideUi()
+    {
+        uiRoot.Visible = false;
+        showUi = false;
     }
 }

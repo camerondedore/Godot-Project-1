@@ -3,7 +3,7 @@
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
 [ext_resource path="res://Prefabs/Props/PropFenceChainLinkGate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefabs/Props/PropFenceChainLinkSmallPart.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Blends/prop-billboard.glb" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/Props/PropInteriorLight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Prefabs/Buildings/BuildingGuardTower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://C#/Camera/GlobalCamera.cs" type="Script" id=7]
@@ -76,7 +76,7 @@ depth = 60.0
 material = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.766734, 0.278441, -0.578437, 0, 0.901042, 0.433732, 0.641965, -0.332557, 0.690859, -9.33544, 8.13544, 7.97475 )
+transform = Transform( 0.973809, 0.061545, -0.218881, 0, 0.962669, 0.270683, 0.227369, -0.263594, 0.937454, -10.8102, 10.2212, 11.6856 )
 current = true
 fov = 80.0
 script = ExtResource( 7 )
@@ -163,68 +163,56 @@ bulletScene = ExtResource( 9 )
 
 [node name="Props" type="Spatial" parent="."]
 
-[node name="PropPallet" parent="Props" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27173, 0.1, -4.64777 )
-
 [node name="PropPallet3" parent="Props" groups=["slippery"] instance=ExtResource( 11 )]
-transform = Transform( 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -2.67954, 0.519497, 1.24033 )
+transform = Transform( 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -2.67954, 0.519497, 7.22305 )
 
 [node name="PropPallet5" parent="Props" groups=["slippery"] instance=ExtResource( 11 )]
-transform = Transform( 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -6.14364, 2.5195, 1.24033 )
+transform = Transform( 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -6.14364, 2.5195, 7.22305 )
 
 [node name="PropPallet4" parent="Props" groups=["slippery"] instance=ExtResource( 11 )]
-transform = Transform( -3.1093e-08, 0.5, 0.866025, 2.18557e-08, 0.866025, -0.5, -1, 3.38109e-09, -3.78552e-08, -4.41159, 1.5195, 1.24033 )
+transform = Transform( -3.1093e-08, 0.5, 0.866025, 2.18557e-08, 0.866025, -0.5, -1, 3.38109e-09, -3.78552e-08, -4.41159, 1.5195, 7.22305 )
 
 [node name="PropPallet6" parent="Props" groups=["slippery"] instance=ExtResource( 11 )]
-transform = Transform( -3.1093e-08, 0.5, 0.866025, 2.18557e-08, 0.866025, -0.5, -1, 3.38109e-09, -3.78552e-08, -7.87569, 3.5195, 1.24033 )
+transform = Transform( -3.1093e-08, 0.5, 0.866025, 2.18557e-08, 0.866025, -0.5, -1, 3.38109e-09, -3.78552e-08, -7.87569, 3.5195, 7.22305 )
 
 [node name="PropPallet2" parent="Props" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 0.157641, -0.987496, 0, 0.987496, 0.157641, 7.73595, 1.02629, -5.69431 )
 
-[node name="PropFoodBarrel" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 0.719786, 0.000310148, 0.694196, 0.000169189, 1, -0.000622181, -0.694196, 0.000565281, 0.719786, 1.67012, 0.750978, -5.00253 )
-
 [node name="PropFoodBarrel2" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 0.977772, 0, 0.20967, 0, 1, 0, -0.20967, 0, 0.977772, -8, 0.75, -2 )
+transform = Transform( 0.977772, 0, 0.20967, 0, 1, 0, -0.20967, 0, 0.977772, -9.96136, 0.75, 5.87547 )
 
 [node name="PropFoodBarrel11" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 0.041614, 0, 0.999134, 0, 1, 0, -0.999134, 0, 0.041614, -8.9108, 0.75, -1.63689 )
+transform = Transform( 0.041614, 0, 0.999134, 0, 1, 0, -0.999134, 0, 0.041614, -10.8722, 0.75, 6.23858 )
 
 [node name="PropFoodBarrel13" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( -0.747995, 0, 0.663704, 0, 1, 0, -0.663704, 0, -0.747995, -8.86879, 0.75, -0.591655 )
+transform = Transform( -0.747995, 0, 0.663704, 0, 1, 0, -0.663704, 0, -0.747995, -10.8302, 0.75, 7.28381 )
 
 [node name="PropFoodBarrel7" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 0.0222691, 0.000586722, -0.999752, -0.00168761, 0.999999, 0.000549299, 0.99975, 0.00167497, 0.02227, -7.3133, 2.15, -1.05069 )
+transform = Transform( 0.0222691, 0.000586722, -0.999752, -0.00168761, 0.999999, 0.000549299, 0.99975, 0.00167497, 0.02227, -9.27466, 2.15, 6.82478 )
 
 [node name="PropFoodBarrel9" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 0.502975, 0.000586721, -0.864301, -0.00174278, 0.999999, -0.000335362, 0.864299, 0.00167496, 0.502975, -7.73915, 2.14884, -0.209202 )
+transform = Transform( 0.502975, 0.000586721, -0.864301, -0.00174278, 0.999999, -0.000335362, 0.864299, 0.00167496, 0.502975, -9.70051, 2.14884, 7.66627 )
 
 [node name="PropFoodBarrel12" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 0.993316, 0.000586724, -0.115422, -0.000776129, 0.999999, -0.00159605, 0.115421, 0.00167497, 0.993315, -8.239, 2.15032, -0.916959 )
+transform = Transform( 0.993316, 0.000586724, -0.115422, -0.000776129, 0.999999, -0.00159605, 0.115421, 0.00167497, 0.993315, -10.2004, 2.15032, 6.95851 )
 
 [node name="PropFoodBarrel10" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( -0.25389, 0.000438219, -0.967233, -0.0018404, 0.999998, 0.000936131, 0.967231, 0.00201778, -0.253889, -7.39757, 3.64923, -0.559892 )
+transform = Transform( -0.25389, 0.000438219, -0.967233, -0.0018404, 0.999998, 0.000936131, 0.967231, 0.00201778, -0.253889, -9.35893, 3.64923, 7.31558 )
 
 [node name="PropFoodBarrel4" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 0.799915, 0, 0.600113, 0, 1, 0, -0.600113, 0, 0.799915, -8.04068, 0.75, -1.06984 )
+transform = Transform( 0.799915, 0, 0.600113, 0, 1, 0, -0.600113, 0, 0.799915, -10.002, 0.75, 6.80563 )
 
 [node name="PropFoodBarrel5" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 0.969209, 0, 0.246238, 0, 1, 0, -0.246238, 0, 0.969209, -7.2334, 0.75, -1.55201 )
+transform = Transform( 0.969209, 0, 0.246238, 0, 1, 0, -0.246238, 0, 0.969209, -9.19476, 0.75, 6.32346 )
 
 [node name="PropFoodBarrel6" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( -0.0678063, 0, 0.997698, 0, 1, 0, -0.997698, 0, -0.0678063, -7.20773, 0.75, -0.708442 )
+transform = Transform( -0.0678063, 0, 0.997698, 0, 1, 0, -0.997698, 0, -0.0678063, -9.16909, 0.75, 7.16703 )
 
 [node name="PropFoodBarrel8" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 0.990918, 0, -0.134471, 0, 1, 0, 0.134471, 0, 0.990918, -7.85261, 0.75, -0.105655 )
-
-[node name="PropFoodBarrel3" parent="Props" instance=ExtResource( 12 )]
-transform = Transform( 0.782828, 0.622239, 2.71989e-08, 0, -4.37114e-08, 1, 0.622239, -0.782828, -3.42185e-08, 2.99152, 0.391894, -4.64751 )
+transform = Transform( 0.990918, 0, -0.134471, 0, 1, 0, 0.134471, 0, 0.990918, -9.81397, 0.75, 7.76981 )
 
 [node name="PropBeerKeg" parent="Props" instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.44551, 0.5, -5.25025 )
-
-[node name="PropBeerKeg2" parent="Props" instance=ExtResource( 13 )]
-transform = Transform( 0.413708, 0, 0.91041, 0, 1, 0, -0.91041, 0, 0.413708, -4.0266, 0.7, -5.10677 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95568, 0.5, -5.07898 )
 
 [node name="PropChainLinkFenceGate" parent="Props" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
@@ -238,44 +226,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -6 )
 [node name="PropChainLinkFenceLargePart6" parent="Props" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -6 )
 
-[node name="PropChainLinkFenceLargePart7" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0, -4 )
-
-[node name="PropChainLinkFenceLargePart8" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0, 0 )
-
 [node name="PropChainLinkFenceLargePart2" parent="Props" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -6 )
-
-[node name="PropChainLinkFenceLargePart11" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 5, 0, 6 )
-
-[node name="PropChainLinkFenceLargePart12" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -5, 0, 6 )
-
-[node name="PropChainLinkFenceLargePart15" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1, 0, 6 )
-
-[node name="PropChainLinkFenceLargePart13" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -9, 0, 6 )
-
-[node name="PropChainLinkFenceLargePart14" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 9, 0, 6 )
-
-[node name="PropChainLinkFenceLargePart3" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 0, -4 )
-
-[node name="PropChainLinkFenceLargePart4" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 0, 0 )
-
-[node name="PropChainLinkFenceLargePart9" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0, 4 )
-
-[node name="PropChainLinkFenceLargePart10" parent="Props" instance=ExtResource( 14 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 0, 4 )
-
-[node name="PropChainLinkFenceSmallPart" parent="Props" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 2, 0, 6 )
 
 [node name="PropCamera" parent="Props" instance=ExtResource( 18 )]
 transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4.5, 4, -9.7 )
@@ -327,6 +279,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56509, 1.25902, -23.1865 )
 
 [node name="Target5" parent="." instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3883, 1.25902, -23.8494 )
+
+[node name="prop-billboard" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -14.176, 0, -2.78199 )
 
 [editable path="Props/PropCamera"]
 [editable path="Lighting/PropSpotLight"]
