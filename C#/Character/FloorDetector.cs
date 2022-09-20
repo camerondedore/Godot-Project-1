@@ -27,7 +27,7 @@ public class FloorDetector : Node
 			while(collisionCount > 0)
 			{
 				collisionCount--;
-				var node = (Node) blackboard.GetSlideCollision(0).Collider;
+				var node = (Node) blackboard.GetSlideCollision(collisionCount).Collider;
 				var nodeGroups = node.GetGroups();
 
 				// check groups
@@ -45,7 +45,7 @@ public class FloorDetector : Node
 					// play animation
 					jumpPad.PlayAnimation();
 				}
-				else if(nodeGroups.Contains("slippery"))
+				else if(nodeGroups.Contains("slippery") && blackboard.GetSlideCollision(collisionCount).Normal.AngleTo(Vector3.Up) < 1.5f)
 				{
 					if(!(blackboard.machine.CurrentState is CharacterStateSlide))
 					{
