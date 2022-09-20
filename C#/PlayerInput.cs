@@ -12,8 +12,7 @@ public class PlayerInput : Node
 		jump,
 		fire1,
 		fire2;
-	
-
+	public static bool isMouseMoving;
 
 
 	public override void _Ready()
@@ -48,11 +47,8 @@ public class PlayerInput : Node
 		fire1 = Input.GetActionStrength("player-fire-1");
 		fire2 = Input.GetActionStrength("player-fire-2");
 
-		// temporary quit
-		// if(Input.IsActionJustPressed("player-pause"))
-		// {
-		// 	GetTree().Quit();
-		// }
+		// set mouse moving to false, this will be reset by the unhandled input method
+		isMouseMoving = false;
 	}
 
 
@@ -64,6 +60,8 @@ public class PlayerInput : Node
 		{
 			look.x = ((InputEventMouseMotion) e).Relative.x;
 			look.y = ((InputEventMouseMotion) e).Relative.y;
+
+			isMouseMoving = true;
 		}
 	}
 }

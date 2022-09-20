@@ -7,9 +7,11 @@ public class PauseMenu : Node
     [Export]
     NodePath menuPath,
         resumeButtonPath,
+        restartButtonPath,
         quitButtonPath;
     Control menu;
     Button resumeButton,
+        restartButton,
         quitButton;
 
 
@@ -19,10 +21,12 @@ public class PauseMenu : Node
         // get nodes
         menu = GetNode<Control>(menuPath);
         resumeButton = GetNode<Button>(resumeButtonPath);
+        restartButton = GetNode<Button>(restartButtonPath);
         quitButton = GetNode<Button>(quitButtonPath);
 
         // set up buttons
         resumeButton.Connect("pressed", this, "Resume");
+        restartButton.Connect("pressed", this, "Restart");
         quitButton.Connect("pressed", this, "Quit");
     }
 
@@ -55,5 +59,15 @@ public class PauseMenu : Node
     void Quit()
     {
         GetTree().Quit();
+    }
+
+
+
+    void Restart()
+    {
+        // var currentScene = this.Owner.Filename;
+        
+        
+        // RequestReady();
     }
 }

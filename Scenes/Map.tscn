@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://C#/Pause.cs" type="Script" id=22]
 [ext_resource path="res://C#/PauseMenu.cs" type="Script" id=23]
 [ext_resource path="res://Textures/ui-pause-background.png" type="Texture" id=24]
+[ext_resource path="res://Fonts/ny-esc/new-york-escape.tres" type="DynamicFont" id=25]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -76,6 +77,7 @@ depth = 60.0
 material = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
+process_priority = -1
 transform = Transform( 0.973809, 0.061545, -0.218881, 0, 0.962669, 0.270683, 0.227369, -0.263594, 0.937454, -10.8102, 10.2212, 11.6856 )
 current = true
 fov = 80.0
@@ -100,6 +102,7 @@ layer = 128
 script = ExtResource( 23 )
 menuPath = NodePath("Menu")
 resumeButtonPath = NodePath("Menu/GridContainer/ResumeButton")
+restartButtonPath = NodePath("Menu/GridContainer/RestartButton")
 quitButtonPath = NodePath("Menu/GridContainer/QuitButton")
 
 [node name="Menu" type="Control" parent="Camera/UI"]
@@ -129,20 +132,33 @@ mouse_filter = 2
 custom_constants/vseparation = 10
 
 [node name="ResumeButton" type="Button" parent="Camera/UI/Menu/GridContainer"]
-margin_right = 100.0
-margin_bottom = 20.0
+margin_right = 103.0
+margin_bottom = 24.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 20 )
+custom_fonts/font = ExtResource( 25 )
 text = "RESUME"
 
-[node name="QuitButton" type="Button" parent="Camera/UI/Menu/GridContainer"]
-margin_top = 30.0
-margin_right = 100.0
-margin_bottom = 50.0
+[node name="RestartButton" type="Button" parent="Camera/UI/Menu/GridContainer"]
+margin_top = 34.0
+margin_right = 103.0
+margin_bottom = 58.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 20 )
+custom_fonts/font = ExtResource( 25 )
+disabled = true
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="Camera/UI/Menu/GridContainer"]
+margin_top = 68.0
+margin_right = 103.0
+margin_bottom = 92.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 20 )
+custom_fonts/font = ExtResource( 25 )
 text = "Quit"
 
 [node name="PlayerKinematicBody" parent="." instance=ExtResource( 1 )]

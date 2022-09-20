@@ -43,7 +43,7 @@ public class CharacterStateStart : CharacterState
 	public override State Transition()
 	{
 		var isDelayed = EngineTime.timePassed > 1.5f;
-		var inputDetected = PlayerInput.isMoving || PlayerInput.look.LengthSquared() > 0 || PlayerInput.fire1 > 0;
+		var inputDetected = PlayerInput.isMoving || PlayerInput.isMouseMoving || PlayerInput.fire1 > 0;
 
         if(isDelayed && inputDetected)
         {

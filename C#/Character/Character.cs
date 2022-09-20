@@ -99,8 +99,11 @@ public class Character : KinematicBody
 		
 
 		// run machine
-		machine.CurrentState.RunState(delta);
-		machine.SetState(machine.CurrentState.Transition());
+		if(machine != null && machine.CurrentState != null)
+		{
+			machine.CurrentState.RunState(delta);
+			machine.SetState(machine.CurrentState.Transition());
+		}
 
 		// debug
 		// if(debugText != machine.CurrentState.ToString())

@@ -37,7 +37,10 @@ public class GlobalCamera : Camera
     public override void _PhysicsProcess(float delta)
     {
         // run machine
-		machine.CurrentState.RunState(delta);
-		machine.SetState(machine.CurrentState.Transition());
+        if(machine != null && machine.CurrentState != null)
+        {
+            machine.CurrentState.RunState(delta);
+            machine.SetState(machine.CurrentState.Transition());
+        }
     }
 }
