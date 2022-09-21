@@ -3,7 +3,7 @@
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Materials/tmp-platform.tres" type="Material" id=2]
 [ext_resource path="res://Prefabs/Props/PropFenceChainLinkGate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Blends/prop-billboard.glb" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Props/PropBillboard.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/Props/PropInteriorLight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Prefabs/Buildings/BuildingGuardTower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://C#/Camera/GlobalCamera.cs" type="Script" id=7]
@@ -258,6 +258,9 @@ mesh = SubResource( 4 )
 [node name="PropClock" parent="Props" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, -6 )
 
+[node name="PropBillboard" parent="Props" instance=ExtResource( 4 )]
+transform = Transform( -0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -12.4776, 4.76837e-07, -2.81257 )
+
 [node name="Lighting" type="Spatial" parent="."]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="Lighting"]
@@ -295,9 +298,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56509, 1.25902, -23.1865 )
 
 [node name="Target5" parent="." instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3883, 1.25902, -23.8494 )
-
-[node name="prop-billboard" parent="." instance=ExtResource( 4 )]
-transform = Transform( -0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -14.176, 0, -2.78199 )
 
 [editable path="Props/PropCamera"]
 [editable path="Lighting/PropSpotLight"]
