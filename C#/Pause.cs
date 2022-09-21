@@ -10,8 +10,7 @@ public class Pause : Node
 
     public override void _Ready()
     {
-        // lock cursor
-        Input.SetMouseMode(Input.MouseMode.Captured);
+        ResumeGame();
     }
 
 

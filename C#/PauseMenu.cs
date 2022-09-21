@@ -67,7 +67,8 @@ public class PauseMenu : Node
     {
         // var currentScene = this.Owner.Filename;
         
-        
-        // RequestReady();
+        // incomplete, for dev only
+        GetTree().ReloadCurrentScene();
+        RequestReady();
     }
 }
