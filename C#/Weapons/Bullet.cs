@@ -7,6 +7,7 @@ public class Bullet : Spatial
 	[Export]
 	float damage = 10,
 		speed = 100,
+		speedVariation = 0,
 		rangeSqr = 1000,
 		gravityInfluence = 1;
 	[Export]
@@ -28,7 +29,7 @@ public class Bullet : Spatial
 		// right: GlobalTransform.basis.x
 
 		// initialize velocity
-		velocity = -GlobalTransform.basis.z.Normalized() * speed;
+		velocity = -GlobalTransform.basis.z.Normalized() * (speed + (GD.Randf() - 0.5f) * speedVariation);
 
 		// get gravity
 		var gravityVector = (Vector3) ProjectSettings.GetSetting("physics/3d/default_gravity_vector");
@@ -52,7 +53,7 @@ public class Bullet : Spatial
 		//var exclude = new Godot.Collections.Array { Owner };
 
 		// cast ray
-		var rayResult = spaceState.IntersectRay(GlobalTransform.origin, GlobalTransform.origin + velocity * delta * 1.05f, new Godot.Collections.Array { this }, mask);
+		var rayResult = spaceState.IntersectRay(GlobalTransform.origin, GlobalTransform.origin + velocity * delta * 1.1f, new Godot.Collections.Array { this }, mask);
 
 		if(!rayResult.Contains("collider"))
 		{

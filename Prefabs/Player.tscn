@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://C#/Character/Character.cs" type="Script" id=1]
 [ext_resource path="res://C#/CameraSpringArm.cs" type="Script" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Textures/ui-crosshair-power.png" type="Texture" id=25]
 [ext_resource path="res://Textures/ui-crosshair-scatter.png" type="Texture" id=26]
 [ext_resource path="res://C#/Character/CharacterUi.cs" type="Script" id=27]
+[ext_resource path="res://Prefabs/Weapons/Shot.tscn" type="PackedScene" id=28]
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.5
@@ -161,7 +162,7 @@ spread = 0.0
 
 [node name="Barrel Scatter Shot" type="Spatial" parent="Weapon/Barrels"]
 script = ExtResource( 8 )
-bulletScene = ExtResource( 7 )
+bulletScene = ExtResource( 28 )
 spread = 30.0
 shotCount = 15
 
