@@ -8,11 +8,13 @@ public class PauseMenu : Node
     NodePath menuPath,
         resumeButtonPath,
         restartButtonPath,
+        timeSliderPath,
         quitButtonPath;
     Control menu;
     Button resumeButton,
         restartButton,
         quitButton;
+    Slider timeSlider;
 
 
 
@@ -22,11 +24,13 @@ public class PauseMenu : Node
         menu = GetNode<Control>(menuPath);
         resumeButton = GetNode<Button>(resumeButtonPath);
         restartButton = GetNode<Button>(restartButtonPath);
+        timeSlider = GetNode<Slider>(timeSliderPath);
         quitButton = GetNode<Button>(quitButtonPath);
 
         // set up buttons
         resumeButton.Connect("pressed", this, "Resume");
         restartButton.Connect("pressed", this, "Restart");
+        timeSlider.Connect("value_changed", this, "SetTime");
         quitButton.Connect("pressed", this, "Quit");
     }
 
@@ -71,5 +75,12 @@ public class PauseMenu : Node
         // incomplete, for dev only
         // GetTree().ReloadCurrentScene();
         // RequestReady();
+    }
+
+
+
+    void SetTime(float value)
+    {
+        Pause.savedTimeScale = value;
     }
 }

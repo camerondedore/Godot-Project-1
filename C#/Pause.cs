@@ -4,6 +4,7 @@ using System;
 public class Pause : Node
 {
     
+    public static float savedTimeScale = 1;
     Disconnector discon = new Disconnector();
 
 
@@ -34,7 +35,7 @@ public class Pause : Node
 
     public static void ResumeGame()
     {
-        Engine.TimeScale = 1;
+        Engine.TimeScale = savedTimeScale;
                 
         // lock cursor
         Input.SetMouseMode(Input.MouseMode.Captured);

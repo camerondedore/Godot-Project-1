@@ -103,6 +103,7 @@ script = ExtResource( 23 )
 menuPath = NodePath("Menu")
 resumeButtonPath = NodePath("Menu/GridContainer/ResumeButton")
 restartButtonPath = NodePath("Menu/GridContainer/RestartButton")
+timeSliderPath = NodePath("Menu/GridContainer/TimeSlider")
 quitButtonPath = NodePath("Menu/GridContainer/QuitButton")
 
 [node name="Menu" type="Control" parent="Camera/UI"]
@@ -150,10 +151,19 @@ rect_min_size = Vector2( 100, 20 )
 custom_fonts/font = ExtResource( 25 )
 text = "RESTART"
 
-[node name="QuitButton" type="Button" parent="Camera/UI/Menu/GridContainer"]
+[node name="TimeSlider" type="HSlider" parent="Camera/UI/Menu/GridContainer"]
 margin_top = 68.0
 margin_right = 103.0
-margin_bottom = 92.0
+margin_bottom = 84.0
+min_value = 0.05
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="QuitButton" type="Button" parent="Camera/UI/Menu/GridContainer"]
+margin_top = 94.0
+margin_right = 103.0
+margin_bottom = 118.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 20 )
