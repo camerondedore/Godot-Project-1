@@ -7,7 +7,7 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2, 2.375, 0.05 )
 
-[node name="PropChainLinkFenceLArgePart" type="StaticBody"]
+[node name="PropChainLinkFenceLarge" type="StaticBody"]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
