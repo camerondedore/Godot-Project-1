@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class MobPawn : KinematicBody
+public class MobWimp : KinematicBody
 {
     
     public StateMachine machine = new StateMachine();
