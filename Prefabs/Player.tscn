@@ -105,7 +105,6 @@ casingEjectorShotshellNodePath = NodePath("CasingEjectorShotshell")
 casingEjectorRifleNodePath = NodePath("CasingEjectorRifle")
 muzzleFlashFxPath = NodePath("Barrels/FxTmpMuzzleFlash")
 rateOfFire = 400.0
-rateOfRapidFire = 800.0
 powerShotTime = 0.65
 fireSound = ExtResource( 10 )
 rapidFireSound = ExtResource( 11 )

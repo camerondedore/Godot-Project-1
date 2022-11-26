@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://C#/MobWimp/MobWimp.cs" type="Script" id=1]
+[ext_resource path="res://C#/Mob Tools/MobEyes.cs" type="Script" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.5
+height = 0.8
+
+[node name="MobWimp" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource( 1 )
+mobEyesPath = NodePath("MobEyes")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MobEyes" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593179, 0 )
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 3
+script = ExtResource( 2 )
