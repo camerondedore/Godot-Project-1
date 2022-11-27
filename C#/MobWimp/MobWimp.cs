@@ -11,8 +11,11 @@ public class MobWimp : KinematicBody
 	public float speed = 7;
 
 	[Export]
-	NodePath mobEyesPath;
+	NodePath mobEyesPath,
+		enemyPath;
 
+
+	public Spatial enemy;
 	public MobEyes eyes;
 
 
@@ -21,6 +24,7 @@ public class MobWimp : KinematicBody
 	{
 		// get nodes
 		eyes = GetNode<MobEyes>(mobEyesPath);
+		enemy = GetNode<Spatial>(enemyPath);
 		
 		// initialize states
 		stateIdle = new MobWimpStateIdle(){blackboard = this};

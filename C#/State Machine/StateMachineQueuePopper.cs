@@ -8,7 +8,8 @@ public class StateMachineQueuePopper : Node
 	[Export] 
     int popPerTick = 4;
 	public static List<StateMachineQueue> machines = new List<StateMachineQueue>();
-	int machineIndex = 0;
+	int machineIndex = 0,
+		runNumer = 0;
 
 
 
@@ -19,6 +20,9 @@ public class StateMachineQueuePopper : Node
 		{
 			return;
 		}
+
+		//GD.Print(runNumer);
+		//runNumer++;
 
 		// get count of pops, maxing out at the number of machines
 		int c = Mathf.Clamp(popPerTick, 1, machines.Count);

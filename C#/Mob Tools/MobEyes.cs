@@ -27,8 +27,8 @@ public class MobEyes : RayCast
 			return false;
 		}
 
-		// get target position
-		CastTo = target.GlobalTransform.origin; 
+		// get target position in local space
+		CastTo = target.GlobalTransform.origin - GlobalTransform.origin; 
 
 		// cast ray
 		ForceRaycastUpdate();
