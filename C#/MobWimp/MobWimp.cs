@@ -5,14 +5,15 @@ public class MobWimp : KinematicBody
 {
 	
 	public StateMachineQueue machine = new StateMachineQueue();
-	public State stateIdle;
+	public State stateIdle,
+		stateDie;
 
 	[Export]
 	public float speed = 7;
 
 	[Export]
-	NodePath mobEyesPath,
-		enemyPath;
+	NodePath mobEyesNodePath,
+		enemyNodePath;
 
 
 	public Spatial enemy;
@@ -23,11 +24,12 @@ public class MobWimp : KinematicBody
 	public override void _Ready()
 	{
 		// get nodes
-		eyes = GetNode<MobEyes>(mobEyesPath);
-		enemy = GetNode<Spatial>(enemyPath);
+		eyes = GetNode<MobEyes>(mobEyesNodePath);
+		enemy = GetNode<Spatial>(enemyNodePath);
 		
 		// initialize states
 		stateIdle = new MobWimpStateIdle(){blackboard = this};
+		stateDie = new MobWimpStateDie(){blackboard = this};
 
 		// set first state in machine
 		machine.SetState(stateIdle);

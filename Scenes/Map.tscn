@@ -383,7 +383,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3883, 1.25902, -21.8494 )
 
 [node name="MobWimp" parent="." instance=ExtResource( 31 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.862, 0.862, 4.60146 )
-enemyPath = NodePath("../PlayerKinematicBody")
+enemyNodePath = NodePath("../PlayerKinematicBody")
 
 [editable path="Props/PropCamera"]
 [editable path="Lighting/PropSpotLight"]

@@ -1,17 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://C#/MobWimp/MobWimp.cs" type="Script" id=1]
 [ext_resource path="res://C#/Mob Tools/MobEyes.cs" type="Script" id=2]
+[ext_resource path="res://C#/MobWimp/MobWimpHealth.cs" type="Script" id=3]
+[ext_resource path="res://C#/Hitbox.cs" type="Script" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
 height = 0.8
 
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.3
+height = 1.2
+
 [node name="MobWimp" type="KinematicBody"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource( 1 )
-mobEyesPath = NodePath("MobEyes")
+mobEyesNodePath = NodePath("MobEyes")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
@@ -22,3 +28,28 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593179, 0 )
 cast_to = Vector3( 0, 0, -1 )
 collision_mask = 3
 script = ExtResource( 2 )
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 3 )
+hitPoints = 50.0
+maxHitPoints = 50.0
+mobWimpNodePath = NodePath("..")
+
+[node name="Hitbox" type="StaticBody" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Hitbox"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="tmpCSGSphere" type="CSGSphere" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00023824, 0.469678, -0.173208 )
+radius = 0.15
+smooth_faces = false
+
+[node name="tmpmesh" type="CSGCylinder" parent="."]
+radius = 0.155
+height = 1.8
+sides = 10

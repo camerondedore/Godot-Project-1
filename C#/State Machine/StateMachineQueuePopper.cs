@@ -40,6 +40,7 @@ public class StateMachineQueuePopper : Node
 				//if(machines[machineIndex].isActiveAndEnabled)
 				//{
 					// run machine
+					//GD.Print("run " + EngineTime.timePassed);
 					machines[machineIndex].RunMachine(delta);
 				//}
 			}
