@@ -4,6 +4,8 @@ using System;
 public class MobWimpStateDie : MobWimpState
 {
 
+	// Wimp's death is triggered by the Wimp Health
+
 
 
 

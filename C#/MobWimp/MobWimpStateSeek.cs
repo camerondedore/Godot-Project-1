@@ -1,20 +1,17 @@
 using Godot;
 using System;
 
-public class MobWimpStateIdle : MobWimpState
+public class MobWimpStateSeek : MobWimpState
 {
 
-	// Wimp idles when he has no route to his enemy
-
+    // Wimp seeks when enemy is too far away or not visible
 
 
 
 
     public override void RunState(float delta)
 	{		
-        //blackboard.eyes.CanSeeTarget(blackboard.enemy);
-
-		// get path to enemy
+        // get path to enemy
 		blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin, false);
 	}
 
@@ -22,8 +19,7 @@ public class MobWimpStateIdle : MobWimpState
 
 	public override void StartState()
 	{
-		// clear velocity
-		//blackboard.targetVelocity = Vector3.Zero;
+
 	}
 
 
@@ -37,9 +33,7 @@ public class MobWimpStateIdle : MobWimpState
 
 	public override State Transition()
 	{
-		//blackboard.eyes.CanSeeTarget(blackboard.enemy);
-
-		if(blackboard.path.Length > 0)
+        if(blackboard.path.Length == 0)
 		{
 			// seek
 			return blackboard.stateSeek;
