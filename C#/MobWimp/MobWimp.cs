@@ -7,7 +7,9 @@ public class MobWimp : KinematicBody
 	public StateMachineQueue machine = new StateMachineQueue();
 	public State stateIdle,
 		stateDie,
-		stateSeek;
+		stateSeek,
+		stateAttack,
+		stateRetreat;
 
 	[Export]
 	public float speed = 7;
@@ -35,6 +37,8 @@ public class MobWimp : KinematicBody
 		stateIdle = new MobWimpStateIdle(){blackboard = this};
 		stateDie = new MobWimpStateDie(){blackboard = this};
 		stateSeek = new MobWimpStateSeek(){blackboard = this};
+		stateAttack = new MobWimpStateAttack(){blackboard = this};
+		stateRetreat = new MobWimpStateRetreat(){blackboard = this};
 
 		// set first state in machine
 		machine.SetState(stateIdle);
