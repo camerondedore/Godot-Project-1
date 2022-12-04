@@ -42,7 +42,7 @@ extents = Vector3( 30, 1, 30 )
 
 [node name="Camera" type="Camera" parent="."]
 process_priority = -1
-transform = Transform( -0.182734, -0.871715, 0.454668, 0, 0.462454, 0.886644, -0.983162, 0.16202, -0.0845059, 26.6077, 18.38, -13.4969 )
+transform = Transform( 0.544007, -0.613213, 0.572735, 0, 0.682575, 0.730816, -0.839081, -0.39757, 0.371326, 22.7841, 22.4855, 12.7891 )
 current = true
 fov = 80.0
 script = ExtResource( 7 )
@@ -138,7 +138,7 @@ text = "Quit"
 script = ExtResource( 30 )
 
 [node name="PlayerKinematicBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0027, 0.86153, -20.9762 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862, 0 )
 
 [node name="JumpPad" parent="." instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.70387, -4.76837e-07, 2.01 )
@@ -247,4 +247,28 @@ shadow_enabled = true
 
 [node name="MobWimp" parent="." instance=ExtResource( 31 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.862, 0.862, 0.60146 )
+enemyNodePath = NodePath("../PlayerKinematicBody")
+
+[node name="MobWimp2" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5773, 0.862, 14.0808 )
+enemyNodePath = NodePath("../PlayerKinematicBody")
+
+[node name="MobWimp3" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4662, 0.862, 21.8277 )
+enemyNodePath = NodePath("../PlayerKinematicBody")
+
+[node name="MobWimp4" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0124, 0.862, -17.7578 )
+enemyNodePath = NodePath("../PlayerKinematicBody")
+
+[node name="MobWimp5" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2603, 0.862, -26.5305 )
+enemyNodePath = NodePath("../PlayerKinematicBody")
+
+[node name="MobWimp6" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3692, 0.862, 0.0517349 )
+enemyNodePath = NodePath("../PlayerKinematicBody")
+
+[node name="MobWimp7" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4988, 0.862, 21.9488 )
 enemyNodePath = NodePath("../PlayerKinematicBody")

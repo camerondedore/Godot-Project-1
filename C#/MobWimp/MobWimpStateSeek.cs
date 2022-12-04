@@ -12,7 +12,14 @@ public class MobWimpStateSeek : MobWimpState
 
     public override void RunState(float delta)
 	{		
-        
+		// check if last path is complete
+        if(blackboard.pathIndex == blackboard.path.Length)
+		{
+			// regenerate get path to enemy
+			blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin, false);
+
+			blackboard.pathIndex = 0;
+		}
 	}
 
 
@@ -21,7 +28,10 @@ public class MobWimpStateSeek : MobWimpState
 	{
 		// get path to enemy
 		blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin, false);
+
 		blackboard.pathIndex = 0;
+
+		blackboard.usePath = true;
 	}
 
 
@@ -42,18 +52,16 @@ public class MobWimpStateSeek : MobWimpState
 			return blackboard.stateIdle;
 		}
 
-		// distance check to enemy
+		// get distance to enemy
 		var wimpPosition = blackboard.GlobalTransform.origin;
 		var enemyPosition = blackboard.enemy.GlobalTransform.origin;
 		var distanceToEnemySquared = wimpPosition.DistanceSquaredTo(enemyPosition);
-
-		var withinAttackRange = distanceToEnemySquared > blackboard.attackMinRangeSquared && distanceToEnemySquared > blackboard.attackMinRangeSquared;
 
 		// LOS check
 		var canSeeEnemy = blackboard.eyes.CanSeeTarget(blackboard.enemy);
 
 		// check for LOS to enemy and distance to enemy
-		if(canSeeEnemy && withinAttackRange)
+		if(canSeeEnemy && distanceToEnemySquared < blackboard.attackRangeSquared)
 		{
 			// attack
 			return blackboard.stateAttack;

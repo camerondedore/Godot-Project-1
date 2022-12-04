@@ -6,6 +6,8 @@ public class MobWimpStateAttack : MobWimpState
 
     // Wimp attacks when close enough to enemy and enemy is visible
 
+	float startTime;
+
 
 
 
@@ -18,7 +20,9 @@ public class MobWimpStateAttack : MobWimpState
 
 	public override void StartState()
 	{
+		blackboard.usePath = false;
 
+		startTime = EngineTime.timePassed;
 	}
 
 
@@ -39,12 +43,10 @@ public class MobWimpStateAttack : MobWimpState
 		// 	return blackboard.stateIdle;
 		// }
 
-		// distance check to enemy
+		// get distance to enemy
 		var wimpPosition = blackboard.GlobalTransform.origin;
 		var enemyPosition = blackboard.enemy.GlobalTransform.origin;
 		var distanceToEnemySquared = wimpPosition.DistanceSquaredTo(enemyPosition);
-
-		var withinAttackRange = distanceToEnemySquared > blackboard.attackMinRangeSquared && distanceToEnemySquared > blackboard.attackMinRangeSquared;
 
 		// LOS check
 		var canSeeEnemy = blackboard.eyes.CanSeeTarget(blackboard.enemy);
@@ -56,12 +58,12 @@ public class MobWimpStateAttack : MobWimpState
 			return blackboard.stateSeek;
 		}
 
-		// check for enemy being too close and can see enemy
-		// if(distanceToEnemySquared < blackboard.attackMaxRangeSquared && canSeeEnemy)
-		// {
-		// 	// retreat
-		// 	return blackboard.stateRetreat;
-		// }
+		// check for enemy being too close and can see enemy and enough time has passed in attack state
+		if(distanceToEnemySquared < blackboard.attackMinRangeSquared && canSeeEnemy && startTime + 2 < EngineTime.timePassed)
+		{
+			// retreat
+			return blackboard.stateRetreat;
+		}
 
 		return this;
 	}

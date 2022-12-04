@@ -15,8 +15,10 @@ public class MobWimp : KinematicBody
 
 	[Export]
 	public float speed = 7,
+		attackRangeSquared = 144,
 		attackMinRangeSquared = 64,
-		attackMaxRangeSquared = 256;
+		attackMaxRangeSquared = 256,
+		retreatDistance = 10;
 
 	[Export]
 	NodePath mobEyesNodePath,
@@ -27,7 +29,11 @@ public class MobWimp : KinematicBody
 	public MobEyes eyes;
 	public Vector3[] path;
 	public int pathIndex = 0;
+	public bool usePath = true;
 	public Vector3 targetVelocity;
+
+	Vector3 lastPosition;
+	int obstructedCount = 0;
 
 
 
@@ -56,15 +62,15 @@ public class MobWimp : KinematicBody
 	public override void _Process(float delta)
 	{
 		// debug
-		if(machine.CurrentState.ToString() != lastdebug)
-		{
-			GD.Print(machine.CurrentState);
-			lastdebug = machine.CurrentState.ToString();
-			//GD.Print("Path length: " + path.Length);
-			//GD.Print("Can see enemy: " + eyes.CanSeeTarget(enemy).ToString());
-		}
+		// if(machine.CurrentState.ToString() != lastdebug)
+		// {
+		// 	GD.Print(machine.CurrentState);
+		// 	lastdebug = machine.CurrentState.ToString();
+		// 	//GD.Print("Path length: " + path.Length);
+		// 	//GD.Print("Can see enemy: " + eyes.CanSeeTarget(enemy).ToString());
+		// }
 
-		if(path.Length > 0 && pathIndex < path.Length)
+		if(usePath && path.Length > 0 && pathIndex < path.Length)
 		{
 			// get velocity
 			targetVelocity = GlobalTransform.origin.DirectionTo(path[pathIndex]).Normalized() * speed;
@@ -87,6 +93,24 @@ public class MobWimp : KinematicBody
 				// look
 				LookAt(lookTarget, Vector3.Up);
 			}
+
+			// check for obstructions
+			if(GlobalTransform.origin.DistanceSquaredTo(lastPosition) / delta < 0.1f)
+			{
+				obstructedCount++;
+
+				if(obstructedCount > 10)
+				{
+					// end path
+					pathIndex = path.Length;
+				}
+			}
+			else
+			{
+				obstructedCount = 0;
+			}
+
+			lastPosition = GlobalTransform.origin;
 		}
 	}
 }
