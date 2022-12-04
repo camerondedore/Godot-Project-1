@@ -22,8 +22,7 @@ public class MobWimpStateIdle : MobWimpState
 
 	public override void StartState()
 	{
-		// clear velocity
-		//blackboard.targetVelocity = Vector3.Zero;
+
 	}
 
 
@@ -39,6 +38,7 @@ public class MobWimpStateIdle : MobWimpState
 	{
 		//blackboard.eyes.CanSeeTarget(blackboard.enemy);
 
+		// check if mob has path to enemy
 		if(blackboard.path.Length > 0)
 		{
 			// seek

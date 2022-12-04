@@ -4,6 +4,8 @@ using System;
 public class MobWimp : KinematicBody
 {
 	
+	// debug
+	string lastdebug = "";
 	public StateMachineQueue machine = new StateMachineQueue();
 	public State stateIdle,
 		stateDie,
@@ -12,7 +14,9 @@ public class MobWimp : KinematicBody
 		stateRetreat;
 
 	[Export]
-	public float speed = 7;
+	public float speed = 7,
+		attackMinRangeSquared = 64,
+		attackMaxRangeSquared = 256;
 
 	[Export]
 	NodePath mobEyesNodePath,
@@ -22,7 +26,7 @@ public class MobWimp : KinematicBody
 	public Spatial enemy;
 	public MobEyes eyes;
 	public Vector3[] path;
-	int pathIndex = 0;
+	public int pathIndex = 0;
 	public Vector3 targetVelocity;
 
 
@@ -51,10 +55,38 @@ public class MobWimp : KinematicBody
 
 	public override void _Process(float delta)
 	{
+		// debug
+		if(machine.CurrentState.ToString() != lastdebug)
+		{
+			GD.Print(machine.CurrentState);
+			lastdebug = machine.CurrentState.ToString();
+			//GD.Print("Path length: " + path.Length);
+			//GD.Print("Can see enemy: " + eyes.CanSeeTarget(enemy).ToString());
+		}
+
 		if(path.Length > 0 && pathIndex < path.Length)
 		{
-			// ...
+			// get velocity
+			targetVelocity = GlobalTransform.origin.DirectionTo(path[pathIndex]).Normalized() * speed;
+
+			// move
 			MoveAndSlideWithSnap(targetVelocity, Vector3.Down, Vector3.Up, true, 4, 1f);
+
+			// check distance to path point
+			if(GlobalTransform.origin.DistanceSquaredTo(path[pathIndex]) < 0.1f)
+			{
+				// get next path point
+				pathIndex++;
+			}
+			else
+			{
+				// get look direction
+				var lookTarget = GlobalTransform.origin + targetVelocity;
+				lookTarget.y = GlobalTransform.origin.y;
+
+				// look
+				LookAt(lookTarget, Vector3.Up);
+			}
 		}
 	}
 }

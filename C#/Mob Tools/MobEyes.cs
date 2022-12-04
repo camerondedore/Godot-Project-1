@@ -4,6 +4,8 @@ using System;
 public class MobEyes : RayCast
 {
 	
+	//[Export]
+	//NodePath debugPath;
 	[Export]
 	float viewRange = 25;
 	//uint mask = 1;
@@ -11,8 +13,12 @@ public class MobEyes : RayCast
 	float viewRangeSquared;
 
    
+   
 	public override void _Ready()
 	{
+		// get nodes
+		//debug = GetNode<Spatial>(debugPath);
+
 		viewRangeSquared = viewRange * viewRange;
 	}
 
@@ -20,6 +26,10 @@ public class MobEyes : RayCast
 
 	public bool CanSeeTarget(Spatial target)
 	{
+		// set forward to world
+		// CRITICAL TO RAY CAST
+		LookAt(GlobalTransform.origin + Vector3.Forward, Vector3.Up);
+
 		// check distance
 		if(target.GlobalTransform.origin.DistanceSquaredTo(GlobalTransform.origin) > viewRangeSquared)
 		{
@@ -27,8 +37,8 @@ public class MobEyes : RayCast
 			return false;
 		}
 
-		// get target position in local space
-		CastTo = target.GlobalTransform.origin - GlobalTransform.origin; 
+		// get target position
+		CastTo = target.GlobalTransform.origin - GlobalTransform.origin;
 
 		// cast ray
 		ForceRaycastUpdate();
@@ -37,9 +47,9 @@ public class MobEyes : RayCast
 		if(IsColliding())
 		{
 			var hitObject = (Spatial) GetCollider();
-			
+
 			// check if hit object is target
-			if(hitObject.Owner == target.Owner)
+			if(hitObject == target || hitObject.Owner == target)
 			{
 				return true;
 			}
