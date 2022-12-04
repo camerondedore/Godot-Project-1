@@ -79,7 +79,7 @@ public class MobWimp : KinematicBody
 			MoveAndSlideWithSnap(targetVelocity, Vector3.Down, Vector3.Up, true, 4, 1f);
 
 			// check distance to path point
-			if(GlobalTransform.origin.DistanceSquaredTo(path[pathIndex]) < 0.1f)
+			if(GlobalTransform.origin.DistanceSquaredTo(path[pathIndex]) < 0.15f)
 			{
 				// get next path point
 				pathIndex++;
@@ -95,22 +95,22 @@ public class MobWimp : KinematicBody
 			}
 
 			// check for obstructions
-			if(GlobalTransform.origin.DistanceSquaredTo(lastPosition) / delta < 0.1f)
-			{
-				obstructedCount++;
+			// if(GlobalTransform.origin.DistanceSquaredTo(lastPosition) / delta < 0.1f)
+			// {
+			// 	obstructedCount++;
 
-				if(obstructedCount > 10)
-				{
-					// end path
-					pathIndex = path.Length;
-				}
-			}
-			else
-			{
-				obstructedCount = 0;
-			}
+			// 	if(obstructedCount > 10)
+			// 	{
+			// 		// end path
+			// 		pathIndex = path.Length;
+			// 	}
+			// }
+			// else
+			// {
+			// 	obstructedCount = 0;
+			// }
 
-			lastPosition = GlobalTransform.origin;
+			// lastPosition = GlobalTransform.origin;
 		}
 	}
 }

@@ -16,7 +16,8 @@ public class MobWimpStateSeek : MobWimpState
         if(blackboard.pathIndex == blackboard.path.Length)
 		{
 			// regenerate get path to enemy
-			blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin, false);
+			var randomDestinationModifier = new Vector3(GD.Randf() - 0.5f, 0, GD.Randf() - 0.5f) * 4; // random radius of 2
+			blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin + randomDestinationModifier, true);
 
 			blackboard.pathIndex = 0;
 		}
@@ -27,7 +28,8 @@ public class MobWimpStateSeek : MobWimpState
 	public override void StartState()
 	{
 		// get path to enemy
-		blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin, false);
+		var randomDestinationModifier = new Vector3(GD.Randf() - 0.5f, 0, GD.Randf() - 0.5f) * 4; // random radius of 2
+		blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin + randomDestinationModifier, true);
 
 		blackboard.pathIndex = 0;
 

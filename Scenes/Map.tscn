@@ -34,6 +34,7 @@ polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 4, 3, 5 ), PoolIntArray( 5, 
 geometry/parsed_geometry_type = 1
 geometry/collision_mask = 4294967295
 cell/height = 0.5
+agent/max_slope = 40.0
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 30, 1, 30 )
@@ -247,28 +248,4 @@ shadow_enabled = true
 
 [node name="MobWimp" parent="." instance=ExtResource( 31 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.862, 0.862, 0.60146 )
-enemyNodePath = NodePath("../PlayerKinematicBody")
-
-[node name="MobWimp2" parent="." instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5773, 0.862, 14.0808 )
-enemyNodePath = NodePath("../PlayerKinematicBody")
-
-[node name="MobWimp3" parent="." instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4662, 0.862, 21.8277 )
-enemyNodePath = NodePath("../PlayerKinematicBody")
-
-[node name="MobWimp4" parent="." instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0124, 0.862, -17.7578 )
-enemyNodePath = NodePath("../PlayerKinematicBody")
-
-[node name="MobWimp5" parent="." instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2603, 0.862, -26.5305 )
-enemyNodePath = NodePath("../PlayerKinematicBody")
-
-[node name="MobWimp6" parent="." instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3692, 0.862, 0.0517349 )
-enemyNodePath = NodePath("../PlayerKinematicBody")
-
-[node name="MobWimp7" parent="." instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4988, 0.862, 21.9488 )
 enemyNodePath = NodePath("../PlayerKinematicBody")

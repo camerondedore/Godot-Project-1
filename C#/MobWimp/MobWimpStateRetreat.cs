@@ -20,8 +20,9 @@ public class MobWimpStateRetreat : MobWimpState
 	{
 		// get path to enemy
 		var randomRetreatMultiplier = blackboard.retreatDistance * (1 + (GD.Randf() - 0.5f) * 0.4f); // +/- 20%
-		var retreatDirection = (blackboard.GlobalTransform.origin - blackboard.enemy.GlobalTransform.origin).Normalized() * randomRetreatMultiplier;
-		blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.GlobalTransform.origin + retreatDirection, false);
+		var randomDestinationModifier = new Vector3(GD.Randf() - 0.5f, 0, GD.Randf() - 0.5f) * 4; // random radius of 2
+		var retreatDirection = (blackboard.GlobalTransform.origin - blackboard.enemy.GlobalTransform.origin).Normalized() * randomRetreatMultiplier + randomDestinationModifier;
+		blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.GlobalTransform.origin + retreatDirection, true);
 
 		blackboard.pathIndex = 0;
 
