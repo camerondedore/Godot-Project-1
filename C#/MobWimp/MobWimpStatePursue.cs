@@ -1,11 +1,10 @@
 using Godot;
 using System;
 
-public class MobWimpStateSeek : MobWimpState
+public class MobWimpStatePursue : MobWimpState
 {
 
-    // Wimp seeks when there is a path to enemy 
-	//  or when wimp can't see enemy
+    // Wimp seeks when there is LOS to enemy
 
 
 
@@ -48,11 +47,11 @@ public class MobWimpStateSeek : MobWimpState
 	public override State Transition()
 	{
 		// check if there is no path to enemy
-        if(blackboard.path.Length == 0)
-		{
-			// idle
-			return blackboard.stateIdle;
-		}
+        // if(blackboard.path.Length == 0)
+		// {
+		// 	// idle
+		// 	return blackboard.stateIdle;
+		// }
 
 		// get distance to enemy
 		var wimpPosition = blackboard.GlobalTransform.origin;
@@ -61,6 +60,13 @@ public class MobWimpStateSeek : MobWimpState
 
 		// LOS check
 		var canSeeEnemy = blackboard.eyes.CanSeeTarget(blackboard.enemy);
+
+		// check for no LOS to enemy
+		if(!canSeeEnemy)
+		{
+			// search
+			return blackboard.stateSearch;
+		}
 
 		// check for LOS to enemy and distance to enemy
 		if(canSeeEnemy && distanceToEnemySquared < blackboard.attackRangeSquared)

@@ -9,16 +9,15 @@ public class MobWimp : KinematicBody
 	public StateMachineQueue machine = new StateMachineQueue();
 	public State stateIdle,
 		stateDie,
-		stateSeek,
+		statePursue,
 		stateAttack,
-		stateRetreat;
+		stateSearch;
 
 	[Export]
 	public float speed = 7,
-		attackRangeSquared = 144,
-		attackMinRangeSquared = 64,
-		attackMaxRangeSquared = 256,
-		retreatDistance = 10;
+		attackRangeSquared = 1,
+		viewRangeSquared = 225,
+		attackTime = 1;
 
 	[Export]
 	NodePath mobEyesNodePath,
@@ -46,9 +45,9 @@ public class MobWimp : KinematicBody
 		// initialize states
 		stateIdle = new MobWimpStateIdle(){blackboard = this};
 		stateDie = new MobWimpStateDie(){blackboard = this};
-		stateSeek = new MobWimpStateSeek(){blackboard = this};
+		statePursue = new MobWimpStatePursue(){blackboard = this};
 		stateAttack = new MobWimpStateAttack(){blackboard = this};
-		stateRetreat = new MobWimpStateRetreat(){blackboard = this};
+		stateSearch = new MobWimpStateSearch(){blackboard = this};
 
 		// set first state in machine
 		machine.SetState(stateIdle);

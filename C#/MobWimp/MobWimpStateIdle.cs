@@ -4,7 +4,7 @@ using System;
 public class MobWimpStateIdle : MobWimpState
 {
 
-	// Wimp idles when he has no route to his enemy
+	// Wimp idles when he has not be aggro'ed
 
 
 
@@ -15,7 +15,7 @@ public class MobWimpStateIdle : MobWimpState
         //blackboard.eyes.CanSeeTarget(blackboard.enemy);
 
 		// get path to enemy
-		blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin, false);
+		//blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin, false);
 	}
 
 
@@ -36,13 +36,19 @@ public class MobWimpStateIdle : MobWimpState
 
 	public override State Transition()
 	{
-		//blackboard.eyes.CanSeeTarget(blackboard.enemy);
+		// get distance to enemy
+		var wimpPosition = blackboard.GlobalTransform.origin;
+		var enemyPosition = blackboard.enemy.GlobalTransform.origin;
+		var distanceToEnemySquared = wimpPosition.DistanceSquaredTo(enemyPosition);
 
-		// check if mob has path to enemy
-		if(blackboard.path.Length > 0)
+		// LOS check
+		var canSeeEnemy = blackboard.eyes.CanSeeTarget(blackboard.enemy);
+
+		// check if mob has LOS to enemy
+		if(canSeeEnemy && distanceToEnemySquared < blackboard.viewRangeSquared)
 		{
-			// seek
-			return blackboard.stateSeek;
+			// pursue
+			return blackboard.statePursue;
 		}
 
 		return this;
