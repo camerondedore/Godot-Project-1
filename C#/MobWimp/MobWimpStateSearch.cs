@@ -11,7 +11,15 @@ public class MobWimpStateSearch : MobWimpState
 
     public override void RunState(float delta)
 	{		
+		// check if last path is complete
+        if(blackboard.pathIndex == blackboard.path.Length)
+		{
+			// regenerate get path to enemy
+			var randomDestinationModifier = new Vector3(GD.Randf() - 0.5f, 0, GD.Randf() - 0.5f) * 4; // random radius of 2
+			blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin + randomDestinationModifier, true);
 
+			blackboard.pathIndex = 0;
+		}
 	}
 
 
@@ -22,7 +30,6 @@ public class MobWimpStateSearch : MobWimpState
 		blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin, true);
 
 		blackboard.pathIndex = 0;
-
 		blackboard.usePath = true;
 	}
 
@@ -30,7 +37,7 @@ public class MobWimpStateSearch : MobWimpState
 
 	public override void EndState()
 	{
-
+		blackboard.usePath = false;
 	}
 
 

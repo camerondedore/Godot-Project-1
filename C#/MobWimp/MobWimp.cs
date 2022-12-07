@@ -29,7 +29,8 @@ public class MobWimp : KinematicBody
 	public Vector3[] path;
 	public int pathIndex = 0;
 	public bool usePath = true;
-	public Vector3 targetVelocity;
+	public Vector3 targetVelocity,
+		targetDirection;
 
 	Vector3 lastPosition;
 	int obstructedCount = 0;
@@ -110,6 +111,22 @@ public class MobWimp : KinematicBody
 			// }
 
 			// lastPosition = GlobalTransform.origin;
+		}
+		else if(targetDirection != Vector3.Zero)
+		{
+			// get velocity
+			targetVelocity = targetDirection.Normalized() * speed;
+			targetVelocity.y = 0;
+
+			// move
+			MoveAndSlideWithSnap(targetVelocity, Vector3.Down, Vector3.Up, true, 4, 1f);
+
+			// get look direction
+			var lookTarget = GlobalTransform.origin + targetVelocity;
+			lookTarget.y = GlobalTransform.origin.y;
+
+			// look
+			LookAt(lookTarget, Vector3.Up);
 		}
 	}
 }

@@ -20,8 +20,6 @@ public class MobWimpStateAttack : MobWimpState
 
 	public override void StartState()
 	{
-		blackboard.usePath = false;
-
 		startTime = EngineTime.timePassed;
 	}
 
