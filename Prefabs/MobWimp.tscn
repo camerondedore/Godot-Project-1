@@ -19,6 +19,7 @@ collision_mask = 3
 script = ExtResource( 1 )
 speed = 4.0
 attackRangeSquared = 1.5
+viewRangeSquared = 400.0
 mobEyesNodePath = NodePath("MobEyes")
 enemyNodePath = NodePath("")
 

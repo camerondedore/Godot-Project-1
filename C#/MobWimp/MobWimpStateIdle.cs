@@ -22,7 +22,7 @@ public class MobWimpStateIdle : MobWimpState
 
 	public override void StartState()
 	{
-		blackboard.usePath = false;
+		
 	}
 
 

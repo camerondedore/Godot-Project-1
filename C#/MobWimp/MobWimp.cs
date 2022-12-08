@@ -23,14 +23,10 @@ public class MobWimp : KinematicBody
 	NodePath mobEyesNodePath,
 		enemyNodePath;
 
-
 	public Spatial enemy;
 	public MobEyes eyes;
-	public Vector3[] path;
-	public int pathIndex = 0;
-	public bool usePath = true;
-	public Vector3 targetVelocity,
-		targetDirection;
+	public MobKinematicBody body;
+	
 
 	Vector3 lastPosition;
 	int obstructedCount = 0;
@@ -39,6 +35,9 @@ public class MobWimp : KinematicBody
 
 	public override void _Ready()
 	{
+		// initialize body
+		body = new MobKinematicBody(){myBody = this};
+
 		// get nodes
 		eyes = GetNode<MobEyes>(mobEyesNodePath);
 		enemy = GetNode<Spatial>(enemyNodePath);
@@ -70,63 +69,7 @@ public class MobWimp : KinematicBody
 		// 	//GD.Print("Can see enemy: " + eyes.CanSeeTarget(enemy).ToString());
 		// }
 
-		if(usePath && path.Length > 0 && pathIndex < path.Length)
-		{
-			// get velocity
-			targetVelocity = GlobalTransform.origin.DirectionTo(path[pathIndex]).Normalized() * speed;
-
-			// move
-			MoveAndSlideWithSnap(targetVelocity, Vector3.Down, Vector3.Up, true, 4, 1f);
-
-			// check distance to path point
-			if(GlobalTransform.origin.DistanceSquaredTo(path[pathIndex]) < 0.15f)
-			{
-				// get next path point
-				pathIndex++;
-			}
-			else
-			{
-				// get look direction
-				var lookTarget = GlobalTransform.origin + targetVelocity;
-				lookTarget.y = GlobalTransform.origin.y;
-
-				// look
-				LookAt(lookTarget, Vector3.Up);
-			}
-
-			// check for obstructions
-			// if(GlobalTransform.origin.DistanceSquaredTo(lastPosition) / delta < 0.1f)
-			// {
-			// 	obstructedCount++;
-
-			// 	if(obstructedCount > 10)
-			// 	{
-			// 		// end path
-			// 		pathIndex = path.Length;
-			// 	}
-			// }
-			// else
-			// {
-			// 	obstructedCount = 0;
-			// }
-
-			// lastPosition = GlobalTransform.origin;
-		}
-		else if(targetDirection != Vector3.Zero)
-		{
-			// get velocity
-			targetVelocity = targetDirection.Normalized() * speed;
-			targetVelocity.y = 0;
-
-			// move
-			MoveAndSlideWithSnap(targetVelocity, Vector3.Down, Vector3.Up, true, 4, 1f);
-
-			// get look direction
-			var lookTarget = GlobalTransform.origin + targetVelocity;
-			lookTarget.y = GlobalTransform.origin.y;
-
-			// look
-			LookAt(lookTarget, Vector3.Up);
-		}
+		// run body
+		body.Run(delta);
 	}
 }

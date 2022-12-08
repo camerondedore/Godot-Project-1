@@ -12,7 +12,7 @@ public class MobWimpStatePursue : MobWimpState
     public override void RunState(float delta)
 	{		
 		// get direction to enemy
-		blackboard.targetDirection = blackboard.enemy.GlobalTransform.origin - blackboard.GlobalTransform.origin;
+		blackboard.body.targetDirection = (blackboard.enemy.GlobalTransform.origin - blackboard.GlobalTransform.origin).Normalized();
 	}
 
 
@@ -27,7 +27,7 @@ public class MobWimpStatePursue : MobWimpState
 	public override void EndState()
 	{
 		// clear direction to enemy
-		blackboard.targetDirection = Vector3.Zero;
+		blackboard.body.targetDirection = Vector3.Zero;
 	}
 
 
