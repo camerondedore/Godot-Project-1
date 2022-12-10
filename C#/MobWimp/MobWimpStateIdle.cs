@@ -12,10 +12,7 @@ public class MobWimpStateIdle : MobWimpState
 
     public override void RunState(float delta)
 	{		
-        //blackboard.eyes.CanSeeTarget(blackboard.enemy);
 
-		// get path to enemy
-		//blackboard.path = MobPathing.navNode.GetSimplePath(blackboard.GlobalTransform.origin, blackboard.enemy.GlobalTransform.origin, false);
 	}
 
 
@@ -36,6 +33,13 @@ public class MobWimpStateIdle : MobWimpState
 
 	public override State Transition()
 	{
+		// check for enemy
+		if(blackboard.enemyRef.GetRef() == null)
+		{
+			// no enemy
+			return this;
+		}
+
 		// get distance to enemy
 		var wimpPosition = blackboard.GlobalTransform.origin;
 		var enemyPosition = blackboard.enemy.GlobalTransform.origin;

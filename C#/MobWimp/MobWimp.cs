@@ -15,9 +15,12 @@ public class MobWimp : KinematicBody
 
 	[Export]
 	public float speed = 7,
+		meleeDamage = 10,
+		meleeDamageRangeSquared = 3,
 		attackRangeSquared = 1,
 		viewRangeSquared = 225,
-		attackTime = 1;
+		attackTime = 1,
+		damageTime = 0.5f;
 
 	[Export]
 	NodePath mobEyesNodePath,
@@ -26,10 +29,7 @@ public class MobWimp : KinematicBody
 	public Spatial enemy;
 	public MobEyes eyes;
 	public MobKinematicBody body;
-	
-
-	Vector3 lastPosition;
-	int obstructedCount = 0;
+	public Godot.WeakRef enemyRef;
 
 
 
@@ -41,6 +41,9 @@ public class MobWimp : KinematicBody
 		// get nodes
 		eyes = GetNode<MobEyes>(mobEyesNodePath);
 		enemy = GetNode<Spatial>(enemyNodePath);
+
+		// get enemy ref
+		enemyRef = Godot.Object.WeakRef(enemy);
 		
 		// initialize states
 		stateIdle = new MobWimpStateIdle(){blackboard = this};
@@ -68,6 +71,13 @@ public class MobWimp : KinematicBody
 		// 	//GD.Print("Path length: " + path.Length);
 		// 	//GD.Print("Can see enemy: " + eyes.CanSeeTarget(enemy).ToString());
 		// }
+
+		// check for enemy
+		if(enemyRef.GetRef() == null)
+		{
+			// remove machine from queue
+			machine.Disable();
+		}
 
 		// run body
 		body.Run(delta);

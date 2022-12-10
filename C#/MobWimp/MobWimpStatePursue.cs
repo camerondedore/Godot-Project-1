@@ -11,6 +11,13 @@ public class MobWimpStatePursue : MobWimpState
 
     public override void RunState(float delta)
 	{		
+		// check for enemy
+		if(blackboard.enemyRef.GetRef() == null)
+		{
+			// no enemy
+			return;
+		}
+
 		// get direction to enemy
 		blackboard.body.targetDirection = (blackboard.enemy.GlobalTransform.origin - blackboard.GlobalTransform.origin).Normalized();
 	}
@@ -34,12 +41,12 @@ public class MobWimpStatePursue : MobWimpState
 
 	public override State Transition()
 	{
-		// check if there is no path to enemy
-        // if(blackboard.path.Length == 0)
-		// {
-		// 	// idle
-		// 	return blackboard.stateIdle;
-		// }
+		// check for enemy
+		if(blackboard.enemyRef.GetRef() == null)
+		{
+			// no enemy
+			return blackboard.stateIdle;
+		}
 
 		// get distance to enemy
 		var wimpPosition = blackboard.GlobalTransform.origin;

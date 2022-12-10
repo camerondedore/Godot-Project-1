@@ -11,6 +11,13 @@ public class MobWimpStateSearch : MobWimpState
 
     public override void RunState(float delta)
 	{		
+		// check for enemy
+		if(blackboard.enemyRef.GetRef() == null)
+		{
+			// no enemy
+			return;
+		}
+		
 		// check if last path is complete
         if(blackboard.body.pathIndex == blackboard.body.path.Length)
 		{
@@ -44,6 +51,13 @@ public class MobWimpStateSearch : MobWimpState
 
 	public override State Transition()
 	{
+		// check for enemy
+		if(blackboard.enemyRef.GetRef() == null)
+		{
+			// no enemy
+			return blackboard.stateIdle;
+		}
+
 		// LOS check
 		var canSeeEnemy = blackboard.eyes.CanSeeTarget(blackboard.enemy);
 
