@@ -46,6 +46,10 @@ public class MobKinematicBody
 			// get velocity
 			targetVelocity = myBody.GlobalTransform.origin.DirectionTo(path[pathIndex]).Normalized() * speed;
 
+			// set up velocity using input
+            velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, delta * acceleration);
+            velocity.z = Mathf.Lerp(velocity.z, targetVelocity.z, delta * acceleration);
+
             // set snap to grab floor
             snap = -myBody.GetFloorNormal();
 
@@ -53,7 +57,7 @@ public class MobKinematicBody
             velocity += gravity * myBody.GetFloorNormal() * delta;
 
 			// move
-			velocity = myBody.MoveAndSlideWithSnap(targetVelocity, snap, Vector3.Up, true, 4, maxSlopeAngleRad);
+			velocity = myBody.MoveAndSlideWithSnap(velocity, snap, Vector3.Up, true, 4, maxSlopeAngleRad);
 
 			// check distance to path point
 			if(myBody.GlobalTransform.origin.DistanceSquaredTo(path[pathIndex]) < 0.15f)
@@ -67,8 +71,11 @@ public class MobKinematicBody
 				var lookTarget = myBody.GlobalTransform.origin + targetVelocity;
 				lookTarget.y = myBody.GlobalTransform.origin.y;
 
-				// look
-				myBody.LookAt(lookTarget, Vector3.Up);
+				if(lookTarget != myBody.GlobalTransform.origin)
+				{
+					// look
+					myBody.LookAt(lookTarget, Vector3.Up);
+				}
 			}
 		}
 		else if(targetDirection != Vector3.Zero)
@@ -82,7 +89,7 @@ public class MobKinematicBody
 
 
             // apply gravity into floor
-            velocity += gravity * myBody.GetFloorNormal() * delta;
+            velocity += gravity * Vector3.Up * delta;
 
             // move
             velocity = myBody.MoveAndSlideWithSnap(velocity, snap, Vector3.Up, true, 4, maxSlopeAngleRad);

@@ -78,7 +78,12 @@ public class MobWimp : KinematicBody
 			// remove machine from queue
 			machine.Disable();
 		}
+	}
 
+
+
+	public override void _PhysicsProcess(float delta)
+	{
 		// run body
 		body.Run(delta);
 	}
