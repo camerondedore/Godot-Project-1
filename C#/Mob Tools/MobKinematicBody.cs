@@ -47,14 +47,16 @@ public class MobKinematicBody
 			targetVelocity = myBody.GlobalTransform.origin.DirectionTo(path[pathIndex]).Normalized() * speed;
 
 			// set up velocity using input
-            velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, delta * acceleration);
-            velocity.z = Mathf.Lerp(velocity.z, targetVelocity.z, delta * acceleration);
+            // velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, delta * acceleration);
+            // velocity.z = Mathf.Lerp(velocity.z, targetVelocity.z, delta * acceleration);
+			velocity.x = targetVelocity.x;
+			velocity.z = targetVelocity.z;
 
             // set snap to grab floor
             snap = -myBody.GetFloorNormal();
 
             // apply gravity into floor
-            velocity += gravity * myBody.GetFloorNormal() * delta;
+            velocity += gravity * Vector3.Up * delta;
 
 			// move
 			velocity = myBody.MoveAndSlideWithSnap(velocity, snap, Vector3.Up, true, 4, maxSlopeAngleRad);

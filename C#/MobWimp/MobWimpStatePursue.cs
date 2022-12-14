@@ -52,12 +52,13 @@ public class MobWimpStatePursue : MobWimpState
 		var wimpPosition = blackboard.GlobalTransform.origin;
 		var enemyPosition = blackboard.enemy.GlobalTransform.origin;
 		var distanceToEnemySquared = wimpPosition.DistanceSquaredTo(enemyPosition);
+		var yDistanceToEnemy = Mathf.Abs(enemyPosition.y - wimpPosition.y);
 
 		// LOS check
 		var canSeeEnemy = blackboard.eyes.CanSeeTarget(blackboard.enemy);
 
-		// check for no LOS to enemy
-		if(!canSeeEnemy)
+		// check for no LOS to enemy and y distance
+		if(!canSeeEnemy || yDistanceToEnemy > blackboard.yMinPursueDistance)
 		{
 			// search
 			return blackboard.stateSearch;

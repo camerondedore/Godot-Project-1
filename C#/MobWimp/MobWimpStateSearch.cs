@@ -58,11 +58,16 @@ public class MobWimpStateSearch : MobWimpState
 			return blackboard.stateIdle;
 		}
 
+		// get y distance to enemy
+		var wimpPosition = blackboard.GlobalTransform.origin;
+		var enemyPosition = blackboard.enemy.GlobalTransform.origin;
+		var yDistanceToEnemy = Mathf.Abs(enemyPosition.y - wimpPosition.y);
+
 		// LOS check
 		var canSeeEnemy = blackboard.eyes.CanSeeTarget(blackboard.enemy);
 
 		// check for no LOS to enemy
-		if(canSeeEnemy)
+		if(canSeeEnemy && yDistanceToEnemy < blackboard.yMinPursueDistance)
 		{
 			// pursue
 			return blackboard.statePursue;

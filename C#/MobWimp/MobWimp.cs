@@ -19,6 +19,7 @@ public class MobWimp : KinematicBody
 		meleeDamageRangeSquared = 3,
 		attackRangeSquared = 1,
 		viewRangeSquared = 225,
+		yMinPursueDistance = 1.25f,
 		attackTime = 1,
 		damageTime = 0.5f;
 
