@@ -58,6 +58,13 @@ public class MobWimpStateSearch : MobWimpState
 			return blackboard.stateIdle;
 		}
 
+		// check for ground
+		if(!blackboard.IsOnFloor())
+		{
+			// pursue
+			return blackboard.statePursue;
+		}
+
 		// get y distance to enemy
 		var wimpPosition = blackboard.GlobalTransform.origin;
 		var enemyPosition = blackboard.enemy.GlobalTransform.origin;

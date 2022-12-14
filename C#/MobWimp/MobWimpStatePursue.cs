@@ -60,6 +60,12 @@ public class MobWimpStatePursue : MobWimpState
 		// check for no LOS to enemy and y distance
 		if(!canSeeEnemy || yDistanceToEnemy > blackboard.yMinPursueDistance)
 		{
+			// check for ground
+			if(!blackboard.IsOnFloor())
+			{
+				return this;
+			}
+
 			// search
 			return blackboard.stateSearch;
 		}
